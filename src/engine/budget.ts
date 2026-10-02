@@ -89,3 +89,18 @@ export function openBudgetWindow(g: GameState): void {
   g.programmePerTick = Math.max(0, envelopePerTick - debtServicePerTick(g));
   g.budgetWindowOpen = true;
 }
+
+export function projectedFundingRatios(g: GameState, budget: Budget): Record<Sector, number> {
+  const out = {} as Record<Sector, number>;
+  for (const sector of SECTORS) {
+    const shares = stateShares(g, sector, budget.allocation);
+    let funded = 0;
+    let need = 0;
+    g.states.forEach((s, i) => {
+      funded += g.programmePerTick * budget.shares[sector] * shares[i] * (1 - leakage(s));
+      need += needBaseline(g, s, sector);
+    });
+    out[sector] = need > 0 ? funded / need : 0;
+  }
+  return out;
+}
