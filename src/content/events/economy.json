@@ -1,0 +1,536 @@
+[
+  {
+    "id": "price_shock",
+    "title": "Prices jump across the country",
+    "body": "Food and transport prices have jumped again. {advisor} warns that households are cutting meals and the opposition is calling a press conference.",
+    "tags": [
+      "economy",
+      "price_shock"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "inflation",
+        "op": ">",
+        "value": 18
+      },
+      {
+        "type": "avg",
+        "stat": "economy",
+        "op": "<",
+        "value": 60
+      }
+    ],
+    "baseProbability": 0.006,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.price_shock",
+    "choices": [
+      {
+        "id": "price_controls",
+        "label": "Impose price controls",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": -2
+          },
+          {
+            "kind": "ongoing",
+            "target": "economy",
+            "scope": "all",
+            "perTick": -0.04,
+            "ticks": 26
+          }
+        ],
+        "newsTemplateId": "ev.price_shock.price_controls",
+        "advisorReactions": {
+          "finance": "It works briefly, then shortages follow.",
+          "politics": "Popular this week, a problem next quarter."
+        }
+      },
+      {
+        "id": "targeted_food_support",
+        "label": "Fund targeted food support",
+        "cost": 100,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "all",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.price_shock.targeted_food_support",
+        "advisorReactions": {
+          "health": "Nutrition first.",
+          "finance": "Expensive, and temporary."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Say prices will settle",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -4
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": 1.5
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -1
+          }
+        ],
+        "newsTemplateId": "ev.price_shock.ignore",
+        "advisorReactions": {
+          "finance": "They may not settle.",
+          "politics": "People notice empty promises."
+        }
+      }
+    ]
+  },
+  {
+    "id": "union_strike_notice",
+    "title": "Strike notice from the Workers' Congress",
+    "body": "The Workers' Congress of Nigeria has issued a strike notice over rising prices. {advisor} says the notice is serious and the deadline is short.",
+    "tags": [
+      "economy",
+      "strike"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "inflation",
+        "op": ">",
+        "value": 20
+      }
+    ],
+    "baseProbability": 0.01,
+    "cooldownTicks": 52,
+    "severity": 3,
+    "newsTemplateId": "ev.union_strike_notice",
+    "choices": [
+      {
+        "id": "negotiate",
+        "label": "Negotiate a settlement",
+        "cost": 90,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "crisisLoad",
+            "delta": -8
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 2
+          },
+          {
+            "kind": "ongoing",
+            "target": "inflation",
+            "scope": "all",
+            "perTick": 0.03,
+            "ticks": 26
+          }
+        ],
+        "newsTemplateId": "ev.union_strike_notice.negotiate",
+        "advisorReactions": {
+          "finance": "A wage settlement adds to prices, but it keeps the economy running.",
+          "politics": "The best way to avoid a standoff."
+        }
+      },
+      {
+        "id": "threaten",
+        "label": "Threaten sanctions",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -5
+          },
+          {
+            "kind": "national",
+            "meter": "crisisLoad",
+            "delta": 5
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -4,
+            "after": 6
+          }
+        ],
+        "newsTemplateId": "ev.union_strike_notice.threaten",
+        "advisorReactions": {
+          "security": "Firmness shows resolve.",
+          "politics": "It will inflame things and cost you later."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the notice to expire",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "crisisLoad",
+            "delta": 4
+          }
+        ],
+        "newsTemplateId": "ev.union_strike_notice.ignore",
+        "advisorReactions": {
+          "finance": "Strikes are costly. Waiting is a gamble.",
+          "politics": "They will strike, and they will blame you."
+        }
+      }
+    ],
+    "chains": [
+      {
+        "eventId": "strike_spreads",
+        "delayTicks": 4,
+        "ifChoice": "ignore"
+      }
+    ]
+  },
+  {
+    "id": "strike_spreads",
+    "title": "The strike spreads",
+    "body": "The strike has spread to schools, ports and offices. {advisor} warns that the economy is slowing by the day.",
+    "tags": [
+      "economy",
+      "strike",
+      "chain"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "minTick",
+        "tick": 1000000
+      }
+    ],
+    "baseProbability": 0.01,
+    "cooldownTicks": 52,
+    "severity": 3,
+    "newsTemplateId": "ev.strike_spreads",
+    "choices": [
+      {
+        "id": "emergency_talks",
+        "label": "Call emergency talks",
+        "cost": 140,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "crisisLoad",
+            "delta": -10
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.strike_spreads.emergency_talks",
+        "advisorReactions": {
+          "finance": "Expensive, but the economy cannot afford this.",
+          "politics": "The right move, though late."
+        }
+      },
+      {
+        "id": "essential_services_order",
+        "label": "Declare essential services",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -6
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -5
+          },
+          {
+            "kind": "ongoing",
+            "target": "economy",
+            "scope": "all",
+            "perTick": -0.05,
+            "ticks": 13
+          }
+        ],
+        "newsTemplateId": "ev.strike_spreads.essential_services_order",
+        "advisorReactions": {
+          "security": "Keeps critical services running.",
+          "politics": "It looks heavy-handed and angers lawmakers."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait it out",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -6
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -5
+          },
+          {
+            "kind": "ongoing",
+            "target": "revenue",
+            "scope": "all",
+            "perTick": -3,
+            "ticks": 13
+          }
+        ],
+        "newsTemplateId": "ev.strike_spreads.ignore",
+        "advisorReactions": {
+          "finance": "Revenue is already falling.",
+          "politics": "Every day makes it worse."
+        }
+      }
+    ]
+  },
+  {
+    "id": "fx_crunch",
+    "title": "Foreign exchange crunch",
+    "body": "Dollars are scarce and the naira is under pressure. {advisor} says importers are queueing at banks and the Reserve Bank needs direction.",
+    "tags": [
+      "economy",
+      "fx_crunch"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "nairaStrength",
+        "op": "<",
+        "value": 35
+      }
+    ],
+    "baseProbability": 0.008,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.fx_crunch",
+    "choices": [
+      {
+        "id": "defend_naira",
+        "label": "Defend the naira with reserves",
+        "cost": 120,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": 8
+          }
+        ],
+        "newsTemplateId": "ev.fx_crunch.defend_naira",
+        "advisorReactions": {
+          "finance": "It works for a while, then reserves run out.",
+          "politics": "A strong naira is popular."
+        }
+      },
+      {
+        "id": "adjust_rate",
+        "label": "Adjust the official rate",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": 1.5
+          },
+          {
+            "kind": "ongoing",
+            "target": "economy",
+            "scope": "all",
+            "perTick": 0.03,
+            "ticks": 26
+          }
+        ],
+        "newsTemplateId": "ev.fx_crunch.adjust_rate",
+        "advisorReactions": {
+          "finance": "Painful but honest.",
+          "politics": "The headlines will hurt."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for markets",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": -4
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.fx_crunch.ignore",
+        "advisorReactions": {
+          "finance": "Markets will not wait for us.",
+          "security": "Black-market dealers will win."
+        }
+      }
+    ]
+  },
+  {
+    "id": "market_fire",
+    "title": "Market fire in {state}",
+    "body": "A fire has swept through a major market in {state}. Traders have lost stock and {governor} is asking for support.",
+    "tags": [
+      "economy",
+      "market_fire"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "commercial_hub"
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 55
+      }
+    ],
+    "baseProbability": 0.003,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.market_fire",
+    "choices": [
+      {
+        "id": "rebuild_fund",
+        "label": "Fund rebuilding and trader loans",
+        "cost": 60,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.market_fire.rebuild_fund",
+        "advisorReactions": {
+          "finance": "Traders drive local revenue. Worth it.",
+          "politics": "Highly visible and popular."
+        }
+      },
+      {
+        "id": "fire_safety_overhaul",
+        "label": "Fund fire safety upgrades",
+        "cost": 35,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 1
+          }
+        ],
+        "newsTemplateId": "ev.market_fire.fire_safety_overhaul",
+        "advisorReactions": {
+          "finance": "Prevention is cheaper than rebuilding.",
+          "politics": "Less dramatic, so less credit."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state government",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.market_fire.ignore",
+        "advisorReactions": {
+          "finance": "Local revenue will fall.",
+          "politics": "Traders remember."
+        }
+      }
+    ]
+  }
+]

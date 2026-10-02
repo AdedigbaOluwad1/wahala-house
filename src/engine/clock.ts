@@ -18,5 +18,5 @@ export function isQuarterStart(tick: number): boolean {
 }
 
 export function shouldAutoPause(g: GameState): boolean {
-  return g.status.kind !== 'running' || g.budgetWindowOpen;
+  return g.status.kind !== 'running' || g.budgetWindowOpen || g.events.active.some((a) => a.severity === 3);
 }

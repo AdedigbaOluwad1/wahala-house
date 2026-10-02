@@ -1,4 +1,8 @@
 import { DIFFICULTY, DEFAULT_ALLOCATION, DEFAULT_SHARES } from './balance';
+import { emptyEventsState } from './events';
+import type { EventsState } from './events';
+import { emptyNewsState } from './news';
+import type { NewsState } from './news';
 import { Rng } from './rng';
 import {
   GOVERNOR_FIRST_NAMES, GOVERNOR_LAST_NAMES, GOVERNOR_TITLES, STATE_OVERRIDES, STATE_ROWS,
@@ -86,6 +90,7 @@ export interface ScheduledEffect {
   applyAtTick: number;
   effect: Effect;
   policyId?: string;
+  eventId?: string;
   phase?: 'main' | 'side';
   note?: string;
 }
@@ -137,6 +142,8 @@ export interface GameState {
   active: ActivePolicy[];
   cooldowns: Record<string, number>;
   landed: LandedEffect[];
+  events: EventsState;
+  news: NewsState;
   counters: Counters;
   status: EndStatus;
 }
@@ -202,6 +209,8 @@ export function createGame(config: GameConfig = DEFAULT_CONFIG): GameState {
     active: [],
     cooldowns: {},
     landed: [],
+    events: emptyEventsState(),
+    news: emptyNewsState(),
     counters: { coup: 0, impeachment: 0, collapse: 0 },
     status: { kind: 'running' },
   };

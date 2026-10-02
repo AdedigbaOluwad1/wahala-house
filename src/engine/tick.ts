@@ -7,12 +7,15 @@ import {
 import { affordability, computeFunding, debtServicePerTick, needBaseline, openBudgetWindow } from './budget';
 import type { Funding } from './budget';
 import { isQuarterStart } from './clock';
+import { weightedMean } from './aggregate';
+import { resolveEvent, rollEvents } from './events';
+import { checkThresholds, rollAmbient } from './news';
 import { applyOngoing, applyScheduled, ongoingRevenue } from './effects';
 import { enactPolicy, runningCostPerTick } from './policies';
 import { checkEnd } from './endConditions';
 import { Rng } from './rng';
 import { SECTORS, createGame, totalPopulation } from './state';
-import type { Budget, GameConfig, GameState, StateData, StatKey } from './state';
+import type { Budget, GameConfig, GameState, StatKey } from './state';
 import { setBudget } from './budget';
 import { hazardBase } from '../content/states';
 
@@ -77,12 +80,6 @@ function updateMood(g: GameState): void {
   }
 }
 
-function weightedMean(g: GameState, f: (s: StateData) => number): number {
-  let w = 0, t = 0;
-  for (const s of g.states) { w += f(s) * s.population; t += s.population; }
-  return w / t;
-}
-
 function updateNational(g: GameState, rng: Rng): void {
   const n = g.national;
   const sens = DIFFICULTY[g.config.difficulty];
@@ -139,6 +136,9 @@ export function stepTick(g: GameState): void {
   updateHidden(g, funding);
   updateMood(g);
   updateNational(g, rng);
+  rollEvents(g, rng);
+  checkThresholds(g);
+  rollAmbient(g, rng);
   checkEnd(g);
 
   g.rngState = rng.state;
@@ -154,10 +154,12 @@ export function newGame(config?: GameConfig): GameState {
 
 export type Action =
   | { tick: number; type: 'setBudget'; budget: Budget }
-  | { tick: number; type: 'enactPolicy'; policyId: string; sweetener?: number; zone?: string };
+  | { tick: number; type: 'enactPolicy'; policyId: string; sweetener?: number; zone?: string }
+  | { tick: number; type: 'resolveEvent'; uid: number; choiceId: string };
 
 export function applyAction(g: GameState, action: Action): void {
   if (action.type === 'setBudget') setBudget(g, action.budget);
+  else if (action.type === 'resolveEvent') resolveEvent(g, action.uid, action.choiceId);
   else enactPolicy(g, action.policyId, { sweetener: action.sweetener, zone: action.zone });
 }
 

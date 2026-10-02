@@ -4,7 +4,7 @@ A browser-based governance sandbox set in a Nigeria-scale country. You are the p
 
 The point is to make the complexity of governing felt. Every decision costs something somewhere else.
 
-> Status: early development. Phases 0-3 are done (scaffold, headless engine, map and HUD, budget and policies). Events, news, advisors' live commentary, election and saving are not built yet. See [Roadmap](#roadmap).
+> Status: early development. Phases 0-4 are done (scaffold, headless engine, map and HUD, budget and policies, events and news). Setup screen, election and legacy report, and saving are not built yet. See [Roadmap](#roadmap).
 
 ## Principles
 
@@ -35,6 +35,7 @@ Then open the URL Vite prints. Press Start, confirm the first quarter's budget, 
 | `npm run preview` | Serve the production build locally |
 | `npm run lint` | ESLint, including the rule that keeps the engine free of UI imports |
 | `npm test` | Vitest engine tests |
+| `npx vitest run tests/content.test.ts` | Content lint for events, news and banned terms |
 | `npm run e2e` | Playwright smoke tests (desktop and 360 px phone); builds and serves the app itself |
 
 First-time e2e setup: `npx playwright install chromium`.
@@ -52,6 +53,7 @@ src/
 tests/        Vitest unit and scenario tests
 e2e/          Playwright smoke tests
 DECISIONS.md  design decisions, balance notes and open questions
+CONTENT_GUIDE.md  how to write events and news (schema, tone rules)
 ```
 
 ## How the simulation works
@@ -61,6 +63,8 @@ DECISIONS.md  design decisions, balance notes and open questions
 - The player sets a quarterly budget: shares across seven sectors, and how each sector's money is split across states by need, population and political loyalty. Corruption leaks part of the money before it arrives.
 - Randomness only comes from a seeded RNG, so the same seed and the same actions give the same game.
 - Policies are data in `src/content/policies.json`. Each has a cost, a delay, and main and side effects that land on a schedule; some need an Assembly vote that you can sweeten with treasury money.
+- Events are data in `src/content/events/*.json`: tag- and condition-driven, with cooldowns, chains and 2-3 choices. Severity 3 events pause the game until you decide. News headlines come from templates in two tones (Dry and Full Naija Wahala), and the tone toggle applies instantly, including to the log.
+- Advisers brief you each quarter and weigh in on events and policies. They often disagree.
 - All tunable constants live in `src/engine/balance.ts`.
 
 Removal can come by coup, impeachment or fiscal collapse. Term mode adds an election at the end of the term; survival mode runs until you are removed.
@@ -73,8 +77,8 @@ Removal can come by coup, impeachment or fiscal collapse. Term mode adds an elec
 | 1 | Headless engine core | Done |
 | 2 | Map and HUD | Done |
 | 3 | Budget dialog, 12 policies, Assembly votes | Done |
-| 4 | Events, news in two tones, advisors | Next |
-| 5 | Setup screen, modes, election, legacy report | Planned |
+| 4 | Events, news in two tones, advisors | Done |
+| 5 | Setup screen, modes, election, legacy report | Next |
 | 6 | Saving, offline, accessibility and performance pass | Planned |
 | 7 | Content fill, Pidgin pass, balance tuning with bots | Planned |
 

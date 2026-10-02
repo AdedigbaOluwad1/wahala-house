@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { CalendarCheck } from 'lucide-react';
-import { SECTORS, TICKS_PER_QUARTER, debtServicePerTick, gameDate, projectedFundingRatios } from '../../engine';
+import { CalendarCheck, Coins, Gavel, HeartPulse, Shield } from 'lucide-react';
+import { SECTORS, TICKS_PER_QUARTER, debtServicePerTick, gameDate, projectedFundingRatios, quarterBriefing } from '../../engine';
 import type { Budget, GameState, Sector } from '../../engine';
+import { ADVISORS } from '../../content/advisors';
 import { strings } from '../../content/strings/en';
 import { METRIC_ICONS } from '../icons';
 import { formatMoney } from '../format';
@@ -12,6 +13,7 @@ import { Slider } from '@/components/ui/slider';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 
+const ADVISOR_ICONS = { finance: Coins, security: Shield, health: HeartPulse, politics: Gavel } as const;
 const ALLOCATION_KEYS = ['need', 'population', 'loyalty'] as const;
 type AllocationKey = (typeof ALLOCATION_KEYS)[number];
 
@@ -87,11 +89,28 @@ export function BudgetDialog({ game, onConfirm }: { game: GameState; onConfirm: 
           ))}
         </div>
 
-        <Tabs defaultValue="sectors">
+        <Tabs defaultValue="briefing">
           <TabsList className="w-full">
+            <TabsTrigger value="briefing">{strings.briefing.tab}</TabsTrigger>
             <TabsTrigger value="sectors">{b.tabSectors}</TabsTrigger>
             <TabsTrigger value="split">{b.tabSplit}</TabsTrigger>
           </TabsList>
+          <TabsContent value="briefing" className="flex flex-col gap-2">
+            <p className="text-xs text-muted-foreground">{strings.briefing.intro}</p>
+            {quarterBriefing(game).map(({ advisor, text }) => {
+              const Icon = ADVISOR_ICONS[advisor];
+              return (
+                <div key={advisor} className="flex gap-3 rounded-xl border border-white/10 bg-card p-3">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/20 text-primary"><Icon className="size-5" aria-hidden="true" /></span>
+                  <div className="text-sm">
+                    <div className="font-extrabold">{ADVISORS[advisor].name}</div>
+                    <div className="text-xs text-muted-foreground">{ADVISORS[advisor].title}</div>
+                    <p className="mt-1">{text}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </TabsContent>
           <TabsContent value="sectors" className="flex flex-col gap-2">
             {SECTORS.map((sector: Sector) => {
               const lv = level(ratios[sector]);

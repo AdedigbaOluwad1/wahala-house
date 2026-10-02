@@ -1,0 +1,662 @@
+[
+  {
+    "id": "ev.price_shock",
+    "dry": [
+      "Food and transport prices rise sharply nationwide.",
+      "Households report a new jump in food and transport costs."
+    ],
+    "wahala": [
+      "Food and transport prices have jumped again, and market women say the prices change by lunchtime.",
+      "Households report another sharp rise in food and transport costs."
+    ]
+  },
+  {
+    "id": "ev.price_shock.price_controls",
+    "dry": [
+      "Price controls are announced on key goods.",
+      "The government sets price ceilings on staple foods."
+    ],
+    "wahala": [
+      "Price controls are announced; traders say the goods have gone somewhere else.",
+      "The government sets price ceilings on staple foods."
+    ]
+  },
+  {
+    "id": "ev.price_shock.targeted_food_support",
+    "dry": [
+      "Targeted food support is announced for low-income households.",
+      "The government funds food support for poor families."
+    ],
+    "wahala": [
+      "Targeted food support is announced. The list of beneficiaries is being checked, twice.",
+      "The government funds food support for low-income households."
+    ]
+  },
+  {
+    "id": "ev.price_shock.ignore",
+    "dry": [
+      "The government says prices will settle; no measures announced.",
+      "No new measures on rising prices."
+    ],
+    "wahala": [
+      "The government says prices will settle. Prices have not been informed.",
+      "No new measures announced as prices keep rising."
+    ]
+  },
+  {
+    "id": "ev.union_strike_notice",
+    "dry": [
+      "The Workers' Congress has issued a strike notice.",
+      "Labour unions give the government a deadline over prices."
+    ],
+    "wahala": [
+      "The Workers' Congress has issued a strike notice, and the deadline is shorter than the meeting agenda.",
+      "Labour unions give the government a deadline over rising prices."
+    ]
+  },
+  {
+    "id": "ev.union_strike_notice.negotiate",
+    "dry": [
+      "The government and the Workers' Congress reach a settlement.",
+      "Strike notice withdrawn after talks."
+    ],
+    "wahala": [
+      "Talks end with a settlement and the strike notice is withdrawn, pending the paperwork.",
+      "The government and the Workers' Congress reach a settlement."
+    ]
+  },
+  {
+    "id": "ev.union_strike_notice.threaten",
+    "dry": [
+      "The government threatens sanctions on striking workers.",
+      "Unions reject the government's warning."
+    ],
+    "wahala": [
+      "The government threatens sanctions; unions say the notice stands, and so does the deadline.",
+      "Unions reject the government's warning."
+    ]
+  },
+  {
+    "id": "ev.union_strike_notice.ignore",
+    "dry": [
+      "The government takes no action as the strike deadline nears.",
+      "No talks scheduled as the strike deadline approaches."
+    ],
+    "wahala": [
+      "The strike deadline is approaching. A meeting is expected after the deadline.",
+      "No talks scheduled as the strike deadline approaches."
+    ]
+  },
+  {
+    "id": "ev.strike_spreads",
+    "dry": [
+      "The strike has spread to schools, ports and offices.",
+      "Industrial action widens across several sectors."
+    ],
+    "wahala": [
+      "The strike has spread to schools, ports and offices, and the ministry has put out a statement about a statement.",
+      "Industrial action widens across several sectors."
+    ]
+  },
+  {
+    "id": "ev.strike_spreads.emergency_talks",
+    "dry": [
+      "Emergency talks begin with striking unions.",
+      "The government and unions hold emergency talks."
+    ],
+    "wahala": [
+      "Emergency talks begin; both sides agree the room is too small.",
+      "The government and unions hold emergency talks."
+    ]
+  },
+  {
+    "id": "ev.strike_spreads.essential_services_order",
+    "dry": [
+      "The government declares certain services essential.",
+      "An order restricts strike action in essential services."
+    ],
+    "wahala": [
+      "Certain services are declared essential; unions call it a mistake.",
+      "An order restricts strike action in essential services."
+    ]
+  },
+  {
+    "id": "ev.strike_spreads.ignore",
+    "dry": [
+      "The strike continues with no talks scheduled.",
+      "Output falls as the strike continues."
+    ],
+    "wahala": [
+      "The strike continues. The economy has noticed.",
+      "Output falls as the strike continues with no talks scheduled."
+    ]
+  },
+  {
+    "id": "ev.fx_crunch",
+    "dry": [
+      "Foreign exchange is in short supply and the naira weakens.",
+      "Importers report a shortage of dollars at banks."
+    ],
+    "wahala": [
+      "Dollars are hard to find and the naira is under pressure, with the Reserve Bank holding a meeting.",
+      "Importers report a shortage of foreign exchange at banks."
+    ]
+  },
+  {
+    "id": "ev.fx_crunch.defend_naira",
+    "dry": [
+      "The Reserve Bank draws on reserves to support the naira.",
+      "The naira steadies after reserve support."
+    ],
+    "wahala": [
+      "The Reserve Bank supports the naira with reserves, and the exchange boards look up.",
+      "The naira steadies after reserve support."
+    ]
+  },
+  {
+    "id": "ev.fx_crunch.adjust_rate",
+    "dry": [
+      "The official exchange rate is adjusted.",
+      "The Reserve Bank adjusts the rate to match the market."
+    ],
+    "wahala": [
+      "The official rate is adjusted to match the market, and the market says thank you for noticing.",
+      "The Reserve Bank adjusts the rate to match the market."
+    ]
+  },
+  {
+    "id": "ev.fx_crunch.ignore",
+    "dry": [
+      "No action as the naira weakens.",
+      "The naira slides further as authorities wait."
+    ],
+    "wahala": [
+      "The naira slides further while authorities wait for conditions to improve.",
+      "No action as the naira weakens."
+    ]
+  },
+  {
+    "id": "ev.market_fire",
+    "dry": [
+      "A fire has swept through a major market in {state}.",
+      "Traders in {state} count losses after a market fire."
+    ],
+    "wahala": [
+      "A fire has swept through a major market in {state}; traders say fire services arrived after the fire.",
+      "Traders in {state} are counting losses after a market fire."
+    ]
+  },
+  {
+    "id": "ev.market_fire.rebuild_fund",
+    "dry": [
+      "A rebuilding fund and trader loans are announced for {state}.",
+      "The government backs rebuilding of the market in {state}."
+    ],
+    "wahala": [
+      "A rebuilding fund is announced for {state}. Traders ask when the cheque will arrive.",
+      "The government backs rebuilding of the market in {state}."
+    ]
+  },
+  {
+    "id": "ev.market_fire.fire_safety_overhaul",
+    "dry": [
+      "Fire safety upgrades are funded for markets in {state}.",
+      "Markets in {state} will get new fire safety equipment."
+    ],
+    "wahala": [
+      "Fire safety upgrades are funded for {state}, including extinguishers with actual contents.",
+      "Markets in {state} will get new fire safety equipment."
+    ]
+  },
+  {
+    "id": "ev.market_fire.ignore",
+    "dry": [
+      "Traders in {state} say no support has arrived after the market fire.",
+      "No federal help yet for traders in {state}."
+    ],
+    "wahala": [
+      "Traders in {state} say no support has arrived. A committee has been formed to find the support.",
+      "No federal help yet for traders in {state}."
+    ]
+  },
+  {
+    "id": "ev.grid_collapse",
+    "dry": [
+      "The national grid has collapsed, leaving most of the country without power.",
+      "A grid collapse leaves millions without electricity."
+    ],
+    "wahala": [
+      "The national grid has collapsed again, and the grid company says it is investigating the cause by candlelight.",
+      "A grid collapse leaves millions without electricity."
+    ]
+  },
+  {
+    "id": "ev.grid_collapse.emergency_repairs",
+    "dry": [
+      "Emergency repairs begin on the national grid.",
+      "Repair crews work to restore the grid."
+    ],
+    "wahala": [
+      "Emergency repairs begin on the grid, and engineers say the lights are on their way.",
+      "Repair crews work to restore the grid."
+    ]
+  },
+  {
+    "id": "ev.grid_collapse.blame_the_weather",
+    "dry": [
+      "Officials blame bad weather for the grid collapse.",
+      "The government attributes the collapse to weather."
+    ],
+    "wahala": [
+      "Officials blame the weather for the grid collapse. The weather has not yet responded.",
+      "The government attributes the collapse to weather."
+    ]
+  },
+  {
+    "id": "ev.grid_collapse.ignore",
+    "dry": [
+      "No action announced as the grid remains down.",
+      "Power stays out as officials wait for the grid company."
+    ],
+    "wahala": [
+      "The grid remains down. Officials are said to be waiting for the lights to come back on their own.",
+      "No action announced as the grid remains down."
+    ]
+  },
+  {
+    "id": "ev.transformer_outage",
+    "dry": [
+      "Residents of {state} have been without power for days.",
+      "A prolonged power outage hits {state}."
+    ],
+    "wahala": [
+      "Residents of {state} have been without power for days, and the distribution company has promised a statement.",
+      "A prolonged power outage hits {state}."
+    ]
+  },
+  {
+    "id": "ev.transformer_outage.replace_transformers",
+    "dry": [
+      "Replacement transformers are on their way to {state}.",
+      "The government funds new transformers for {state}."
+    ],
+    "wahala": [
+      "New transformers are on their way to {state}. Residents are asked to stay in the light.",
+      "The government funds new transformers for {state}."
+    ]
+  },
+  {
+    "id": "ev.transformer_outage.community_fix",
+    "dry": [
+      "Communities in {state} are allowed to fund their own repairs.",
+      "Local repair work begins in {state} with limited support."
+    ],
+    "wahala": [
+      "Communities in {state} fix their own transformers, and the distribution company may send a bill.",
+      "Local repair work begins in {state} with limited support."
+    ]
+  },
+  {
+    "id": "ev.transformer_outage.ignore",
+    "dry": [
+      "No replacement date for transformers in {state}.",
+      "Outages in {state} continue."
+    ],
+    "wahala": [
+      "The outage continues in {state}. The distribution company is monitoring the darkness.",
+      "No replacement date for transformers in {state}."
+    ]
+  },
+  {
+    "id": "ev.governor_feud",
+    "dry": [
+      "{governor} of {state} publicly criticises federal allocations.",
+      "A public feud emerges between {state} and federal officials."
+    ],
+    "wahala": [
+      "{governor} of {state} is feuding with Abuja over allocations, and both sides have called a press conference.",
+      "A public feud emerges between {state} and federal officials."
+    ]
+  },
+  {
+    "id": "ev.governor_feud.mediate",
+    "dry": [
+      "The president meets {governor} of {state} to settle the dispute.",
+      "Talks ease the feud between {state} and the federal government."
+    ],
+    "wahala": [
+      "The president meets {governor} of {state}. Both sides say it was cordial, in different statements.",
+      "Talks ease the feud between {state} and the federal government."
+    ]
+  },
+  {
+    "id": "ev.governor_feud.side_with_governor",
+    "dry": [
+      "The federal government concedes to {governor} of {state}.",
+      "{state} gets what it asked for in the dispute."
+    ],
+    "wahala": [
+      "{state} gets what it asked for. Other governors have noticed.",
+      "The federal government concedes to {governor} of {state}."
+    ]
+  },
+  {
+    "id": "ev.governor_feud.ignore",
+    "dry": [
+      "The federal government stays silent as {governor} of {state} escalates.",
+      "No response to the feud with {state}."
+    ],
+    "wahala": [
+      "The federal government stays silent on the {state} feud. The silence is being closely read.",
+      "No response to the feud with {state}."
+    ]
+  },
+  {
+    "id": "ev.assembly_standoff",
+    "dry": [
+      "Lawmakers stall government business over a dispute with the executive.",
+      "The National Assembly is deadlocked with the presidency."
+    ],
+    "wahala": [
+      "The National Assembly is deadlocked with the presidency, and a committee has been formed to decide the committee.",
+      "Lawmakers stall government business over a dispute with the executive."
+    ]
+  },
+  {
+    "id": "ev.assembly_standoff.constituency_projects",
+    "dry": [
+      "Constituency projects are approved, easing the standoff with lawmakers.",
+      "The Assembly resumes business after projects are agreed."
+    ],
+    "wahala": [
+      "Constituency projects are approved and the Assembly resumes, with unusual enthusiasm.",
+      "The Assembly resumes business after projects are agreed."
+    ]
+  },
+  {
+    "id": "ev.assembly_standoff.horse_trade",
+    "dry": [
+      "Reports of a private deal end the standoff in the Assembly.",
+      "Lawmakers return to business after closed-door talks."
+    ],
+    "wahala": [
+      "A private deal ends the standoff. Neither side will say what was in it.",
+      "Lawmakers return to business after closed-door talks."
+    ]
+  },
+  {
+    "id": "ev.assembly_standoff.ignore",
+    "dry": [
+      "The standoff in the Assembly continues with no talks.",
+      "Government business stalls as the Assembly standoff continues."
+    ],
+    "wahala": [
+      "The standoff continues, and the cafeteria reports record sales.",
+      "Government business stalls as the Assembly standoff continues."
+    ]
+  },
+  {
+    "id": "ev.defection_scandal",
+    "dry": [
+      "Several lawmakers defect from the PPF to the UDA.",
+      "The ruling PPF loses lawmakers to the opposition UDA."
+    ],
+    "wahala": [
+      "Several lawmakers have left the PPF for the UDA, citing \"a desire to serve the people from a better seat\".",
+      "The ruling PPF loses lawmakers to the opposition UDA."
+    ]
+  },
+  {
+    "id": "ev.defection_scandal.reaffirm_loyalty_dinner",
+    "dry": [
+      "The PPF hosts a loyalty dinner after defections.",
+      "Party leaders court wavering lawmakers."
+    ],
+    "wahala": [
+      "The PPF hosts a loyalty dinner. Attendance was strong, and the menu was long.",
+      "Party leaders court wavering lawmakers."
+    ]
+  },
+  {
+    "id": "ev.defection_scandal.expel_defectors",
+    "dry": [
+      "The PPF expels lawmakers who defected.",
+      "Defectors are expelled from the ruling party."
+    ],
+    "wahala": [
+      "The PPF expels the defectors, who say they were already leaving.",
+      "Defectors are expelled from the ruling party."
+    ]
+  },
+  {
+    "id": "ev.defection_scandal.ignore",
+    "dry": [
+      "The PPF makes no comment on defections to the UDA.",
+      "The ruling party stays silent after defections."
+    ],
+    "wahala": [
+      "The PPF has no comment on the defections. The UDA has several.",
+      "The ruling party stays silent after defections."
+    ]
+  },
+  {
+    "id": "ev.audit_scandal",
+    "dry": [
+      "A leaked audit shows missing funds in {state}.",
+      "Auditors flag unexplained spending in {state}."
+    ],
+    "wahala": [
+      "A leaked audit shows missing funds in {state}, and the report is longer than the response.",
+      "Auditors flag unexplained spending in {state}."
+    ]
+  },
+  {
+    "id": "ev.audit_scandal.independent_audit",
+    "dry": [
+      "An independent audit is ordered in {state}.",
+      "Auditors are sent to review {state}'s accounts."
+    ],
+    "wahala": [
+      "An independent audit is ordered in {state}. Records, it is hoped, will be found.",
+      "Auditors are sent to review {state}'s accounts."
+    ]
+  },
+  {
+    "id": "ev.audit_scandal.quiet_settlement",
+    "dry": [
+      "A settlement is reached over the audit findings in {state}.",
+      "The audit dispute in {state} is settled out of public view."
+    ],
+    "wahala": [
+      "A settlement is reached in {state}. Details are said to be confidential.",
+      "The audit dispute in {state} is settled out of public view."
+    ]
+  },
+  {
+    "id": "ev.audit_scandal.ignore",
+    "dry": [
+      "The federal government calls the audit a matter for {state}.",
+      "No federal action on the audit findings in {state}."
+    ],
+    "wahala": [
+      "The federal government says the audit is a matter for {state}, who say it is a matter for the auditors.",
+      "No federal action on the audit findings in {state}."
+    ]
+  },
+  {
+    "id": "ev.student_protests",
+    "dry": [
+      "Students in {state} are protesting over fees and facilities.",
+      "Campus protests begin in {state}."
+    ],
+    "wahala": [
+      "Students in {state} are protesting over fees and facilities, and the administration has promised a committee.",
+      "Campus protests begin in {state}."
+    ]
+  },
+  {
+    "id": "ev.student_protests.open_dialogue",
+    "dry": [
+      "Talks open with student leaders in {state}.",
+      "Officials meet student representatives in {state}."
+    ],
+    "wahala": [
+      "Officials meet student leaders in {state} and agree to meet again.",
+      "Talks open with student leaders in {state}."
+    ]
+  },
+  {
+    "id": "ev.student_protests.fund_campus",
+    "dry": [
+      "Funding for campus facilities is announced in {state}.",
+      "The government backs improvements at campuses in {state}."
+    ],
+    "wahala": [
+      "Funding for campus facilities is announced in {state}, including working taps.",
+      "The government backs improvements at campuses in {state}."
+    ]
+  },
+  {
+    "id": "ev.student_protests.ignore",
+    "dry": [
+      "Protests continue in {state} with no response from authorities.",
+      "Student protests in {state} enter a second week."
+    ],
+    "wahala": [
+      "Student protests continue in {state}. The administration is monitoring the situation from a distance.",
+      "Protests continue in {state} with no response from authorities."
+    ]
+  },
+  {
+    "id": "ev.exam_leak",
+    "dry": [
+      "A national examination paper has leaked.",
+      "The exam board confirms a leak of a national paper."
+    ],
+    "wahala": [
+      "A national exam paper has leaked, and the exam board says it will review the leak, and the paper.",
+      "The exam board confirms a leak of a national paper."
+    ]
+  },
+  {
+    "id": "ev.exam_leak.independent_inquiry",
+    "dry": [
+      "An independent inquiry into the exam leak is ordered.",
+      "Investigators begin an inquiry into the exam leak."
+    ],
+    "wahala": [
+      "An independent inquiry into the exam leak is ordered. Its terms of reference run to forty pages.",
+      "Investigators begin an inquiry into the exam leak."
+    ]
+  },
+  {
+    "id": "ev.exam_leak.quiet_retake",
+    "dry": [
+      "The affected exam paper is rescheduled.",
+      "Students will retake the leaked paper."
+    ],
+    "wahala": [
+      "The affected paper is rescheduled. Students ask for the revision notes again.",
+      "Students will retake the leaked paper."
+    ]
+  },
+  {
+    "id": "ev.exam_leak.ignore",
+    "dry": [
+      "The exam board says results will stand despite the leak.",
+      "No action is taken over the exam leak."
+    ],
+    "wahala": [
+      "Results will stand, says the exam board. Students have questions.",
+      "No action is taken over the exam leak."
+    ]
+  },
+  {
+    "id": "ev.nationwide_protests",
+    "dry": [
+      "Protests spread across major cities over living conditions.",
+      "Demonstrations are reported in several cities."
+    ],
+    "wahala": [
+      "Protests are spreading across major cities, and the presidency says it has heard \"all voices\", some of them twice.",
+      "Demonstrations are reported in several cities."
+    ]
+  },
+  {
+    "id": "ev.nationwide_protests.listen_and_announce_relief",
+    "dry": [
+      "The president announces relief measures after protests.",
+      "Relief measures are announced in response to demonstrations."
+    ],
+    "wahala": [
+      "The president announces relief measures after listening, a first, according to commentators.",
+      "Relief measures are announced in response to demonstrations."
+    ]
+  },
+  {
+    "id": "ev.nationwide_protests.deploy_security",
+    "dry": [
+      "Security forces are deployed in cities hit by protests.",
+      "Authorities deploy forces as demonstrations continue."
+    ],
+    "wahala": [
+      "Security forces are deployed in cities hit by protests, and organisers say this explains the crowd size.",
+      "Authorities deploy forces as demonstrations continue."
+    ]
+  },
+  {
+    "id": "ev.nationwide_protests.ignore",
+    "dry": [
+      "The government makes no response as protests continue.",
+      "Demonstrations grow with no response from the presidency."
+    ],
+    "wahala": [
+      "The presidency has no response to the protests. A response is believed to be under review.",
+      "Demonstrations grow with no response from the presidency."
+    ]
+  },
+  {
+    "id": "ev.pay_delay_protest",
+    "dry": [
+      "Civil servants in {state} protest over months of unpaid salaries.",
+      "Unpaid workers in {state} gather at the secretariat."
+    ],
+    "wahala": [
+      "Civil servants in {state} protest over months of unpaid salaries, while the pay office reports a delay in reporting.",
+      "Unpaid workers in {state} gather at the secretariat."
+    ]
+  },
+  {
+    "id": "ev.pay_delay_protest.pay_arrears",
+    "dry": [
+      "Funds are released to clear salary arrears in {state}.",
+      "Workers in {state} receive back pay."
+    ],
+    "wahala": [
+      "Funds are released to clear arrears in {state}, and workers check their phones again.",
+      "Workers in {state} receive back pay."
+    ]
+  },
+  {
+    "id": "ev.pay_delay_protest.phased_payment",
+    "dry": [
+      "A phased payment plan is agreed for workers in {state}.",
+      "Salary arrears in {state} will be paid in stages."
+    ],
+    "wahala": [
+      "A phased plan is agreed for {state}; the first phase is described as the shortest.",
+      "Salary arrears in {state} will be paid in stages."
+    ]
+  },
+  {
+    "id": "ev.pay_delay_protest.ignore",
+    "dry": [
+      "The federal government says unpaid salaries in {state} are a state matter.",
+      "Workers in {state} remain unpaid."
+    ],
+    "wahala": [
+      "Salary arrears in {state} are called a state matter. Workers in {state} call it a pay matter.",
+      "Workers in {state} remain unpaid."
+    ]
+  }
+]

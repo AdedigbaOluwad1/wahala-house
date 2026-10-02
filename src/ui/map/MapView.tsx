@@ -1,7 +1,7 @@
 import { memo, useCallback, useMemo, useRef, useState } from 'react';
 import type { GameState } from '../../engine';
 import { strings } from '../../content/strings/en';
-import { MAP_REGIONS, MAP_VIEWBOX } from './mapAdapter';
+import { MAP_REGIONS, MAP_VIEWBOX, regionCentres } from './mapAdapter';
 import { scaleColor } from './colors';
 import type { Metric } from '../../store/gameStore';
 
@@ -51,9 +51,18 @@ function clampView(v: View): View {
   return { zoom, x: Math.min(VB_W - w, Math.max(0, v.x)), y: Math.min(VB_H - h, Math.max(0, v.y)) };
 }
 
-export function MapView({ game, metric, selected, onSelect }: {
+export interface MapMarker {
+  uid: number;
+  stateId: string;
+  severity: 1 | 2 | 3;
+  label: string;
+}
+
+export function MapView({ game, metric, selected, onSelect, markers = [], flashes = [], onMarker }: {
   game: GameState; metric: Metric; selected: string | null; onSelect: (id: string) => void;
+  markers?: MapMarker[]; flashes?: string[]; onMarker?: (uid: number) => void;
 }) {
+  const [centres] = useState(regionCentres);
   const [view, setView] = useState<View>({ x: 0, y: 0, zoom: 1 });
   const svgRef = useRef<SVGSVGElement>(null);
   const pointers = useRef(new Map<number, { x: number; y: number }>());
@@ -140,6 +149,30 @@ export function MapView({ game, metric, selected, onSelect }: {
               selected={selected === r.id} onSelect={handleSelect} />
           );
         })}
+        {flashes.map((id) => centres[id] && (
+          <circle key={`f-${id}`} cx={centres[id].x} cy={centres[id].y} r={14 / view.zoom} fill="none" stroke="#ffd23f" strokeWidth={3}
+            vectorEffect="non-scaling-stroke" className="pointer-events-none motion-safe:animate-ping" />
+        ))}
+        {markers.map((m) => centres[m.stateId] && (
+          <g
+            key={m.uid}
+            transform={`translate(${centres[m.stateId].x} ${centres[m.stateId].y}) scale(${1 / view.zoom})`}
+            role="button"
+            tabIndex={0}
+            aria-label={m.label}
+            className="cursor-pointer outline-none focus-visible:[&>circle]:stroke-white"
+            onClick={() => onMarker?.(m.uid)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onMarker?.(m.uid);
+              }
+            }}
+          >
+            <circle r={11} fill={m.severity === 3 ? '#ef4444' : '#ffd23f'} stroke="#0b1f17" strokeWidth={2} />
+            <text textAnchor="middle" dominantBaseline="central" fontSize={14} fontWeight={800} fill="#0b1f17" className="pointer-events-none select-none">!</text>
+          </g>
+        ))}
       </svg>
       <div className="absolute right-2 top-2 flex flex-col gap-1">
         <button className="grid h-10 w-10 place-items-center rounded-xl border-b-4 border-black/30 bg-secondary text-xl font-bold" aria-label={strings.zoomIn} onClick={() => zoomAt(1.5)}>+</button>

@@ -1,3 +1,5 @@
+import { pushNews } from './news';
+import { getPolicy } from './policies';
 import type { Effect, GameState, StateData, StateTarget } from './state';
 
 const clamp = (v: number) => Math.min(100, Math.max(0, v));
@@ -33,9 +35,18 @@ export function applyScheduled(g: GameState): void {
   const due = g.scheduled.filter((e) => e.applyAtTick <= g.tick);
   if (due.length === 0) return;
   g.scheduled = g.scheduled.filter((e) => e.applyAtTick > g.tick);
+  const announced = new Set<string>();
   for (const e of due) {
     applyEffect(g, e.effect);
-    if (e.policyId && e.phase) g.landed.push({ tick: g.tick, policyId: e.policyId, phase: e.phase, note: e.note });
+    if (e.policyId && e.phase) {
+      g.landed.push({ tick: g.tick, policyId: e.policyId, phase: e.phase, note: e.note });
+      const policyName = getPolicy(e.policyId)?.name ?? e.policyId;
+      if (e.phase === 'side' && e.note) pushNews(g, 'policy_side_landed', { policy: policyName, note: e.note });
+      else if (e.phase === 'main' && !announced.has(e.policyId)) {
+        announced.add(e.policyId);
+        pushNews(g, 'policy_landed', { policy: policyName });
+      }
+    }
   }
 }
 

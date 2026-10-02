@@ -8,6 +8,7 @@ test.beforeEach(async ({ page }) => {
 test('budget dialog adjusts a share and keeps the total at 100%', async ({ page }) => {
   const dialog = page.getByRole('dialog');
   await expect(dialog.getByText(/budget$/i).first()).toBeVisible();
+  await dialog.getByRole('tab', { name: 'Sectors' }).click();
   const first = dialog.getByRole('slider').first();
   await first.focus();
   for (let i = 0; i < 10; i++) await first.press('ArrowRight');

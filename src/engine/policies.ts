@@ -1,4 +1,5 @@
 import { ASSEMBLY, DIFFICULTY } from './balance';
+import { pushNews } from './news';
 import { Rng } from './rng';
 import type { Effect, GameState } from './state';
 import { POLICIES } from '../content/policies';
@@ -123,6 +124,7 @@ export function enactPolicy(g: GameState, policyId: string, opts: EnactOptions =
       g.national.assemblySupport = Math.max(0, g.national.assemblySupport - ASSEMBLY.failPenalty);
       g.cooldowns[policyId] = g.tick + ASSEMBLY.retryTicks;
       g.rngState = rng.state;
+      pushNews(g, 'policy_vote_failed', { policy: policy.name });
       return { ok: false, reason: 'vote_failed', vote: { ...odds, passed: false } };
     }
     vote = { ...odds, passed: true };
@@ -148,6 +150,8 @@ export function enactPolicy(g: GameState, policyId: string, opts: EnactOptions =
     endsTick: policy.durationTicks ? g.tick + policy.durationTicks : undefined,
   });
   if (policy.cooldownTicks) g.cooldowns[policyId] = g.tick + policy.cooldownTicks;
+  if (vote) pushNews(g, 'policy_vote_passed', { policy: policy.name });
+  pushNews(g, 'policy_enacted', { policy: policy.name });
 
   return { ok: true, vote, delayedBy };
 }

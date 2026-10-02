@@ -1,0 +1,200 @@
+[
+  {
+    "id": "ambient.senate_lunch",
+    "dry": [
+      "The Assembly approves a bill after a lengthy debate.",
+      "Lawmakers pass a bill after hours of discussion."
+    ],
+    "wahala": [
+      "Senate approves budget after 11 hours of debate, 9 of them about lunch.",
+      "Assembly passes a bill after a debate in which the bill was mentioned twice."
+    ]
+  },
+  {
+    "id": "ambient.ribbon_cutting",
+    "dry": [
+      "A federal agency opens a new office building.",
+      "Officials open a long-awaited federal facility."
+    ],
+    "wahala": [
+      "A ministry cuts the ribbon on a building it started in the last administration.",
+      "The ribbon is cut on a federal project, and the contractor is thanked for his patience."
+    ]
+  },
+  {
+    "id": "ambient.committee_committee",
+    "dry": [
+      "A new committee is formed to review an earlier committee's report.",
+      "A government committee is set up to study a report."
+    ],
+    "wahala": [
+      "A committee has been formed to review the report of the committee that reviewed the report.",
+      "Officials form a committee to study the report that recommended forming committees."
+    ]
+  },
+  {
+    "id": "ambient.motorcade",
+    "dry": [
+      "A senior official's motorcade delays traffic in the capital.",
+      "Traffic in the capital halts for a ministerial convoy."
+    ],
+    "wahala": [
+      "A motorcade slows traffic in Abuja, and the traffic is reported to have been informed.",
+      "The convoy of a minister reaches the meeting early. The meeting was not ready."
+    ]
+  },
+  {
+    "id": "ambient.consultants",
+    "dry": [
+      "The ministry hires consultants to review its own procedures.",
+      "Consultants are contracted to advise on a government plan."
+    ],
+    "wahala": [
+      "A ministry hires consultants to advise on how to hire consultants.",
+      "Consultants submit a report recommending more consultants."
+    ]
+  },
+  {
+    "id": "ambient.press_statement",
+    "dry": [
+      "A ministry releases a statement on ongoing efforts.",
+      "Officials issue a statement saying work continues."
+    ],
+    "wahala": [
+      "A ministry issues a statement saying it has issued several statements.",
+      "Officials say efforts are ongoing. Efforts are asked to confirm."
+    ]
+  },
+  {
+    "id": "ambient.census_delay",
+    "dry": [
+      "A planned national survey is delayed again.",
+      "Officials postpone the planned national census."
+    ],
+    "wahala": [
+      "The census has been postponed to a date to be announced, and the date is also being reviewed.",
+      "A national survey is delayed so it can be properly surveyed."
+    ]
+  },
+  {
+    "id": "ambient.queue_postcode",
+    "dry": [
+      "Long queues are reported at filling stations in the north.",
+      "Fuel queues stretch for hours in several cities."
+    ],
+    "wahala": [
+      "Fuel queues in the North now have their own postcode.",
+      "The fuel queue in one city has opened a small market."
+    ],
+    "conditions": [
+      {
+        "type": "national",
+        "field": "inflation",
+        "op": ">",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "id": "ambient.generator_sales",
+    "dry": [
+      "Generator sales rise as power supply worsens.",
+      "Households buy more generators amid outages."
+    ],
+    "wahala": [
+      "Generator sellers report their best quarter. The national grid reports it also had a quarter.",
+      "Households upgrade generators; the grid continues its sabbatical."
+    ],
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "power",
+        "op": "<",
+        "value": 40
+      }
+    ]
+  },
+  {
+    "id": "ambient.treasury_hunt",
+    "dry": [
+      "The finance ministry reviews options to raise funds.",
+      "Officials search for ways to close the budget gap."
+    ],
+    "wahala": [
+      "The finance ministry is said to be checking under the sofa cushions.",
+      "Officials search for money in budget lines they did not know existed."
+    ],
+    "conditions": [
+      {
+        "type": "national",
+        "field": "treasury",
+        "op": "<",
+        "value": 300
+      }
+    ]
+  },
+  {
+    "id": "ambient.road_inspection",
+    "dry": [
+      "A federal agency inspects a major road project.",
+      "Officials tour a road under construction."
+    ],
+    "wahala": [
+      "The Federal Roads Agency inspects a road and finds the hole it dug last year.",
+      "Officials tour a road project and agree that the road will be ready, eventually."
+    ]
+  },
+  {
+    "id": "ambient.retreat",
+    "dry": [
+      "Ministers attend a retreat on national development.",
+      "A government retreat is held to review progress."
+    ],
+    "wahala": [
+      "Ministers attend a three-day retreat, which they describe as productive. The hotel agrees.",
+      "A government retreat reviews progress, mostly at the buffet."
+    ]
+  },
+  {
+    "id": "ambient.reform_unveiled",
+    "dry": [
+      "The government unveils a new reform plan.",
+      "A new reform plan is presented to the public."
+    ],
+    "wahala": [
+      "A new reform plan is unveiled. Its predecessor, also a reform plan, is unavailable for comment.",
+      "The government presents a reform plan with a logo."
+    ]
+  },
+  {
+    "id": "ambient.harvest_report",
+    "dry": [
+      "A harvest report notes steady yields in several regions.",
+      "Agriculture officials report a stable harvest."
+    ],
+    "wahala": [
+      "Agriculture officials say the harvest is fine. The farmers say they will confirm.",
+      "The harvest report is positive. The harvest has not yet been shown the report."
+    ],
+    "conditions": [
+      {
+        "type": "quarter",
+        "quarters": [
+          4,
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ambient.budget_defence",
+    "dry": [
+      "Agencies defend their budget proposals before lawmakers.",
+      "Ministry heads appear before the Assembly on spending."
+    ],
+    "wahala": [
+      "Agency heads defend their budgets before lawmakers and nobody asks what the budgets are.",
+      "Ministers appear before the Assembly and say that the figures are being confirmed."
+    ]
+  }
+]

@@ -92,3 +92,17 @@ export const ASSEMBLY = {
   failPenalty: 6,
   retryTicks: 4,
 };
+
+export const EVENTS = {
+  graceTicks: 6,
+  maxFiresPerTick: 2,
+  maxActive: 4,
+  optionalWindow: 8,
+  historyCap: 300,
+};
+
+export const NEWS = {
+  cap: 250,
+  ambientChance: 0.07,
+  ambientCooldown: 26,
+};

@@ -38,6 +38,18 @@
 - **Budget** is chosen at quarter start in a dialog; "Keep last budget" is always available. Sector funding previews show the national coverage of need.
 - **Action log** (`actions` in the store) records budget and policy actions with their tick, ready for saving in Phase 6.
 
+## Phase 4 decisions
+- **Events:** tick order is now clock, scheduled effects, ongoing, funding, stats, hidden, mood, national, event roll, news thresholds, ambient news, end checks. Up to 2 events fire per tick and 4 can be active. Only one severity 3 event can be pending, and it pauses the game. Severity 2 events auto-ignore after 8 weeks. Severity 1 events resolve immediately with the effects of their single ignore choice.
+- **Cooldowns** apply per event, and per event and state for state-scope events. Chained follow-ups respect their cooldown too, and are dropped if still cooling down.
+- **Chain-only events** use a `minTick` condition of 1,000,000 so they never fire on their own. A national event cannot chain to a state event (no state to target).
+- **Condition streaks:** `forTicks` is tracked per condition in `events.streaks`, updated every tick for every event.
+- **News:** items store the template id, tokens and a variant number, and are rendered at display time, so toggling tone changes the whole log instantly. Threshold headlines fire once per crossing. Ambient headlines have a 7% chance per tick and per-template cooldowns.
+- **Advisers** are fictional names with conditional briefing lines in `src/content/advisors.ts`, shown on the first tab of the budget dialog. The quarterly briefing screen from the spec is folded into that dialog.
+- **Content:** 28 events and about 120 news templates were written for this phase, with lint rules in `tests/content.test.ts` (schema, references, tone for serious events, banned real names, parties, agencies, groups and religions). The unique Lagos, Kano, Rivers, Borno and FCT events and the Pidgin pass are still Phase 7. The Pidgin and humour in this batch need review by native speakers.
+- **National stress events** (price shock, strike notice, FX crunch, grid collapse, Assembly standoff) only fire when the country is under strain, so a healthy default game rarely sees them. A test confirms they fire under stress. Revisit frequency in Phase 7.
+- **Map markers** appear on states with a pending severity 2 or 3 event and flash briefly after any state event resolves; the per-choice `mapEffect` field is stored but not yet used by the UI.
+- **E2E hook:** builds made with `VITE_E2E=1` expose `window.__wahala` (engine and store) so Playwright can trigger events deterministically. It is absent from normal builds.
+
 ## Open (from spec section 16 and review)
 - Election rule: is the 25% threshold required in 24 of 36 states plus a separate FCT check, or 24 of 37 units? Verify against the constitution before shipping.
 - Define `needBaseline[state, sector]` (spec 6.3 uses it but never defines it).

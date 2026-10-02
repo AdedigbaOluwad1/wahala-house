@@ -1,0 +1,213 @@
+[
+  {
+    "id": "grid_collapse",
+    "title": "National grid collapse",
+    "body": "The national grid has collapsed again and large parts of the country are in the dark. {advisor} says the grid company is \"investigating the cause\".",
+    "tags": [
+      "power",
+      "grid_collapse"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "power",
+        "op": "<",
+        "value": 35,
+        "forTicks": 6
+      }
+    ],
+    "baseProbability": 0.02,
+    "cooldownTicks": 52,
+    "severity": 3,
+    "newsTemplateId": "ev.grid_collapse",
+    "choices": [
+      {
+        "id": "emergency_repairs",
+        "label": "Fund emergency repairs",
+        "cost": 80,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "all",
+            "delta": 6
+          }
+        ],
+        "newsTemplateId": "ev.grid_collapse.emergency_repairs",
+        "advisorReactions": {
+          "finance": "Expensive, but darkness is costlier.",
+          "health": "Hospitals need power now."
+        }
+      },
+      {
+        "id": "blame_the_weather",
+        "label": "Blame the weather",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "all",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -4,
+            "after": 8
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -3,
+            "after": 8
+          }
+        ],
+        "newsTemplateId": "ev.grid_collapse.blame_the_weather",
+        "advisorReactions": {
+          "politics": "Cheap and quick, but people see through it.",
+          "finance": "No cost, no fix."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the grid company",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.grid_collapse.ignore",
+        "advisorReactions": {
+          "security": "Dark streets are unsafe.",
+          "finance": "Businesses lose money every hour."
+        }
+      }
+    ]
+  },
+  {
+    "id": "transformer_outage",
+    "title": "Prolonged outage in {state}",
+    "body": "Transformers in {state} have failed and homes have been without power for days. {governor} is asking for replacements.",
+    "tags": [
+      "power"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "power",
+        "op": "<",
+        "value": 40
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.004,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.transformer_outage",
+    "choices": [
+      {
+        "id": "replace_transformers",
+        "label": "Fund replacement transformers",
+        "cost": 45,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "$state",
+            "delta": 6
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.transformer_outage.replace_transformers",
+        "advisorReactions": {
+          "finance": "Reliable power lifts the whole local economy.",
+          "health": "Clinics are running on generators."
+        }
+      },
+      {
+        "id": "community_fix",
+        "label": "Let communities contribute and repair",
+        "cost": 12,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.transformer_outage.community_fix",
+        "advisorReactions": {
+          "finance": "Cheap, but unregulated fixes create new problems.",
+          "politics": "Communities will help, and want credit."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the distribution company",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -5
+          }
+        ],
+        "newsTemplateId": "ev.transformer_outage.ignore",
+        "advisorReactions": {
+          "security": "Dark neighbourhoods are unsafe.",
+          "finance": "Local businesses are closing."
+        }
+      }
+    ]
+  }
+]
