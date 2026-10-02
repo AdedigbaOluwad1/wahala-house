@@ -99,7 +99,7 @@ export function LegacyScreen({ game, onAgain, onTitle }: { game: GameState; onAg
             return (
               <div key={k} className="flex flex-col gap-1">
                 <StatBar label={strings.metrics[k]} value={c.end} icon={METRIC_ICONS[k]} />
-                <span className={cn('text-xs font-bold', Math.abs(c.delta) < 0.05 ? 'text-muted-foreground' : c.delta > 0 ? 'text-success' : 'text-destructive')}>{L.delta(c.delta)}</span>
+                <span className={cn('text-xs font-bold', Math.abs(c.delta) < 0.05 ? 'text-muted-foreground' : c.delta > 0 ? 'text-success-ink' : 'text-destructive-ink')}>{L.delta(c.delta)}</span>
               </div>
             );
           })}
@@ -110,7 +110,7 @@ export function LegacyScreen({ game, onAgain, onTitle }: { game: GameState; onAg
         <h2 className="mb-1 font-extrabold">{L.traded}</h2>
         {legacy.traded.length === 0 ? <p className="text-sm text-muted-foreground">{L.tradedNone}</p> : (
           <ul className="flex flex-col gap-1 text-sm">
-            {legacy.traded.map((c) => <li key={c.stat}><b>{strings.metrics[c.stat]}</b> <span className="text-destructive">{L.delta(c.delta)}</span></li>)}
+            {legacy.traded.map((c) => <li key={c.stat}><b>{strings.metrics[c.stat]}</b> <span className="text-destructive-ink">{L.delta(c.delta)}</span></li>)}
           </ul>
         )}
       </div>
@@ -136,7 +136,7 @@ export function LegacyScreen({ game, onAgain, onTitle }: { game: GameState; onAg
       <div className="rounded-xl border border-white/10 bg-card p-3">
         <h2 className="mb-2 font-extrabold">{L.timeline}</h2>
         {key.length === 0 ? <p className="text-sm text-muted-foreground">{L.timelineEmpty}</p> : (
-          <ol className="flex max-h-72 flex-col gap-1.5 overflow-y-auto text-sm">
+          <ol tabIndex={0} aria-label={L.timeline} className="flex max-h-72 flex-col gap-1.5 overflow-y-auto text-sm">
             {key.map((e, i) => (
               <li key={i} className="flex gap-2">
                 <span className="w-16 shrink-0 text-xs text-muted-foreground">{L.week(e.tick)}</span>

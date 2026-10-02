@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { LogOut, ScrollText } from 'lucide-react';
+import { Menu, ScrollText } from 'lucide-react';
 import { toast } from 'sonner';
 import { getEvent, getPolicy, pendingDecision, eventTokens, fillTokens } from '../../engine';
 import { strings } from '../../content/strings/en';
@@ -15,6 +15,8 @@ import { PolicyMenu } from '../modals/PolicyMenu';
 import { StatePanel } from '../panels/StatePanel';
 import { useGameLoop } from '../useGameLoop';
 import { ElectionDialog } from '../modals/ElectionDialog';
+import { SystemDialog } from '../modals/SystemDialog';
+import type { SystemView } from '../modals/SystemDialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
@@ -27,6 +29,12 @@ export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinis
   const select = useGame((s) => s.select);
   const confirmBudget = useGame((s) => s.confirmBudget);
   const [policiesOpen, setPoliciesOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuView, setMenuView] = useState<SystemView>('menu');
+  const setPlaying = useGame((s) => s.setPlaying);
+  const loadSave = useGame((s) => s.loadSave);
+  const currentSave = useGame((s) => s.currentSave);
+  const saveTo = useGame((s) => s.saveTo);
   const openEventUid = useGame((s) => s.openEventUid);
   const openEvent = useGame((s) => s.openEvent);
   const election = useGame((s) => s.election);
@@ -96,7 +104,7 @@ export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinis
               <option key={s.id} value={s.id}>{s.name}</option>
             ))}
           </select>
-          <Button variant="ghost" size="icon" onClick={onExit} aria-label={strings.back}><LogOut /></Button>
+          <Button variant="ghost" size="icon" onClick={() => { setPlaying(false); setMenuView('menu'); setMenuOpen(true); }} aria-label={strings.system.menu}><Menu /></Button>
         </div>
       </div>
       <div className="relative flex min-h-0 flex-1 lg:grid lg:grid-cols-[1fr_20rem]">
@@ -108,6 +116,7 @@ export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinis
             selected ? 'absolute inset-x-0 bottom-0 z-10 max-h-[60%] overflow-y-auto rounded-t-xl border-t shadow-2xl' : 'hidden'
           }`}
           aria-label="State details"
+          tabIndex={0}
         >
           <StatePanel game={game} stateId={selected} onClose={() => select(null)} />
         </aside>
@@ -128,6 +137,17 @@ export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinis
           onContinue={() => dismissElection()}
         />
       )}
+      <SystemDialog
+        open={menuOpen}
+        view={menuView}
+        onView={setMenuView}
+        inGame
+        onClose={() => setMenuOpen(false)}
+        onLoadData={loadSave}
+        currentSave={currentSave}
+        saveTo={saveTo}
+        onQuit={() => { setMenuOpen(false); onExit(); }}
+      />
       <PolicyMenu game={game} open={policiesOpen} onOpenChange={setPoliciesOpen} />
       {game.budgetWindowOpen && !shown && !election && status.kind === 'running' && <BudgetDialog key={game.tick} game={game} onConfirm={confirmBudget} />}
     </div>

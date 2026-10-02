@@ -44,7 +44,7 @@ export function NewsTicker({ game }: { game: GameState }) {
             <SheetDescription className="sr-only">{strings.news.open}</SheetDescription>
             <ToneToggle />
           </SheetHeader>
-          <ol className="flex flex-1 flex-col gap-2 overflow-y-auto px-4 pb-4">
+          <ol tabIndex={0} aria-label={strings.news.title} className="flex flex-1 flex-col gap-2 overflow-y-auto px-4 pb-4">
             {game.news.items.length === 0 && <li className="text-muted-foreground">{strings.news.empty}</li>}
             {[...game.news.items].reverse().map((n) => (
               <li key={n.uid} className={cn('rounded-xl border border-white/10 bg-card p-3', n.severity === 3 && 'border-destructive/50')}>
