@@ -209,5 +209,281 @@
         }
       }
     ]
+  },
+  {
+    "id": "gas_supply_cut",
+    "title": "Gas supply to power plants cut",
+    "body": "A dispute over unpaid gas bills has cut supply to several power plants. {advisor} says the grid will shrink before it improves.",
+    "tags": [
+      "power"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "power",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.006,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.gas_supply_cut",
+    "choices": [
+      {
+        "id": "pay_arrears",
+        "label": "Pay part of the arrears",
+        "cost": 80,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "all",
+            "delta": 4
+          },
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": -20
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Paying now is cheaper than paying later."
+        }
+      },
+      {
+        "id": "mediate",
+        "label": "Mediate a payment plan",
+        "cost": 20,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "all",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the companies to settle",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "all",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tower_vandalism",
+    "title": "Transmission tower vandalised in {state}",
+    "body": "Thieves have stripped parts of a transmission tower in {state}, cutting power to several towns. {advisor} says metal prices are the real culprit.",
+    "tags": [
+      "power"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "power",
+        "op": "<",
+        "value": 48
+      },
+      {
+        "type": "stat",
+        "stat": "security",
+        "op": "<",
+        "value": 55
+      }
+    ],
+    "baseProbability": 0.00038,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.tower_vandalism",
+    "choices": [
+      {
+        "id": "repair_and_patrol",
+        "label": "Repair and fund patrols",
+        "cost": 45,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "$state",
+            "delta": 5
+          },
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          }
+        ]
+      },
+      {
+        "id": "repair",
+        "label": "Repair only",
+        "cost": 25,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "$state",
+            "delta": 3
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the grid company",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mini_grid_offer",
+    "title": "Solar mini-grid offer for {state}",
+    "body": "A private developer offers to build solar mini-grids in {state} if the government guarantees a modest payment. {advisor} says the proposal reads better than most.",
+    "tags": [
+      "power"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "power",
+        "op": "<",
+        "value": 50
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 60
+      }
+    ],
+    "baseProbability": 0.00017,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.mini_grid_offer",
+    "choices": [
+      {
+        "id": "accept",
+        "label": "Accept and guarantee payment",
+        "cost": 60,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "$state",
+            "delta": 6
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "advisorReactions": {
+          "finance": "A reasonable deal if the guarantee is capped."
+        }
+      },
+      {
+        "id": "pilot",
+        "label": "Approve a small pilot",
+        "cost": 25,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Decline",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -1
+          }
+        ]
+      }
+    ]
   }
 ]

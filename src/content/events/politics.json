@@ -519,5 +519,370 @@
         }
       }
     ]
+  },
+  {
+    "id": "budget_padding_row",
+    "title": "Budget padding row",
+    "body": "Lawmakers are accused of adding projects to the budget that nobody requested. {advisor} says some of them are for roads that already exist, in full.",
+    "tags": [
+      "politics"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "assemblySupport",
+        "op": "<",
+        "value": 58
+      },
+      {
+        "type": "national",
+        "field": "approval",
+        "op": "<",
+        "value": 55
+      }
+    ],
+    "baseProbability": 0.005,
+    "cooldownTicks": 78,
+    "severity": 2,
+    "newsTemplateId": "ev.budget_padding_row",
+    "choices": [
+      {
+        "id": "strike_out",
+        "label": "Strike the padded items and publish the list",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -4
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "all",
+            "delta": -1
+          }
+        ],
+        "advisorReactions": {
+          "politics": "Popular with voters, unpopular in the corridors."
+        }
+      },
+      {
+        "id": "deal",
+        "label": "Negotiate a quiet compromise",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "all",
+            "delta": 1
+          }
+        ],
+        "advisorReactions": {
+          "finance": "This will cost more than it looks like."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Sign it and move on",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "all",
+            "delta": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ghost_workers",
+    "title": "Ghost workers found in {state}",
+    "body": "A payroll check in {state} found hundreds of workers who do not seem to exist, and are somehow paid every month. {governor} says it is a data issue.",
+    "tags": [
+      "politics"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "corruption",
+        "op": ">",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.004,
+    "risk": "corruption",
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.ghost_workers",
+    "choices": [
+      {
+        "id": "audit",
+        "label": "Order a biometric audit",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": -4
+          }
+        ],
+        "advisorReactions": {
+          "politics": "The governor will not forget it."
+        }
+      },
+      {
+        "id": "quiet_word",
+        "label": "Have a quiet word",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": -1
+          },
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": 2
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Accept the data issue",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "primary_chaos",
+    "title": "Party primaries descend into chaos",
+    "body": "Primaries in the governing party have turned into competing congresses, court orders and a lot of rented chairs. {advisor} says the opposition is enjoying itself.",
+    "tags": [
+      "politics"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "minTick",
+        "tick": 104
+      },
+      {
+        "type": "national",
+        "field": "approval",
+        "op": "<",
+        "value": 55
+      }
+    ],
+    "baseProbability": 0.01379,
+    "cooldownTicks": 104,
+    "severity": 2,
+    "newsTemplateId": "ev.primary_chaos",
+    "choices": [
+      {
+        "id": "unity_talks",
+        "label": "Convene unity talks",
+        "cost": 20,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -1
+          }
+        ]
+      },
+      {
+        "id": "back_loyalists",
+        "label": "Back your loyalists",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Stay out of it",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "whistleblower_report",
+    "title": "Whistleblower report on a ministry",
+    "body": "A civil servant has leaked documents showing contracts awarded at several times their value. {advisor} says the story will not go away on its own.",
+    "tags": [
+      "politics"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "corruption",
+        "op": ">",
+        "value": 38
+      }
+    ],
+    "baseProbability": 0.02,
+    "cooldownTicks": 78,
+    "severity": 2,
+    "newsTemplateId": "ev.whistleblower_report",
+    "choices": [
+      {
+        "id": "probe",
+        "label": "Order an independent probe",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -3
+          }
+        ],
+        "advisorReactions": {
+          "politics": "Costly in the Assembly, but it earns trust."
+        }
+      },
+      {
+        "id": "suspend",
+        "label": "Suspend the officials involved",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "all",
+            "delta": -1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Dismiss it as rumour",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "all",
+            "delta": 1
+          }
+        ]
+      }
+    ]
   }
 ]

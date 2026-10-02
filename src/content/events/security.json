@@ -631,5 +631,514 @@
         }
       }
     ]
+  },
+  {
+    "id": "checkpoint_extortion",
+    "title": "Checkpoint fees in {state}",
+    "body": "Drivers in {state} say every checkpoint now has a price list, and no receipts. {advisor} says the complaints are reaching the media.",
+    "tags": [
+      "security"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "corruption",
+        "op": ">",
+        "value": 50
+      },
+      {
+        "type": "stat",
+        "stat": "security",
+        "op": "<",
+        "value": 65
+      }
+    ],
+    "baseProbability": 0.00745,
+    "risk": "corruption",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.checkpoint_extortion",
+    "choices": [
+      {
+        "id": "sting",
+        "label": "Order an undercover audit",
+        "cost": 35,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -1
+          }
+        ],
+        "advisorReactions": {
+          "politics": "Popular with drivers, unpopular with the officers.",
+          "finance": "Cheap for what it does."
+        },
+        "newsTemplateId": "ev.checkpoint_extortion.sting"
+      },
+      {
+        "id": "statement",
+        "label": "Issue a stern statement",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 1,
+            "after": 6
+          }
+        ],
+        "newsTemplateId": "ev.checkpoint_extortion.statement"
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -1
+          }
+        ],
+        "advisorReactions": {
+          "politics": "Drivers vote too."
+        }
+      }
+    ]
+  },
+  {
+    "id": "vigilante_standoff",
+    "title": "Vigilante group refuses to disband in {state}",
+    "body": "A local vigilante group in {state} has been guarding roads that the police cannot reach, and now refuses to hand over its patrols. {governor} wants guidance.",
+    "tags": [
+      "security"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "security",
+        "op": "<",
+        "value": 45
+      }
+    ],
+    "baseProbability": 0.00065,
+    "risk": "unrest",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.vigilante_standoff",
+    "choices": [
+      {
+        "id": "integrate",
+        "label": "Train and register the group",
+        "cost": 50,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 5
+          },
+          {
+            "kind": "stat",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "advisorReactions": {
+          "security": "Better inside the system than outside it.",
+          "finance": "A salary bill for a group that was free."
+        }
+      },
+      {
+        "id": "disarm",
+        "label": "Order them disarmed",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "delta": 2,
+            "after": 8
+          }
+        ],
+        "advisorReactions": {
+          "politics": "The roads will remember who took the patrols away."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait and see",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arms_seizure",
+    "title": "Arms haul seized near the border of {state}",
+    "body": "Customs officers and the army have intercepted a large cache of weapons headed across the border in {state}. {advisor} says it is a rare win and worth saying so.",
+    "tags": [
+      "security"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "border"
+      },
+      {
+        "type": "stat",
+        "stat": "security",
+        "op": ">",
+        "value": 35
+      }
+    ],
+    "baseProbability": 0.00068,
+    "risk": "insurgencyRisk",
+    "cooldownTicks": 52,
+    "severity": 1,
+    "newsTemplateId": "ev.arms_seizure",
+    "choices": [
+      {
+        "id": "ignore",
+        "label": "Announce the seizure",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "communal_clash_curfew",
+    "title": "Communal clash in {state}",
+    "body": "Fighting between neighbouring communities over land and grazing routes has broken out in {state}. Several people are dead and {governor} has asked for a federal decision on a curfew.",
+    "tags": [
+      "security",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "unrest",
+        "op": ">",
+        "value": 40
+      },
+      {
+        "type": "stat",
+        "stat": "security",
+        "op": "<",
+        "value": 50
+      },
+      {
+        "type": "trait",
+        "trait": "conflict_zone"
+      }
+    ],
+    "baseProbability": 0.00125,
+    "risk": "unrest",
+    "cooldownTicks": 39,
+    "severity": 3,
+    "newsTemplateId": "ev.communal_clash_curfew",
+    "choices": [
+      {
+        "id": "curfew_and_troops",
+        "label": "Impose a curfew and deploy troops",
+        "cost": 80,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 8
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": -2
+          }
+        ],
+        "advisorReactions": {
+          "security": "Separate the groups first, talk afterwards.",
+          "finance": "Troop deployments add up quickly."
+        },
+        "newsTemplateId": "ev.communal_clash_curfew.curfew_and_troops"
+      },
+      {
+        "id": "mediation",
+        "label": "Send a mediation panel",
+        "cost": 45,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "ongoing",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "perTick": -0.06,
+            "ticks": 26
+          }
+        ],
+        "advisorReactions": {
+          "politics": "Slower, but it can last."
+        },
+        "newsTemplateId": "ev.communal_clash_curfew.mediation"
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state government",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 6
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -8
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.communal_clash_curfew.ignore"
+      }
+    ],
+    "chains": [
+      {
+        "eventId": "displaced_families_camp",
+        "delayTicks": 5,
+        "ifChoice": "ignore"
+      }
+    ]
+  },
+  {
+    "id": "displaced_families_camp",
+    "title": "Displaced families gather in {state}",
+    "body": "Families who fled the recent violence are sheltering in schools and open ground in {state}. {advisor} warns that conditions will worsen without support.",
+    "tags": [
+      "security",
+      "serious",
+      "chain"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "minTick",
+        "tick": 1000000
+      }
+    ],
+    "baseProbability": 0.001,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.displaced_families_camp",
+    "choices": [
+      {
+        "id": "camp_support",
+        "label": "Fund a relief operation",
+        "cost": 55,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "advisorReactions": {
+          "health": "Clean water first, then everything else."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Rely on local charities",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 3
+          }
+        ]
+      }
+    ]
   }
 ]

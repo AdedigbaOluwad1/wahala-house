@@ -1,0 +1,651 @@
+[
+  {
+    "id": "ev.checkpoint_extortion",
+    "dry": [
+      "Drivers in {state} complain of unofficial fees at checkpoints.",
+      "Unofficial checkpoint fees anger drivers across {state}."
+    ],
+    "wahala": [
+      "Drivers in {state} say checkpoints now collect fees faster than tollgates.",
+      "Checkpoint 'welcome fees' have become a way of life in {state}."
+    ]
+  },
+  {
+    "id": "ev.checkpoint_extortion.sting",
+    "dry": [
+      "An audit of checkpoints in {state} leads to suspensions.",
+      "Officers in {state} are suspended after a checkpoint audit."
+    ],
+    "wahala": [
+      "Audit team visits checkpoints in {state}; the fees reportedly took the day off.",
+      "Officers in {state} suspended after audit, the receipts still missing."
+    ]
+  },
+  {
+    "id": "ev.checkpoint_extortion.statement",
+    "dry": [
+      "The presidency condemns illegal checkpoint fees in {state}.",
+      "A stern statement on checkpoint fees is issued."
+    ],
+    "wahala": [
+      "Presidency warns checkpoints in {state}; checkpoints reply with a new price list.",
+      "Stern statement issued, the fees unmoved."
+    ]
+  },
+  {
+    "id": "ev.vigilante_standoff",
+    "dry": [
+      "A vigilante group in {state} refuses to hand over patrols to the police.",
+      "{governor} asks Abuja for guidance on a vigilante group in {state}."
+    ],
+    "wahala": [
+      "Vigilantes in {state} say they will hand over patrols when the roads are safe, which is not today.",
+      "{governor} asks Abuja what to do about vigilantes everyone depends on."
+    ]
+  },
+  {
+    "id": "ev.arms_seizure",
+    "dry": [
+      "Officers seize a large weapons cache near the border of {state}.",
+      "A weapons shipment is intercepted at the {state} border."
+    ],
+    "wahala": [
+      "Officers seize a weapons cache in {state}; the paperwork alone took longer than the chase.",
+      "A weapons shipment is stopped at the {state} border, and a press conference follows."
+    ]
+  },
+  {
+    "id": "ev.communal_clash_curfew",
+    "dry": [
+      "Communal clashes in {state} leave several dead and a curfew is requested.",
+      "{governor} asks for federal support after clashes in {state}."
+    ],
+    "wahala": [
+      "Communal clashes in {state} leave several dead. A curfew has been requested.",
+      "{governor} asks Abuja for support after clashes in {state}."
+    ]
+  },
+  {
+    "id": "ev.communal_clash_curfew.curfew_and_troops",
+    "dry": [
+      "A curfew and troop deployment begin in {state}.",
+      "Troops arrive in {state} as a curfew takes effect."
+    ],
+    "wahala": [
+      "A curfew and troops are in place in {state}.",
+      "Troops deploy to {state}; a curfew is in force."
+    ]
+  },
+  {
+    "id": "ev.communal_clash_curfew.mediation",
+    "dry": [
+      "A mediation panel begins talks between the communities in {state}.",
+      "Community leaders meet a federal panel in {state}."
+    ],
+    "wahala": [
+      "A mediation panel begins talks in {state}.",
+      "Community leaders meet a federal panel in {state}."
+    ]
+  },
+  {
+    "id": "ev.communal_clash_curfew.ignore",
+    "dry": [
+      "The federal government leaves the clashes in {state} to the state.",
+      "No federal response yet to the clashes in {state}."
+    ],
+    "wahala": [
+      "The federal government leaves the clashes in {state} to the state.",
+      "No federal response yet to the clashes in {state}."
+    ]
+  },
+  {
+    "id": "ev.displaced_families_camp",
+    "dry": [
+      "Families displaced by violence are sheltering in schools in {state}.",
+      "Displaced families in {state} need food, water and shelter."
+    ],
+    "wahala": [
+      "Families displaced by violence are sheltering in schools in {state}.",
+      "Displaced families in {state} need food, water and shelter."
+    ]
+  },
+  {
+    "id": "ev.cash_scarcity",
+    "dry": [
+      "Long queues form at ATMs as cash runs short nationwide.",
+      "Cash scarcity hits banks across the country."
+    ],
+    "wahala": [
+      "Queues at ATMs now have their own food vendors as cash runs short.",
+      "Cash scarcity hits banks nationwide; transfers have become the new currency."
+    ]
+  },
+  {
+    "id": "ev.oil_price_windfall",
+    "dry": [
+      "Oil prices surge, lifting expected government revenue.",
+      "A jump in crude prices boosts the oil income forecast."
+    ],
+    "wahala": [
+      "Oil price jumps and everybody suddenly has a spending plan.",
+      "Crude prices surge, and the Treasury is already getting letters."
+    ]
+  },
+  {
+    "id": "ev.oil_price_slump",
+    "dry": [
+      "Oil prices slump, cutting projected revenue.",
+      "A fall in crude prices opens a hole in the oil income forecast."
+    ],
+    "wahala": [
+      "Oil price slumps and the budget now needs a miracle.",
+      "Crude prices fall; the revenue forecast says 'abeg'."
+    ]
+  },
+  {
+    "id": "ev.port_congestion",
+    "dry": [
+      "Container backlogs grow at the {state} port.",
+      "Importers face weeks of delay at the {state} port."
+    ],
+    "wahala": [
+      "Containers pile up at the {state} port, and so do the stamps.",
+      "Importers wait weeks at the {state} port while forms travel between offices."
+    ]
+  },
+  {
+    "id": "ev.traders_levy_row",
+    "dry": [
+      "Traders in {state} close their stalls over a new levy.",
+      "Market closures in {state} follow a dispute over a levy."
+    ],
+    "wahala": [
+      "Traders in {state} lock their stalls over a new levy and the whole market has gone quiet.",
+      "Market closes in {state} as traders say the levy has no receipt."
+    ]
+  },
+  {
+    "id": "ev.investor_visit",
+    "dry": [
+      "A delegation of foreign investors tours the country.",
+      "Investors visit to assess business conditions."
+    ],
+    "wahala": [
+      "A delegation of investors tours the country, shown the roads that were fixed last week.",
+      "Investors visit and are told everything is under control."
+    ]
+  },
+  {
+    "id": "ev.debt_downgrade",
+    "dry": [
+      "A rating agency cuts the country's outlook, citing debt.",
+      "The country's credit outlook is downgraded."
+    ],
+    "wahala": [
+      "A rating agency downgrades the country, and lenders send a longer invoice.",
+      "Credit outlook cut; the Treasury says the agency 'misunderstood' the debt."
+    ]
+  },
+  {
+    "id": "ev.harvest_glut",
+    "dry": [
+      "Farmers in {state} report a record harvest.",
+      "A bumper harvest in {state} floods local markets."
+    ],
+    "wahala": [
+      "Farmers in {state} report a record harvest, and the tomatoes have started to negotiate.",
+      "A bumper harvest in {state} floods the market and prices dive."
+    ]
+  },
+  {
+    "id": "ev.measles_cases",
+    "dry": [
+      "Measles cases rise among children in {state}.",
+      "Clinics in {state} report a rise in measles cases."
+    ],
+    "wahala": [
+      "Measles cases rise among children in {state}.",
+      "Clinics in {state} report a rise in measles cases."
+    ]
+  },
+  {
+    "id": "ev.doctors_emigration",
+    "dry": [
+      "More doctors leave the country for jobs abroad, hospitals report.",
+      "Hospitals warn of a growing shortage of doctors."
+    ],
+    "wahala": [
+      "Doctors keep leaving for abroad and the wards are running on prayers and rotas.",
+      "Hospitals warn of a doctor shortage while visa offices report record queues."
+    ]
+  },
+  {
+    "id": "ev.fake_drugs_bust",
+    "dry": [
+      "Inspectors seize counterfeit medicines in a {state} warehouse.",
+      "A raid in {state} uncovers a large stock of fake drugs."
+    ],
+    "wahala": [
+      "Inspectors seize fake drugs in {state}; the label was perfect, the medicine was not.",
+      "A raid in {state} finds a warehouse of counterfeit drugs, receipts included."
+    ]
+  },
+  {
+    "id": "ev.maternal_ward_closed",
+    "dry": [
+      "The main maternity ward in {state} closes for lack of staff and supplies.",
+      "A maternity ward in {state} shuts, sending patients to other clinics."
+    ],
+    "wahala": [
+      "The main maternity ward in {state} closes for lack of staff and supplies.",
+      "A maternity ward in {state} shuts, sending patients to other clinics."
+    ]
+  },
+  {
+    "id": "ev.heatwave_warning",
+    "dry": [
+      "A heatwave warning is issued for {state} as temperatures climb.",
+      "{state} braces for several days of dangerous heat."
+    ],
+    "wahala": [
+      "A heatwave warning is issued for {state} as temperatures climb.",
+      "{state} braces for several days of dangerous heat."
+    ]
+  },
+  {
+    "id": "ev.erosion_threat",
+    "dry": [
+      "A growing gully threatens homes and a road in {state}.",
+      "Gully erosion forces families to leave homes in {state}."
+    ],
+    "wahala": [
+      "A gully in {state} is eating a road, and the committee is eating the budget.",
+      "Gully erosion threatens homes in {state}, and a site visit is scheduled."
+    ]
+  },
+  {
+    "id": "ev.dry_season_fire",
+    "dry": [
+      "Dry-season fires spread across farmland in {state}.",
+      "Fires threaten villages and farms in {state}."
+    ],
+    "wahala": [
+      "Dry-season fires spread across farmland in {state}.",
+      "Fires threaten villages and farms in {state}."
+    ]
+  },
+  {
+    "id": "ev.bridge_collapse",
+    "dry": [
+      "A bridge collapses in {state}, cutting a main route.",
+      "Rescue teams respond to a bridge collapse in {state}."
+    ],
+    "wahala": [
+      "A bridge collapses in {state}, cutting a main route.",
+      "Rescue teams respond to a bridge collapse in {state}."
+    ]
+  },
+  {
+    "id": "ev.bridge_collapse.rescue_and_rebuild",
+    "dry": [
+      "Rescue work ends and a rebuild begins in {state}.",
+      "Federal funds approved to rebuild the bridge in {state}."
+    ],
+    "wahala": [
+      "Rescue work ends and a rebuild begins in {state}.",
+      "Federal funds approved to rebuild the bridge in {state}."
+    ]
+  },
+  {
+    "id": "ev.bridge_collapse.temporary_crossing",
+    "dry": [
+      "A temporary crossing opens near the collapsed bridge in {state}.",
+      "Traffic resumes on a temporary crossing in {state}."
+    ],
+    "wahala": [
+      "A temporary crossing opens near the collapsed bridge in {state}.",
+      "Traffic resumes on a temporary crossing in {state}."
+    ]
+  },
+  {
+    "id": "ev.bridge_collapse.ignore",
+    "dry": [
+      "An inquiry is ordered into the bridge collapse in {state}.",
+      "A panel will investigate the bridge collapse in {state}."
+    ],
+    "wahala": [
+      "An inquiry is ordered into the bridge collapse in {state}; the committee has been named.",
+      "A panel will investigate the bridge collapse in {state}, report due eventually."
+    ]
+  },
+  {
+    "id": "ev.gas_supply_cut",
+    "dry": [
+      "Gas supply to several power plants is cut over unpaid bills.",
+      "A gas supply dispute reduces power generation nationwide."
+    ],
+    "wahala": [
+      "Gas supplier cuts plants over unpaid bills, and light is now on a payment plan.",
+      "A gas dispute reduces power generation, and generators get busy."
+    ]
+  },
+  {
+    "id": "ev.tower_vandalism",
+    "dry": [
+      "Vandals strip a transmission tower in {state}, cutting power to several towns.",
+      "Power is cut across parts of {state} after tower vandalism."
+    ],
+    "wahala": [
+      "Thieves strip a transmission tower in {state}, and the towns went dark by dinner.",
+      "Power is cut across parts of {state} after someone stole a piece of the grid."
+    ]
+  },
+  {
+    "id": "ev.mini_grid_offer",
+    "dry": [
+      "A developer offers solar mini-grids for communities in {state}.",
+      "Solar mini-grid plans are proposed for {state}."
+    ],
+    "wahala": [
+      "A developer offers solar mini-grids for {state}, panels included, delays negotiable.",
+      "Solar mini-grid plans proposed for {state}; the meeting about the meeting is set."
+    ]
+  },
+  {
+    "id": "ev.budget_padding_row",
+    "dry": [
+      "Lawmakers are accused of adding unrequested projects to the budget.",
+      "A row over budget padding erupts in the Assembly."
+    ],
+    "wahala": [
+      "Lawmakers accused of padding the budget, with a few roads that exist only on paper.",
+      "A budget padding row erupts and every project is somebody's cousin's."
+    ]
+  },
+  {
+    "id": "ev.ghost_workers",
+    "dry": [
+      "A payroll check in {state} finds hundreds of workers who do not exist.",
+      "Ghost workers are found on the {state} payroll."
+    ],
+    "wahala": [
+      "A payroll check in {state} finds workers who have never been seen, yet never miss payday.",
+      "Ghost workers found on the {state} payroll, and they are very punctual."
+    ]
+  },
+  {
+    "id": "ev.primary_chaos",
+    "dry": [
+      "Party primaries end in competing congresses and court orders.",
+      "Chaos hits party primaries across several states."
+    ],
+    "wahala": [
+      "Party primaries turn into competing congresses, court orders and rented chairs.",
+      "Chaos at primaries, with three winners declared in one hall."
+    ]
+  },
+  {
+    "id": "ev.whistleblower_report",
+    "dry": [
+      "A whistleblower leaks documents on inflated ministry contracts.",
+      "Leaked documents show contracts awarded far above market value."
+    ],
+    "wahala": [
+      "A whistleblower leaks documents on contracts priced like gold-plated roundabouts.",
+      "Leaked documents show ministry contracts at several times their value."
+    ]
+  },
+  {
+    "id": "ev.lecturers_strike",
+    "dry": [
+      "University lecturers begin a nationwide strike over pay and funding.",
+      "Campuses close as lecturers go on strike."
+    ],
+    "wahala": [
+      "University lecturers begin a nationwide strike and students start a lot of side businesses.",
+      "Campuses close as lecturers strike over pay and funding."
+    ]
+  },
+  {
+    "id": "ev.lecturers_strike.fund_deal",
+    "dry": [
+      "The government meets the lecturers' main demands and the strike ends.",
+      "Lecturers suspend their strike after a funding deal."
+    ],
+    "wahala": [
+      "The government meets the lecturers' main demands and the strike ends.",
+      "Lecturers suspend their strike after a funding deal."
+    ]
+  },
+  {
+    "id": "ev.lecturers_strike.partial_offer",
+    "dry": [
+      "The government makes a partial offer to striking lecturers.",
+      "Talks continue after a partial offer to lecturers."
+    ],
+    "wahala": [
+      "The government makes a partial offer to striking lecturers.",
+      "Talks continue after a partial offer to lecturers."
+    ]
+  },
+  {
+    "id": "ev.lecturers_strike.ignore",
+    "dry": [
+      "The strike enters a second month with no deal in sight.",
+      "Students remain at home as the lecturers' strike drags on."
+    ],
+    "wahala": [
+      "The strike enters a second month and graduation is now a rumour.",
+      "Students stay home as the lecturers' strike drags on."
+    ]
+  },
+  {
+    "id": "ev.student_march",
+    "dry": [
+      "Students march in several cities over closed campuses.",
+      "Student groups protest the lecturers' strike."
+    ],
+    "wahala": [
+      "Students march in several cities over closed campuses and shut a few roundabouts.",
+      "Student groups protest the strike, and the placards are well spelt."
+    ]
+  },
+  {
+    "id": "ev.youth_march",
+    "dry": [
+      "Thousands of young people march to demand jobs.",
+      "A march over youth unemployment draws large crowds."
+    ],
+    "wahala": [
+      "Thousands of young people march for jobs, with a CV on every placard.",
+      "A march over youth unemployment draws large crowds in several cities."
+    ]
+  },
+  {
+    "id": "ev.chief_dispute",
+    "dry": [
+      "Rival claims to a traditional throne divide {state}.",
+      "A dispute over a traditional ruler lands in court in {state}."
+    ],
+    "wahala": [
+      "Rival claims to a traditional throne divide {state}, and both claimants have printed invitations.",
+      "A dispute over a traditional ruler lands in court in {state}."
+    ]
+  },
+  {
+    "id": "ev.football_win",
+    "dry": [
+      "The national football team wins a major match, and the country celebrates.",
+      "Celebrations erupt after the national team's victory."
+    ],
+    "wahala": [
+      "The national team wins and the whole country forgets the fuel queue for one night.",
+      "Celebrations erupt after the national team's victory, and every generator is on."
+    ]
+  },
+  {
+    "id": "ev.transport_union_strike",
+    "dry": [
+      "The road transport union parks vehicles in a nationwide strike.",
+      "Travellers are stranded as transport workers strike over levies and roads."
+    ],
+    "wahala": [
+      "Transport workers park their vehicles and the roads suddenly feel very empty.",
+      "Travellers are stranded as transport workers strike over levies and roads."
+    ]
+  },
+  {
+    "id": "ev.lagos_gridlock",
+    "dry": [
+      "Gridlock freezes {state} for a full working day.",
+      "A traffic standstill costs {state} a day of work."
+    ],
+    "wahala": [
+      "Gridlock freezes {state}; some commuters report they have started to pay rent in the traffic.",
+      "A traffic standstill costs {state} a full day of work."
+    ]
+  },
+  {
+    "id": "ev.lagos_canal_flood",
+    "dry": [
+      "Blocked drains overflow in {state}, flooding streets and homes.",
+      "Emergency teams respond to flooding across {state}."
+    ],
+    "wahala": [
+      "Blocked drains overflow in {state}, flooding streets and homes.",
+      "Emergency teams respond to flooding across {state}."
+    ]
+  },
+  {
+    "id": "ev.kano_textile_revival",
+    "dry": [
+      "Manufacturers propose restarting idle textile mills in {state}.",
+      "A textile revival plan is presented for {state}."
+    ],
+    "wahala": [
+      "Manufacturers propose restarting the idle textile mills in {state}, if the lights stay on.",
+      "A textile revival plan is presented for {state}, complete with real numbers."
+    ]
+  },
+  {
+    "id": "ev.kano_water_shortage",
+    "dry": [
+      "Taps run dry in several districts of {state}.",
+      "Water shortages hit parts of {state}."
+    ],
+    "wahala": [
+      "Taps run dry in several districts of {state}, and water sellers set the new rate.",
+      "Water shortages hit parts of {state}, and buckets are the new status symbol."
+    ]
+  },
+  {
+    "id": "ev.rivers_oil_spill",
+    "dry": [
+      "A pipeline leak fouls creeks and fishing grounds in {state}.",
+      "Residents report a spill that has run for days in {state}."
+    ],
+    "wahala": [
+      "A pipeline leak fouls creeks and fishing grounds in {state}.",
+      "Residents report a spill that has run for days in {state}."
+    ]
+  },
+  {
+    "id": "ev.rivers_oil_spill.cleanup_order",
+    "dry": [
+      "A cleanup is ordered after the oil spill in {state}.",
+      "The operator is told to clean up the spill in {state}."
+    ],
+    "wahala": [
+      "A cleanup is ordered after the oil spill in {state}.",
+      "The operator is told to clean up the spill in {state}."
+    ]
+  },
+  {
+    "id": "ev.rivers_oil_spill.compensation",
+    "dry": [
+      "Compensation is announced for fishing communities in {state}.",
+      "Affected families in {state} will receive compensation."
+    ],
+    "wahala": [
+      "Compensation is announced for fishing communities in {state}.",
+      "Affected families in {state} will receive compensation."
+    ]
+  },
+  {
+    "id": "ev.rivers_oil_spill.ignore",
+    "dry": [
+      "The operator says it is investigating the spill in {state}.",
+      "No cleanup yet in {state} as the investigation continues."
+    ],
+    "wahala": [
+      "The operator says it is investigating the spill in {state}; residents say they have been investigating it for days.",
+      "No cleanup yet in {state} as the investigation continues."
+    ]
+  },
+  {
+    "id": "ev.fishing_communities_protest",
+    "dry": [
+      "Fishing communities block a jetty in {state} over the spill.",
+      "A protest at a jetty in {state} disrupts operations."
+    ],
+    "wahala": [
+      "Fishing communities block a jetty in {state} over the spill.",
+      "A protest at a jetty in {state} disrupts operations."
+    ]
+  },
+  {
+    "id": "ev.rivers_port_strike",
+    "dry": [
+      "Dock workers strike at the main port in {state} over delayed pay.",
+      "Ships queue at the {state} port as workers strike."
+    ],
+    "wahala": [
+      "Dock workers strike over delayed pay and the ships are waiting with their meters running.",
+      "Ships queue at the {state} port as workers strike."
+    ]
+  },
+  {
+    "id": "ev.borno_resettlement",
+    "dry": [
+      "Thousands of families are resettled in communities in {state}.",
+      "Resettlement begins for families returning to {state}."
+    ],
+    "wahala": [
+      "Thousands of families are resettled in communities in {state}.",
+      "Resettlement begins for families returning to {state}."
+    ]
+  },
+  {
+    "id": "ev.borno_farm_access",
+    "dry": [
+      "Farmers in {state} ask to return to land that has been unsafe for years.",
+      "A plan to reopen farmland is proposed in {state}."
+    ],
+    "wahala": [
+      "Farmers in {state} ask to return to land that has been unsafe for years.",
+      "A plan to reopen farmland is proposed in {state}."
+    ]
+  },
+  {
+    "id": "ev.fct_civil_servants_protest",
+    "dry": [
+      "Federal civil servants march in {state} over delayed allowances.",
+      "Workers protest outside ministries in {state}."
+    ],
+    "wahala": [
+      "Federal civil servants march in {state} over delayed allowances; the ministries closed early to join them.",
+      "Workers protest outside ministries in {state}."
+    ]
+  },
+  {
+    "id": "ev.fct_estate_demolition",
+    "dry": [
+      "Demolitions begin at estates with disputed land papers in {state}.",
+      "Residents protest demolitions in {state}."
+    ],
+    "wahala": [
+      "Bulldozers arrive at estates in {state}, and the approvals are somewhere in the rubble.",
+      "Residents protest demolitions in {state}."
+    ]
+  }
+]
