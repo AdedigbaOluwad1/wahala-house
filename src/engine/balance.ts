@@ -70,7 +70,7 @@ export const APPROVAL_SMOOTHING = 4;
 export const CRISIS_DECAY = 0.04;
 export const CRISIS_PER_SEVERITY = { 1: 0.5, 2: 2, 3: 7 } as const;
 
-export const COUP = { stability: 42, ticks: 12 };
+export const COUP = { stability: 38, ticks: 12 };
 export const IMPEACHMENT = { approval: 30, assembly: 35, opposition: 60, ticks: 8 };
 export const COLLAPSE = { unrest: 50, ticks: 4 };
 
