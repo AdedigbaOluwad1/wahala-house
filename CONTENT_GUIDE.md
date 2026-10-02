@@ -67,7 +67,7 @@ Fields:
 - `{"type":"national","field":F,"op":...,"value":N,"forTicks":N?}`: a national meter. Fields: treasury, debt, inflation, nairaStrength, oilPriceIndex, approval, stability, assemblySupport, opposition, crisisLoad.
 - `{"type":"trait","trait":T}`, `{"type":"zone","zone":"NC|NE|NW|SE|SS|SW"}`, `{"type":"state","id":"lagos"}`: state scope only.
 - `{"type":"policy","policyId":P,"active":true|false}`.
-- `{"type":"quarter","quarters":[1..4]}`: seasonal events. `{"type":"minTick","tick":N}`.
+- `{"type":"quarter","quarters":[1..4]}`: seasonal events. `{"type":"minTick","tick":N}`. `{"type":"mode","mode":"term"|"survival"}`: limit an event to one game mode.
 - State stats S: economy, security, health, education, infrastructure, power, welfare, mood, unrest, corruption, insurgencyRisk, governorLoyalty. All 0 to 100. Starting averages sit around 40 to 55 for the visible stats, inflation starts at 15, approval near 40 to 50.
 - Traits: oil, agriculture, commercial_hub, urban_dense, border, conflict_zone, riverine, flood_prone, mining, port.
 

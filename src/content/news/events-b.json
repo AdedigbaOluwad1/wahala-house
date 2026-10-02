@@ -658,5 +658,49 @@
       "Salary arrears in {state} are called a state matter. Workers in {state} call it a pay matter.",
       "Workers in {state} remain unpaid."
     ]
+  },
+  {
+    "id": "ev.opposition_surge",
+    "dry": [
+      "The opposition draws large crowds at rallies across the country.",
+      "Opposition rallies gather momentum ahead of mid-term."
+    ],
+    "wahala": [
+      "The opposition draws large crowds across the country, and both sides have claimed the crowd was theirs.",
+      "Opposition rallies gather momentum, and the ruling party has noticed."
+    ]
+  },
+  {
+    "id": "ev.opposition_surge.rally_the_base",
+    "dry": [
+      "The ruling party holds counter-rallies in several cities.",
+      "The PPF rallies its base after opposition events."
+    ],
+    "wahala": [
+      "The PPF holds counter-rallies in several cities, with excellent catering.",
+      "The PPF rallies its base after opposition events."
+    ]
+  },
+  {
+    "id": "ev.opposition_surge.concede_reforms",
+    "dry": [
+      "The government offers reforms to the opposition.",
+      "Talks on reform proposals open with the UDA."
+    ],
+    "wahala": [
+      "The government offers reforms to the UDA. Both sides say the other started it.",
+      "Talks on reform proposals open with the UDA."
+    ]
+  },
+  {
+    "id": "ev.opposition_surge.ignore",
+    "dry": [
+      "The government dismisses the opposition rallies.",
+      "No response from the presidency to the rallies."
+    ],
+    "wahala": [
+      "The presidency says the rallies are \"noted\". Noted what, it did not say.",
+      "No response from the presidency to the rallies."
+    ]
   }
 ]

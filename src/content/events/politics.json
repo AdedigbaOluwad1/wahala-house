@@ -407,5 +407,117 @@
         }
       }
     ]
+  },
+  {
+    "id": "opposition_surge",
+    "title": "Opposition surge",
+    "body": "Opposition rallies are drawing large crowds, and the UDA says the mid-term mood is theirs. {advisor} warns that lawmakers are watching the polls.",
+    "tags": [
+      "politics"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "mode",
+        "mode": "survival"
+      },
+      {
+        "type": "minTick",
+        "tick": 104
+      },
+      {
+        "type": "national",
+        "field": "opposition",
+        "op": ">",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.006,
+    "cooldownTicks": 104,
+    "severity": 2,
+    "newsTemplateId": "ev.opposition_surge",
+    "choices": [
+      {
+        "id": "rally_the_base",
+        "label": "Rally the party base",
+        "cost": 60,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": -4
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.opposition_surge.rally_the_base",
+        "advisorReactions": {
+          "politics": "Crowds answer crowds.",
+          "finance": "Rallies are not free."
+        }
+      },
+      {
+        "id": "concede_reforms",
+        "label": "Offer reforms to the opposition",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": -6
+          }
+        ],
+        "newsTemplateId": "ev.opposition_surge.concede_reforms",
+        "advisorReactions": {
+          "politics": "Takes the wind from their sails, at a price in your own ranks.",
+          "security": "Calmer streets help everyone."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Dismiss the rallies",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": 6
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -1
+          }
+        ],
+        "newsTemplateId": "ev.opposition_surge.ignore",
+        "advisorReactions": {
+          "politics": "Dismissal feeds the story.",
+          "finance": "No cost, but no answer either."
+        }
+      }
+    ]
   }
 ]

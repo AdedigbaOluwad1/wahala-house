@@ -46,6 +46,7 @@ function conditionProblems(c: Condition, scope: 'state' | 'national' | 'ambient'
     case 'policy': if (!POLICY_IDS.includes(c.policyId)) out.push(`bad policy ${c.policyId}`); break;
     case 'quarter': if (c.quarters.some((q) => q < 1 || q > 4)) out.push('bad quarter'); break;
     case 'minTick': break;
+    case 'mode': if (c.mode !== 'term' && c.mode !== 'survival') out.push('bad mode'); break;
     default: out.push(`unknown condition ${(c as { type: string }).type}`);
   }
   return out;
