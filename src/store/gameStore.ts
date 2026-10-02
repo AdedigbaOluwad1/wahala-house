@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { DEFAULT_CONFIG, enactPolicy, newGame, setBudget, shouldAutoPause, stepTick } from '../engine';
-import type { Action, Budget, EnactOptions, EnactResult, GameConfig, GameState } from '../engine';
+import { resolveEvent } from '../engine';
+import type { Action, Budget, EnactOptions, EnactResult, GameConfig, GameState, ResolveResult } from '../engine';
 
 export type Metric = 'mood' | 'security' | 'economy' | 'power' | 'health' | 'education' | 'infrastructure' | 'welfare';
 export const METRICS: Metric[] = ['mood', 'security', 'economy', 'power', 'health', 'education', 'infrastructure', 'welfare'];
@@ -13,11 +14,16 @@ interface Store {
   speed: GameConfig['speed'];
   metric: Metric;
   selected: string | null;
+  tone: 'dry' | 'wahala';
+  openEventUid: number | null;
   newGame: (config?: GameConfig) => void;
   setPlaying: (p: boolean) => void;
   setSpeed: (s: GameConfig['speed']) => void;
   setMetric: (m: Metric) => void;
   select: (id: string | null) => void;
+  setTone: (t: 'dry' | 'wahala') => void;
+  openEvent: (uid: number | null) => void;
+  resolve: (uid: number, choiceId: string) => ResolveResult;
   advance: () => void;
   confirmBudget: (budget: Budget) => void;
   enact: (policyId: string, opts?: EnactOptions) => EnactResult;
@@ -31,12 +37,29 @@ export const useGame = create<Store>((set, get) => ({
   speed: DEFAULT_CONFIG.speed,
   metric: 'mood',
   selected: null,
+  tone: DEFAULT_CONFIG.tone,
+  openEventUid: null,
   newGame: (config = DEFAULT_CONFIG) =>
     set((s) => ({ game: newGame(config), rev: s.rev + 1, actions: [], playing: false, speed: config.speed, selected: null })),
   setPlaying: (playing) => set((s) => ({ playing: playing && !shouldAutoPause(s.game) })),
   setSpeed: (speed) => set({ speed }),
   setMetric: (metric) => set({ metric }),
   select: (selected) => set({ selected }),
+  setTone: (tone) => set({ tone }),
+  openEvent: (openEventUid) => set({ openEventUid }),
+  resolve: (uid, choiceId) => {
+    const { game } = get();
+    const tick = game.tick;
+    const result = resolveEvent(game, uid, choiceId);
+    if (result.ok) {
+      set((s) => ({
+        rev: s.rev + 1,
+        openEventUid: s.openEventUid === uid ? null : s.openEventUid,
+        actions: [...s.actions, { tick, type: 'resolveEvent', uid, choiceId }],
+      }));
+    }
+    return result;
+  },
   advance: () => {
     const { game } = get();
     stepTick(game);

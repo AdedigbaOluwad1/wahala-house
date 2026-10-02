@@ -8,7 +8,7 @@ import { affordability, computeFunding, debtServicePerTick, needBaseline, openBu
 import type { Funding } from './budget';
 import { isQuarterStart } from './clock';
 import { weightedMean } from './aggregate';
-import { rollEvents } from './events';
+import { resolveEvent, rollEvents } from './events';
 import { checkThresholds, rollAmbient } from './news';
 import { applyOngoing, applyScheduled, ongoingRevenue } from './effects';
 import { enactPolicy, runningCostPerTick } from './policies';
@@ -154,10 +154,12 @@ export function newGame(config?: GameConfig): GameState {
 
 export type Action =
   | { tick: number; type: 'setBudget'; budget: Budget }
-  | { tick: number; type: 'enactPolicy'; policyId: string; sweetener?: number; zone?: string };
+  | { tick: number; type: 'enactPolicy'; policyId: string; sweetener?: number; zone?: string }
+  | { tick: number; type: 'resolveEvent'; uid: number; choiceId: string };
 
 export function applyAction(g: GameState, action: Action): void {
   if (action.type === 'setBudget') setBudget(g, action.budget);
+  else if (action.type === 'resolveEvent') resolveEvent(g, action.uid, action.choiceId);
   else enactPolicy(g, action.policyId, { sweetener: action.sweetener, zone: action.zone });
 }
 
