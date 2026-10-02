@@ -7,7 +7,8 @@ import {
 import { affordability, computeFunding, debtServicePerTick, needBaseline, openBudgetWindow } from './budget';
 import type { Funding } from './budget';
 import { isQuarterStart } from './clock';
-import { applyScheduled } from './effects';
+import { applyOngoing, applyScheduled, ongoingRevenue } from './effects';
+import { enactPolicy, runningCostPerTick } from './policies';
 import { checkEnd } from './endConditions';
 import { Rng } from './rng';
 import { SECTORS, createGame, totalPopulation } from './state';
@@ -92,11 +93,11 @@ function updateNational(g: GameState, rng: Rng): void {
   const oil = n.oilPriceIndex * OIL_OUTPUT * (1 - vandalism);
   let tax = 0;
   for (const s of g.states) tax += (s.economy / 50) * s.revenueBase * TAX_K;
-  n.revenue = oil + tax + OTHER_REVENUE;
+  n.revenue = oil + tax + OTHER_REVENUE + ongoingRevenue(g);
 
   const debtService = debtServicePerTick(g);
   const programme = g.programmePerTick * affordability(g);
-  n.spending = programme + debtService;
+  n.spending = programme + debtService + runningCostPerTick(g);
   n.treasury += n.revenue - n.spending;
   if (n.treasury < TREASURY_RESERVE && n.debt < DEBT_CEILING) {
     const borrow = Math.min(TREASURY_RESERVE - n.treasury, DEBT_CEILING - n.debt);
@@ -132,6 +133,7 @@ export function stepTick(g: GameState): void {
   g.tick++;
   if (isQuarterStart(g.tick)) openBudgetWindow(g);
   applyScheduled(g);
+  applyOngoing(g);
   const funding = computeFunding(g);
   updateStats(g, funding);
   updateHidden(g, funding);
@@ -150,10 +152,13 @@ export function newGame(config?: GameConfig): GameState {
   return g;
 }
 
-export interface Action {
-  tick: number;
-  type: 'setBudget';
-  budget: Budget;
+export type Action =
+  | { tick: number; type: 'setBudget'; budget: Budget }
+  | { tick: number; type: 'enactPolicy'; policyId: string; sweetener?: number; zone?: string };
+
+export function applyAction(g: GameState, action: Action): void {
+  if (action.type === 'setBudget') setBudget(g, action.budget);
+  else enactPolicy(g, action.policyId, { sweetener: action.sweetener, zone: action.zone });
 }
 
 export function replay(config: GameConfig, actions: Action[], ticks: number): GameState {
@@ -161,7 +166,7 @@ export function replay(config: GameConfig, actions: Action[], ticks: number): Ga
   const queue = [...actions].sort((a, b) => a.tick - b.tick);
   let i = 0;
   while (g.tick < ticks && g.status.kind === 'running') {
-    while (i < queue.length && queue[i].tick <= g.tick) setBudget(g, queue[i++].budget);
+    while (i < queue.length && queue[i].tick <= g.tick) applyAction(g, queue[i++]);
     stepTick(g);
   }
   return g;
