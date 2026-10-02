@@ -19,7 +19,7 @@ const Region = memo(function Region({ id, name, path, fill, selected, onSelect }
     <path
       d={path}
       fill={fill}
-      stroke={selected ? '#fff' : '#0b1f17'}
+      stroke={selected ? '#ffd23f' : '#0b1f17'}
       strokeWidth={selected ? 2.5 : 0.8}
       vectorEffect="non-scaling-stroke"
       className="cursor-pointer outline-none motion-safe:transition-[fill] motion-safe:duration-300 focus-visible:stroke-white"
@@ -142,8 +142,8 @@ export function MapView({ game, metric, selected, onSelect }: {
         })}
       </svg>
       <div className="absolute right-2 top-2 flex flex-col gap-1">
-        <button className="h-10 w-10 rounded bg-black/60 text-xl" aria-label={strings.zoomIn} onClick={() => zoomAt(1.5)}>+</button>
-        <button className="h-10 w-10 rounded bg-black/60 text-xl" aria-label={strings.zoomOut} onClick={() => zoomAt(1 / 1.5)}>−</button>
+        <button className="grid h-10 w-10 place-items-center rounded-xl border-b-4 border-black/30 bg-secondary text-xl font-bold" aria-label={strings.zoomIn} onClick={() => zoomAt(1.5)}>+</button>
+        <button className="grid h-10 w-10 place-items-center rounded-xl border-b-4 border-black/30 bg-secondary text-xl font-bold" aria-label={strings.zoomOut} onClick={() => zoomAt(1 / 1.5)}>−</button>
       </div>
     </div>
   );
