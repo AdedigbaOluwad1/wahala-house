@@ -446,5 +446,427 @@
         }
       }
     ]
+  },
+  {
+    "id": "measles_cases",
+    "title": "Measles cases rise in {state}",
+    "body": "Clinics in {state} are reporting a rise in measles cases among children. {advisor} says vaccination coverage in the area has slipped.",
+    "tags": [
+      "health",
+      "outbreak",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "health",
+        "op": "<",
+        "value": 50
+      },
+      {
+        "type": "stat",
+        "stat": "welfare",
+        "op": "<",
+        "value": 55
+      }
+    ],
+    "baseProbability": 0.00024,
+    "risk": "unrest",
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.measles_cases",
+    "choices": [
+      {
+        "id": "vaccinate",
+        "label": "Launch a catch-up vaccination drive",
+        "cost": 45,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 6
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 1
+          }
+        ],
+        "advisorReactions": {
+          "health": "This is the right move. Start with the schools."
+        }
+      },
+      {
+        "id": "advisory",
+        "label": "Issue a public health advisory",
+        "cost": 10,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state ministry",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "doctors_emigration",
+    "title": "Doctors leaving for overseas jobs",
+    "body": "Hospitals report that more doctors are taking jobs abroad. {advisor} says some wards now rely on one tired consultant and a lot of optimism.",
+    "tags": [
+      "health"
+    ],
+    "scope": "national",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "health",
+        "op": "<",
+        "value": 48
+      }
+    ],
+    "baseProbability": 0.005,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.doctors_emigration",
+    "choices": [
+      {
+        "id": "pay_package",
+        "label": "Offer a pay and housing package",
+        "cost": 70,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "all",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": -20
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ],
+        "advisorReactions": {
+          "finance": "It costs money. So does an empty hospital."
+        }
+      },
+      {
+        "id": "bond",
+        "label": "Introduce a mandatory service period",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "all",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -2
+          }
+        ],
+        "advisorReactions": {
+          "politics": "Expect a very loud reaction."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wish them well",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "all",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fake_drugs_bust",
+    "title": "Counterfeit drugs seized in {state}",
+    "body": "Inspectors have raided a warehouse full of counterfeit medicines in {state}. {advisor} says it is good work, and also that the stock was selling very well.",
+    "tags": [
+      "health"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "corruption",
+        "op": ">",
+        "value": 40
+      }
+    ],
+    "baseProbability": 0.00041,
+    "cooldownTicks": 52,
+    "severity": 1,
+    "newsTemplateId": "ev.fake_drugs_bust",
+    "choices": [
+      {
+        "id": "ignore",
+        "label": "Praise the inspectors",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": -1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "maternal_ward_closed",
+    "title": "Maternity ward closes in {state}",
+    "body": "The main maternity ward in {state} has closed for lack of staff and supplies. {governor} says it will reopen soon. Nobody has said which soon.",
+    "tags": [
+      "health",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "health",
+        "op": "<",
+        "value": 42
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.00037,
+    "risk": "unrest",
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.maternal_ward_closed",
+    "choices": [
+      {
+        "id": "emergency_staffing",
+        "label": "Fund emergency staffing and supplies",
+        "cost": 50,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 6
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "advisorReactions": {
+          "health": "This saves lives this month."
+        }
+      },
+      {
+        "id": "mobile_clinic",
+        "label": "Send mobile clinics",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "heatwave_warning",
+    "title": "Heatwave warning in {state}",
+    "body": "Temperatures in {state} are forecast to stay dangerously high for days. {advisor} says clinics should expect heat exhaustion cases.",
+    "tags": [
+      "health",
+      "seasonal",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "quarter",
+        "quarters": [
+          1,
+          2
+        ]
+      },
+      {
+        "type": "stat",
+        "stat": "power",
+        "op": "<",
+        "value": 55
+      },
+      {
+        "type": "stat",
+        "stat": "health",
+        "op": "<",
+        "value": 60
+      }
+    ],
+    "baseProbability": 0.00034,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.heatwave_warning",
+    "choices": [
+      {
+        "id": "cooling",
+        "label": "Open cooling centres and send water",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          }
+        ]
+      },
+      {
+        "id": "advisory",
+        "label": "Broadcast an advisory",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to residents",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -3
+          }
+        ]
+      }
+    ]
   }
 ]

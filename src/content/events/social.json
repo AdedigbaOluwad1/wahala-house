@@ -460,5 +460,522 @@
         "ifChoice": "ignore"
       }
     ]
+  },
+  {
+    "id": "lecturers_strike",
+    "title": "University lecturers begin strike",
+    "body": "University lecturers have downed tools over pay and funding for labs. {advisor} says campuses are quiet and the politics are loud.",
+    "tags": [
+      "social",
+      "strike"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "education",
+        "op": "<",
+        "value": 52
+      }
+    ],
+    "baseProbability": 0.006,
+    "cooldownTicks": 78,
+    "severity": 3,
+    "newsTemplateId": "ev.lecturers_strike",
+    "choices": [
+      {
+        "id": "fund_deal",
+        "label": "Meet the main demands",
+        "cost": 90,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "education",
+            "scope": "all",
+            "delta": 4
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": -30
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Costly, but a long strike costs a generation."
+        },
+        "newsTemplateId": "ev.lecturers_strike.fund_deal"
+      },
+      {
+        "id": "partial_offer",
+        "label": "Make a partial offer",
+        "cost": 35,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "education",
+            "scope": "all",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -1
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -1
+          }
+        ],
+        "newsTemplateId": "ev.lecturers_strike.partial_offer"
+      },
+      {
+        "id": "ignore",
+        "label": "Wait them out",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "education",
+            "scope": "all",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "all",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.lecturers_strike.ignore"
+      }
+    ],
+    "chains": [
+      {
+        "eventId": "student_march",
+        "delayTicks": 8,
+        "ifChoice": "ignore"
+      }
+    ]
+  },
+  {
+    "id": "student_march",
+    "title": "Students march over the strike",
+    "body": "Students have taken to the streets over the closed campuses. {advisor} says the crowd is large, loud and well organised.",
+    "tags": [
+      "social",
+      "student_protest",
+      "chain"
+    ],
+    "scope": "national",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "minTick",
+        "tick": 1000000
+      }
+    ],
+    "baseProbability": 0.001,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.student_march",
+    "choices": [
+      {
+        "id": "dialogue",
+        "label": "Meet student leaders",
+        "cost": 15,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "all",
+            "delta": -2
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "education",
+            "scope": "all",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the crowd to disperse",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "all",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "youth_march",
+    "title": "Youth unemployment march",
+    "body": "Thousands of young people are marching to demand jobs. {advisor} says the march is peaceful and the placards are hard to argue with.",
+    "tags": [
+      "social"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "mood",
+        "op": "<",
+        "value": 46
+      },
+      {
+        "type": "avg",
+        "stat": "economy",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.006,
+    "cooldownTicks": 78,
+    "severity": 2,
+    "newsTemplateId": "ev.youth_march",
+    "choices": [
+      {
+        "id": "jobs_scheme",
+        "label": "Announce a jobs and skills scheme",
+        "cost": 75,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": -20
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Make sure it is funded before it is announced."
+        }
+      },
+      {
+        "id": "meet_leaders",
+        "label": "Meet the organisers",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Say a plan is coming",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "all",
+            "delta": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chief_dispute",
+    "title": "Traditional ruler dispute in {state}",
+    "body": "Two groups of kingmakers in {state} have each named a different traditional ruler. {governor} has taken a side, and the other side has taken the matter to court.",
+    "tags": [
+      "social"
+    ],
+    "scope": "state",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "governorLoyalty",
+        "op": "<",
+        "value": 48
+      }
+    ],
+    "baseProbability": 0.00032,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.chief_dispute",
+    "choices": [
+      {
+        "id": "elders_council",
+        "label": "Convene a council of elders",
+        "cost": 20,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "back_governor",
+        "label": "Back the governor",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": 5
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Stay out of it",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": -2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "football_win",
+    "title": "National team wins a major match",
+    "body": "The national football team has won a major match, and the country has briefly forgotten everything else. {advisor} says the mood is up and the window is short.",
+    "tags": [
+      "social"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "approval",
+        "op": "<",
+        "value": 60
+      }
+    ],
+    "baseProbability": 0.004,
+    "cooldownTicks": 78,
+    "severity": 1,
+    "newsTemplateId": "ev.football_win",
+    "choices": [
+      {
+        "id": "ignore",
+        "label": "Declare a public holiday",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": 6
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "transport_union_strike",
+    "title": "Road transport union strike",
+    "body": "The road transport union has parked its vehicles over levies and bad roads. {advisor} says stranded travellers are already blaming you.",
+    "tags": [
+      "social",
+      "strike"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.006,
+    "cooldownTicks": 78,
+    "severity": 2,
+    "newsTemplateId": "ev.transport_union_strike",
+    "choices": [
+      {
+        "id": "cut_levies",
+        "label": "Cut the levies and promise road repairs",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "all",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": -20
+          }
+        ]
+      },
+      {
+        "id": "talks",
+        "label": "Open talks",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": -1
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the strike to end",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          }
+        ]
+      }
+    ]
   }
 ]

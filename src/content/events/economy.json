@@ -532,5 +532,767 @@
         }
       }
     ]
+  },
+  {
+    "id": "cash_scarcity",
+    "title": "Cash scarcity at the banks",
+    "body": "Queues are forming at ATMs and bank branches nationwide. {advisor} says the Reserve Bank has been printing slower than the country has been spending.",
+    "tags": [
+      "economy"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "inflation",
+        "op": ">",
+        "value": 14
+      },
+      {
+        "type": "national",
+        "field": "treasury",
+        "op": "<",
+        "value": 700
+      }
+    ],
+    "baseProbability": 0.00889,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.cash_scarcity",
+    "choices": [
+      {
+        "id": "release_cash",
+        "label": "Pressure the Reserve Bank to release cash",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": 1
+          }
+        ],
+        "advisorReactions": {
+          "finance": "It will ease the queues and feed prices later."
+        }
+      },
+      {
+        "id": "push_digital",
+        "label": "Push digital payments",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": -1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -1
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": -1,
+            "after": 10
+          }
+        ],
+        "advisorReactions": {
+          "politics": "Smart, but ask people without phones how they feel."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Say supply will normalise",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "oil_price_windfall",
+    "title": "Oil price jumps",
+    "body": "Crude prices have surged on world markets. {advisor} says the Treasury has about three weeks before somebody suggests spending it all.",
+    "tags": [
+      "economy"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "oilPriceIndex",
+        "op": ">",
+        "value": 1.2
+      }
+    ],
+    "baseProbability": 0.04,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.oil_price_windfall",
+    "choices": [
+      {
+        "id": "save",
+        "label": "Save the windfall",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": 90
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -1
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Boring, correct, and rare."
+        }
+      },
+      {
+        "id": "invest",
+        "label": "Invest in infrastructure",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "all",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "all",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": 30
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ],
+        "advisorReactions": {
+          "politics": "Ribbons to cut for years."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Let ministries spend it",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": 50
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "all",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "oil_price_slump",
+    "title": "Oil price slump",
+    "body": "A sudden fall in crude prices has cut projected oil revenue. {advisor} wants a plan before the next budget window.",
+    "tags": [
+      "economy"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "oilPriceIndex",
+        "op": "<",
+        "value": 0.75
+      }
+    ],
+    "baseProbability": 0.048,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.oil_price_slump",
+    "choices": [
+      {
+        "id": "trim",
+        "label": "Announce spending cuts",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": 40
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "all",
+            "delta": -1
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Painful, but credible."
+        }
+      },
+      {
+        "id": "borrow",
+        "label": "Borrow to cover the gap",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": 90
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": -3
+          }
+        ],
+        "advisorReactions": {
+          "finance": "This buys time and costs interest."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for prices to recover",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": -30
+          },
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": -4
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "port_congestion",
+    "title": "Port congestion in {state}",
+    "body": "Containers are piling up at the port in {state}. Importers say clearance takes weeks, and officials say the paperwork is the real cargo.",
+    "tags": [
+      "economy"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "port"
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 55
+      }
+    ],
+    "baseProbability": 0.00267,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.port_congestion",
+    "choices": [
+      {
+        "id": "single_window",
+        "label": "Introduce a single clearance window",
+        "cost": 55,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": -2
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -1
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Fewer desks mean fewer fees."
+        }
+      },
+      {
+        "id": "overtime",
+        "label": "Authorise weekend clearance",
+        "cost": 25,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Let the agencies sort it out",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "traders_levy_row",
+    "title": "Traders protest new levy in {state}",
+    "body": "Market traders in {state} have shut their stalls over a new levy. {governor} says the levy funds the markets. Traders say the markets have not noticed.",
+    "tags": [
+      "economy"
+    ],
+    "scope": "state",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "commercial_hub"
+      },
+      {
+        "type": "stat",
+        "stat": "economy",
+        "op": "<",
+        "value": 60
+      }
+    ],
+    "baseProbability": 0.0018,
+    "risk": "unrest",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.traders_levy_row",
+    "choices": [
+      {
+        "id": "suspend",
+        "label": "Suspend the levy",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "negotiate",
+        "label": "Negotiate a lower rate",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Back the state government",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "investor_visit",
+    "title": "Foreign investors tour the country",
+    "body": "A delegation of investors is visiting. {advisor} says first impressions count, and that the delegation will be driven past only the good roads.",
+    "tags": [
+      "economy"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "approval",
+        "op": ">",
+        "value": 42
+      },
+      {
+        "type": "national",
+        "field": "stability",
+        "op": ">",
+        "value": 48
+      }
+    ],
+    "baseProbability": 0.024,
+    "cooldownTicks": 78,
+    "severity": 2,
+    "newsTemplateId": "ev.investor_visit",
+    "choices": [
+      {
+        "id": "roadshow",
+        "label": "Host a showcase and sign incentives",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": -30
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Incentives are a cost. Jobs are the return."
+        }
+      },
+      {
+        "id": "quiet",
+        "label": "Hold a quiet meeting",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "all",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the ministries",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "debt_downgrade",
+    "title": "Credit rating downgrade",
+    "body": "A rating agency has cut the country's outlook, citing the debt load. {advisor} says lenders will now ask for more interest and more reassurance.",
+    "tags": [
+      "economy"
+    ],
+    "scope": "national",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "debt",
+        "op": ">",
+        "value": 4200
+      }
+    ],
+    "baseProbability": 0.024,
+    "cooldownTicks": 78,
+    "severity": 2,
+    "newsTemplateId": "ev.debt_downgrade",
+    "choices": [
+      {
+        "id": "reform_plan",
+        "label": "Publish a debt reduction plan",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -1
+          },
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": 30
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Credibility is worth real money."
+        }
+      },
+      {
+        "id": "dispute",
+        "label": "Dispute the rating publicly",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ],
+        "advisorReactions": {
+          "politics": "Good for the evening news, not the lenders."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Say nothing",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "harvest_glut",
+    "title": "Bumper harvest in {state}",
+    "body": "Farmers in {state} have a record harvest and nowhere to sell it. {advisor} says it is a good problem until the produce rots.",
+    "tags": [
+      "economy",
+      "seasonal"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "agriculture"
+      },
+      {
+        "type": "quarter",
+        "quarters": [
+          4
+        ]
+      }
+    ],
+    "baseProbability": 0.0012,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.harvest_glut",
+    "choices": [
+      {
+        "id": "storage",
+        "label": "Fund storage and transport",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "advisorReactions": {
+          "finance": "A one-off cost for lasting value."
+        }
+      },
+      {
+        "id": "buy_up",
+        "label": "Buy surplus for national reserves",
+        "cost": 60,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": -1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Let the market clear",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -2
+          }
+        ]
+      }
+    ]
   }
 ]

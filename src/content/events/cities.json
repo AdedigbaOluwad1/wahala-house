@@ -1,0 +1,1099 @@
+[
+  {
+    "id": "lagos_gridlock",
+    "title": "Gridlock paralyses Lagos",
+    "body": "A burst pipe, a broken-down truck and an unannounced motorcade have combined to freeze {state}. {advisor} says the city lost a full working day.",
+    "tags": [
+      "social",
+      "lagos",
+      "south_west"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "lagos"
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 60
+      }
+    ],
+    "baseProbability": 0.01724,
+    "risk": "unrest",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.lagos_gridlock",
+    "choices": [
+      {
+        "id": "traffic_overhaul",
+        "label": "Fund a traffic management overhaul",
+        "cost": 75,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "advisorReactions": {
+          "finance": "The city's output is worth the investment."
+        }
+      },
+      {
+        "id": "bus_lanes",
+        "label": "Approve dedicated bus lanes",
+        "cost": 35,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Blame the weather",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lagos_canal_flood",
+    "title": "Canal floods in Lagos",
+    "body": "Blocked drainage channels have overflowed in {state}, flooding streets and homes. Emergency teams are working and {governor} is asking for support.",
+    "tags": [
+      "disaster",
+      "flood",
+      "serious",
+      "lagos",
+      "south_west"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "lagos"
+      },
+      {
+        "type": "quarter",
+        "quarters": [
+          2,
+          3
+        ]
+      }
+    ],
+    "baseProbability": 0.006,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.lagos_canal_flood",
+    "choices": [
+      {
+        "id": "desilt",
+        "label": "Fund drain clearing and relief",
+        "cost": 65,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 2
+          }
+        ]
+      },
+      {
+        "id": "relief",
+        "label": "Send relief materials",
+        "cost": 25,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state government",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kano_textile_revival",
+    "title": "Textile revival proposal in Kano",
+    "body": "Local manufacturers in {state} have a plan to restart idle textile mills if power and credit can be arranged. {advisor} says the plan has real numbers in it, which is unusual.",
+    "tags": [
+      "economy",
+      "kano",
+      "north_west"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "kano"
+      },
+      {
+        "type": "stat",
+        "stat": "economy",
+        "op": "<",
+        "value": 65
+      }
+    ],
+    "baseProbability": 0.005,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.kano_textile_revival",
+    "choices": [
+      {
+        "id": "credit_and_power",
+        "label": "Back it with credit and a power guarantee",
+        "cost": 90,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 6
+          },
+          {
+            "kind": "stat",
+            "target": "power",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Real jobs, if power holds."
+        }
+      },
+      {
+        "id": "credit_only",
+        "label": "Offer credit only",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the private sector",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kano_water_shortage",
+    "title": "Water shortage in Kano",
+    "body": "Taps in several districts of {state} have run dry, and water sellers have discovered a new price. {governor} says repairs are underway.",
+    "tags": [
+      "health",
+      "kano",
+      "north_west"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "kano"
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 58
+      }
+    ],
+    "baseProbability": 0.005,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.kano_water_shortage",
+    "choices": [
+      {
+        "id": "boreholes",
+        "label": "Fund boreholes and pipe repairs",
+        "cost": 60,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ]
+      },
+      {
+        "id": "tankers",
+        "label": "Send water tankers",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state water board",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rivers_oil_spill",
+    "title": "Oil spill in Rivers",
+    "body": "A pipeline leak has fouled creeks and fishing grounds in {state}. Residents say the spill has been running for days, and the operator says it is investigating.",
+    "tags": [
+      "disaster",
+      "serious",
+      "rivers",
+      "south_south"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "rivers"
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 65
+      }
+    ],
+    "baseProbability": 0.01263,
+    "risk": "unrest",
+    "cooldownTicks": 52,
+    "severity": 3,
+    "newsTemplateId": "ev.rivers_oil_spill",
+    "choices": [
+      {
+        "id": "cleanup_order",
+        "label": "Order a cleanup at the operator's cost",
+        "cost": 60,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -2
+          },
+          {
+            "kind": "national",
+            "meter": "treasury",
+            "delta": -15
+          }
+        ],
+        "advisorReactions": {
+          "politics": "It earns trust and costs favours."
+        },
+        "newsTemplateId": "ev.rivers_oil_spill.cleanup_order"
+      },
+      {
+        "id": "compensation",
+        "label": "Fund compensation for fishing communities",
+        "cost": 50,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.rivers_oil_spill.compensation"
+      },
+      {
+        "id": "ignore",
+        "label": "Say the operator is investigating",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -7
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.rivers_oil_spill.ignore"
+      }
+    ],
+    "chains": [
+      {
+        "eventId": "fishing_communities_protest",
+        "delayTicks": 6,
+        "ifChoice": "ignore"
+      }
+    ]
+  },
+  {
+    "id": "fishing_communities_protest",
+    "title": "Fishing communities protest in {state}",
+    "body": "Fishing communities affected by the spill have blocked a jetty in {state}. {advisor} says oil exports are now affected.",
+    "tags": [
+      "social",
+      "serious",
+      "chain",
+      "rivers",
+      "south_south"
+    ],
+    "scope": "state",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "minTick",
+        "tick": 1000000
+      }
+    ],
+    "baseProbability": 0.001,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.fishing_communities_protest",
+    "choices": [
+      {
+        "id": "meet_and_pay",
+        "label": "Meet the communities and pay compensation",
+        "cost": 55,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for it to end",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "ongoing",
+            "target": "revenue",
+            "scope": "all",
+            "perTick": -0.4,
+            "ticks": 13
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rivers_port_strike",
+    "title": "Port workers strike in Rivers",
+    "body": "Dock workers at the main port in {state} have stopped work over delayed pay. Ships are waiting, and {advisor} says the waiting is billed by the hour.",
+    "tags": [
+      "economy",
+      "strike",
+      "rivers",
+      "south_south"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "rivers"
+      },
+      {
+        "type": "trait",
+        "trait": "port"
+      }
+    ],
+    "baseProbability": 0.005,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.rivers_port_strike",
+    "choices": [
+      {
+        "id": "pay_arrears",
+        "label": "Pay the arrears",
+        "cost": 45,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          }
+        ]
+      },
+      {
+        "id": "talks",
+        "label": "Open talks with the union",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the port authority",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": -2
+          },
+          {
+            "kind": "national",
+            "meter": "inflation",
+            "delta": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "borno_resettlement",
+    "title": "Families return home to Borno",
+    "body": "Thousands of families are being resettled in communities in {state} after years away. {advisor} says the homes are ready, and the schools and clinics are not.",
+    "tags": [
+      "security",
+      "serious",
+      "borno",
+      "north_east"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "borno"
+      },
+      {
+        "type": "stat",
+        "stat": "security",
+        "op": ">",
+        "value": 30
+      }
+    ],
+    "baseProbability": 0.01316,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.borno_resettlement",
+    "choices": [
+      {
+        "id": "support_package",
+        "label": "Fund schools, clinics and escorts",
+        "cost": 80,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 4
+          }
+        ],
+        "advisorReactions": {
+          "health": "Clinics first. Families stay where care is."
+        }
+      },
+      {
+        "id": "basic_support",
+        "label": "Provide shelter and food only",
+        "cost": 35,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "delta": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "borno_farm_access",
+    "title": "Farmland access reopens in Borno",
+    "body": "Farmers in {state} are asking to return to land that has been unsafe for years. {advisor} says the harvest could matter, and so could the escorts.",
+    "tags": [
+      "security",
+      "economy",
+      "borno",
+      "north_east"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "borno"
+      },
+      {
+        "type": "quarter",
+        "quarters": [
+          2,
+          3
+        ]
+      }
+    ],
+    "baseProbability": 0.005,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.borno_farm_access",
+    "choices": [
+      {
+        "id": "escorted_farming",
+        "label": "Fund escorts and seeds",
+        "cost": 65,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ]
+      },
+      {
+        "id": "seeds_only",
+        "label": "Provide seeds only",
+        "cost": 25,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Decline for now",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": -1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fct_civil_servants_protest",
+    "title": "Civil servants protest in the capital",
+    "body": "Federal workers in {state} are marching over delayed allowances. The streets around the ministries are full and {advisor} says the filing cabinets are at risk.",
+    "tags": [
+      "social",
+      "fct"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "fct"
+      },
+      {
+        "type": "stat",
+        "stat": "economy",
+        "op": "<",
+        "value": 70
+      }
+    ],
+    "baseProbability": 0.02,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.fct_civil_servants_protest",
+    "choices": [
+      {
+        "id": "pay_allowances",
+        "label": "Pay the allowances",
+        "cost": 60,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "timetable",
+        "label": "Publish a payment timetable",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the protest to end",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fct_estate_demolition",
+    "title": "Demolition row in the capital",
+    "body": "Bulldozers have arrived at estates built on land with disputed papers in {state}. Residents say the papers were approved by the same office that is now demolishing them.",
+    "tags": [
+      "politics",
+      "fct"
+    ],
+    "scope": "state",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "state",
+        "id": "fct"
+      },
+      {
+        "type": "stat",
+        "stat": "corruption",
+        "op": ">",
+        "value": 30
+      }
+    ],
+    "baseProbability": 0.005,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.fct_estate_demolition",
+    "choices": [
+      {
+        "id": "review",
+        "label": "Order an independent review of the papers",
+        "cost": 25,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -1
+          }
+        ]
+      },
+      {
+        "id": "compensate",
+        "label": "Pay compensation to affected owners",
+        "cost": 55,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 2
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Let the authority proceed",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      }
+    ]
+  }
+]

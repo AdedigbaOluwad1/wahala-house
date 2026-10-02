@@ -459,5 +459,337 @@
         }
       }
     ]
+  },
+  {
+    "id": "erosion_threat",
+    "title": "Gully erosion threatens homes in {state}",
+    "body": "Heavy rain has opened a gully that is eating towards homes and a main road in {state}. {advisor} says the next downpour decides how bad it gets.",
+    "tags": [
+      "disaster",
+      "south_east"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "zone",
+        "zone": "SE"
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 50
+      },
+      {
+        "type": "quarter",
+        "quarters": [
+          2,
+          3
+        ]
+      }
+    ],
+    "baseProbability": 0.00328,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.erosion_threat",
+    "choices": [
+      {
+        "id": "control_works",
+        "label": "Fund erosion control works",
+        "cost": 70,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 5
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 1
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Every year of delay costs more."
+        }
+      },
+      {
+        "id": "relocate",
+        "label": "Relocate the most exposed families",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": -1
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the rains to pass",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dry_season_fire",
+    "title": "Bush fires in {state}",
+    "body": "Dry-season fires are spreading across farmland in {state}, and wind is carrying them toward villages. {governor} has asked for help.",
+    "tags": [
+      "disaster",
+      "seasonal",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "quarter",
+        "quarters": [
+          1
+        ]
+      },
+      {
+        "type": "trait",
+        "trait": "agriculture"
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 60
+      }
+    ],
+    "baseProbability": 0.00122,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.dry_season_fire",
+    "choices": [
+      {
+        "id": "firefighting",
+        "label": "Fund firefighting and firebreaks",
+        "cost": 45,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "relief",
+        "label": "Send relief only",
+        "cost": 25,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -2
+          }
+        ]
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bridge_collapse",
+    "title": "Bridge collapse in {state}",
+    "body": "A bridge that officials last inspected years ago has collapsed in {state}, cutting a main route. Rescue teams are on site and {governor} is asking for support.",
+    "tags": [
+      "disaster",
+      "building_collapse",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 38
+      }
+    ],
+    "baseProbability": 0.00053,
+    "risk": "unrest",
+    "cooldownTicks": 52,
+    "severity": 3,
+    "newsTemplateId": "ev.bridge_collapse",
+    "choices": [
+      {
+        "id": "rescue_and_rebuild",
+        "label": "Rescue, then rebuild quickly",
+        "cost": 100,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 8
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "advisorReactions": {
+          "finance": "Expensive, but the route carries the local economy."
+        },
+        "newsTemplateId": "ev.bridge_collapse.rescue_and_rebuild"
+      },
+      {
+        "id": "temporary_crossing",
+        "label": "Build a temporary crossing",
+        "cost": 45,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -1
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          }
+        ],
+        "newsTemplateId": "ev.bridge_collapse.temporary_crossing"
+      },
+      {
+        "id": "ignore",
+        "label": "Order an inquiry only",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -7
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.bridge_collapse.ignore"
+      }
+    ]
   }
 ]
