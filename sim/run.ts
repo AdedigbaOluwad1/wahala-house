@@ -50,6 +50,13 @@ function summarise(g: GameState): RunResult {
   };
 }
 
+function firstElection(rs: RunResult[]): string {
+  const held = rs.filter((r) => r.elections > 0 || r.outcome === 'term_limit');
+  if (held.length === 0) return '    -';
+  const won = held.filter((r) => r.electionsWon > 0 || r.outcome === 'term_limit').length;
+  return `${pct(won, held.length)} of ${held.length}`;
+}
+
 const mean = (xs: number[]) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0);
 const pct = (n: number, d: number) => `${Math.round((100 * n) / d)}%`.padStart(4);
 
@@ -60,7 +67,7 @@ export function runBatch(seeds: number, difficulties: Difficulty[], overrides: P
   let games = 0;
   for (const difficulty of difficulties) {
     table.push(`\n== ${difficulty} (${seeds} seeds, startingTreasury ${DIFFICULTY[difficulty].startingTreasury}) ==`);
-    table.push('bot         coup  impch  colps  voted  limit | removal yrs  appr  score');
+    table.push('bot         coup  impch  colps  voted  limit | removal yrs  appr  score | 1st-election win');
     for (const bot of BOTS) {
       const rs: RunResult[] = [];
       for (let i = 0; i < seeds; i++) {
@@ -77,7 +84,7 @@ export function runBatch(seeds: number, difficulties: Difficulty[], overrides: P
       const removed = rs.filter((r) => ['coup', 'impeachment', 'collapse'].includes(r.outcome));
       table.push(
         `${bot.name.padEnd(11)} ${pct(count('coup'), seeds)}  ${pct(count('impeachment'), seeds)}   ${pct(count('collapse'), seeds)}   ${pct(count('voted_out'), seeds)}   ${pct(count('term_limit'), seeds)} | ` +
-          `${removed.length ? (mean(removed.map((r) => r.ticks)) / 52).toFixed(1).padStart(5) : '    -'}  ${(mean(rs.map((r) => r.ticks)) / 52).toFixed(1).padStart(4)}  ${mean(rs.map((r) => r.approval)).toFixed(0).padStart(4)}  ${mean(rs.map((r) => r.score)).toFixed(0).padStart(5)}`,
+          `${removed.length ? (mean(removed.map((r) => r.ticks)) / 52).toFixed(1).padStart(5) : '    -'}  ${(mean(rs.map((r) => r.ticks)) / 52).toFixed(1).padStart(4)}  ${mean(rs.map((r) => r.approval)).toFixed(0).padStart(4)}  ${mean(rs.map((r) => r.score)).toFixed(0).padStart(5)} | ${firstElection(rs)}`,
       );
     }
   }
