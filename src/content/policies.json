@@ -1,0 +1,579 @@
+[
+  {
+    "id": "remove_fuel_subsidy",
+    "name": "Remove fuel subsidy",
+    "category": "fiscal",
+    "description": "Stop paying for cheap petrol. The treasury breathes; the pump price does not.",
+    "cost": 0,
+    "delayTicks": 2,
+    "needsAssembly": true,
+    "assemblyThreshold": 55,
+    "effects": [
+      {
+        "kind": "ongoing",
+        "target": "revenue",
+        "scope": "all",
+        "perTick": 9,
+        "ticks": 9999
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "national",
+        "meter": "inflation",
+        "delta": 6,
+        "after": 2,
+        "note": "Pump prices jump overnight and transport fares follow."
+      },
+      {
+        "kind": "stat",
+        "target": "mood",
+        "scope": "all",
+        "delta": -8,
+        "after": 2,
+        "note": "Households feel it at the pump and in the market."
+      },
+      {
+        "kind": "stat",
+        "target": "unrest",
+        "scope": "all",
+        "delta": 5,
+        "after": 3
+      },
+      {
+        "kind": "national",
+        "meter": "crisisLoad",
+        "delta": 15,
+        "after": 3,
+        "note": "The Workers' Congress issues a strike notice."
+      },
+      {
+        "kind": "ongoing",
+        "target": "inflation",
+        "scope": "all",
+        "perTick": 0.12,
+        "ticks": 26,
+        "after": 3
+      }
+    ],
+    "advisorTake": {
+      "finance": "This is the single biggest saving available. Do it before the treasury runs dry.",
+      "security": "Fuel queues and angry crowds are a security problem. Plan for protests.",
+      "health": "Ambulances run on fuel too. Please protect emergency services.",
+      "politics": "Senators will want something in return, and the unions will want your head."
+    }
+  },
+  {
+    "id": "float_naira",
+    "name": "Float the naira",
+    "category": "monetary",
+    "description": "Let the market set the exchange rate. Investors like it; importers do not.",
+    "cost": 0,
+    "delayTicks": 2,
+    "needsAssembly": false,
+    "effects": [
+      {
+        "kind": "ongoing",
+        "target": "economy",
+        "scope": "all",
+        "perTick": 0.04,
+        "ticks": 156
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "national",
+        "meter": "nairaStrength",
+        "delta": -12,
+        "after": 2,
+        "note": "The naira drops sharply on the first day of trading."
+      },
+      {
+        "kind": "national",
+        "meter": "inflation",
+        "delta": 3,
+        "after": 3,
+        "note": "Imported goods get more expensive."
+      },
+      {
+        "kind": "ongoing",
+        "target": "inflation",
+        "scope": "all",
+        "perTick": 0.1,
+        "ticks": 20,
+        "after": 3
+      }
+    ],
+    "advisorTake": {
+      "finance": "A realistic rate closes the gap and brings investment. The first weeks will hurt.",
+      "security": "Black-market dealers lose out. Expect noise from them.",
+      "health": "Imported medicines will cost more. Budget for it.",
+      "politics": "Nobody ever won votes on a falling currency, even a correct one."
+    }
+  },
+  {
+    "id": "raise_vat",
+    "name": "Raise VAT",
+    "category": "fiscal",
+    "description": "Add a few points to consumption tax. Reliable money, unpopular method.",
+    "cost": 0,
+    "delayTicks": 3,
+    "needsAssembly": true,
+    "assemblyThreshold": 50,
+    "effects": [
+      {
+        "kind": "ongoing",
+        "target": "revenue",
+        "scope": "all",
+        "perTick": 6,
+        "ticks": 9999
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "stat",
+        "target": "mood",
+        "scope": "all",
+        "delta": -4,
+        "after": 3,
+        "note": "Shoppers notice the receipts."
+      },
+      {
+        "kind": "ongoing",
+        "target": "economy",
+        "scope": "all",
+        "perTick": -0.03,
+        "ticks": 104,
+        "after": 3
+      }
+    ],
+    "advisorTake": {
+      "finance": "Broad base, steady yield. Collect it properly and it works.",
+      "security": "More revenue could fund more patrols. I am listening.",
+      "health": "Please ring-fence some of it for hospitals.",
+      "politics": "Everyone pays it, so everyone hates it. Time it carefully."
+    }
+  },
+  {
+    "id": "ban_imports",
+    "name": "Ban selected imports",
+    "category": "trade",
+    "description": "Close the door on some imports to give local producers room to grow.",
+    "cost": 20,
+    "delayTicks": 4,
+    "needsAssembly": false,
+    "effects": [
+      {
+        "kind": "ongoing",
+        "target": "economy",
+        "scope": "all",
+        "perTick": 0.03,
+        "ticks": 104
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "national",
+        "meter": "inflation",
+        "delta": 4,
+        "after": 4,
+        "note": "Shelves thin out and prices rise."
+      },
+      {
+        "kind": "ongoing",
+        "target": "inflation",
+        "scope": "all",
+        "perTick": 0.08,
+        "ticks": 52,
+        "after": 4
+      },
+      {
+        "kind": "ongoing",
+        "target": "welfare",
+        "scope": "all",
+        "perTick": -0.03,
+        "ticks": 104,
+        "after": 6
+      },
+      {
+        "kind": "ongoing",
+        "target": "corruption",
+        "scope": "trait:border",
+        "perTick": 0.02,
+        "ticks": 104,
+        "after": 6,
+        "note": "Smuggling routes get busy at the borders."
+      }
+    ],
+    "advisorTake": {
+      "finance": "Protection helps young industries but taxes every consumer. Watch the prices.",
+      "security": "Bans create smuggling. That means more work at the borders.",
+      "health": "Medical supplies must be exempt. Please.",
+      "politics": "Local manufacturers will cheer. Traders will not."
+    }
+  },
+  {
+    "id": "recruit_police",
+    "name": "Recruit and equip police",
+    "category": "security",
+    "description": "Hire, train and kit out more officers across the country.",
+    "cost": 120,
+    "runningCost": 2,
+    "delayTicks": 13,
+    "needsAssembly": false,
+    "effects": [
+      {
+        "kind": "stat",
+        "target": "security",
+        "scope": "all",
+        "delta": 8
+      },
+      {
+        "kind": "ongoing",
+        "target": "insurgencyRisk",
+        "scope": "all",
+        "perTick": -0.05,
+        "ticks": 104
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "ongoing",
+        "target": "corruption",
+        "scope": "all",
+        "perTick": 0.01,
+        "ticks": 9999,
+        "after": 13,
+        "note": "A bigger force means more places for money to go missing."
+      }
+    ],
+    "advisorTake": {
+      "finance": "A heavy recurring bill. Make sure payroll is clean.",
+      "security": "Finally, a sensible idea. Boots on the ground win.",
+      "health": "Fewer incidents means fewer casualties. I support it.",
+      "politics": "Jobs for young people in every state. Very good optics."
+    }
+  },
+  {
+    "id": "military_surge",
+    "name": "Military surge in a zone",
+    "category": "security",
+    "description": "Send a short, heavy deployment to one zone.",
+    "cost": 80,
+    "runningCost": 3,
+    "durationTicks": 13,
+    "delayTicks": 2,
+    "needsAssembly": false,
+    "cooldownTicks": 26,
+    "repeatable": true,
+    "needsZone": true,
+    "effects": [
+      {
+        "kind": "stat",
+        "target": "security",
+        "scope": "$zone",
+        "delta": 12
+      },
+      {
+        "kind": "stat",
+        "target": "insurgencyRisk",
+        "scope": "$zone",
+        "delta": -8
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "stat",
+        "target": "mood",
+        "scope": "$zone",
+        "delta": -5,
+        "after": 2,
+        "note": "Residents feel the strain of a heavy presence."
+      },
+      {
+        "kind": "stat",
+        "target": "unrest",
+        "scope": "$zone",
+        "delta": 3,
+        "after": 2
+      }
+    ],
+    "advisorTake": {
+      "finance": "Expensive per week. Set an end date.",
+      "security": "Concentrated force works quickly. Short and decisive.",
+      "health": "Displaced families need clinics. Please plan for them.",
+      "politics": "Governors in that zone will want a say."
+    }
+  },
+  {
+    "id": "amnesty_programme",
+    "name": "Amnesty and rehabilitation programme",
+    "category": "security",
+    "description": "Offer a way out and a way back to people willing to lay down arms.",
+    "cost": 60,
+    "runningCost": 1,
+    "delayTicks": 26,
+    "needsAssembly": true,
+    "assemblyThreshold": 60,
+    "effects": [
+      {
+        "kind": "ongoing",
+        "target": "insurgencyRisk",
+        "scope": "trait:conflict_zone",
+        "perTick": -0.12,
+        "ticks": 156
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "national",
+        "meter": "assemblySupport",
+        "delta": -6,
+        "after": 1,
+        "note": "Critics say it rewards the wrong people."
+      },
+      {
+        "kind": "national",
+        "meter": "opposition",
+        "delta": 5,
+        "after": 1
+      },
+      {
+        "kind": "stat",
+        "target": "mood",
+        "scope": "all",
+        "delta": -3,
+        "after": 1
+      }
+    ],
+    "advisorTake": {
+      "finance": "Cheaper than endless operations if it works. The payoff is slow.",
+      "security": "It can work alongside pressure, not instead of it.",
+      "health": "Rehabilitation needs counsellors and clinics, not just paperwork.",
+      "politics": "A hard sell. You will pay for it before you benefit."
+    }
+  },
+  {
+    "id": "refinery_refurbishment",
+    "name": "Refinery refurbishment",
+    "category": "energy",
+    "description": "Fix the national refineries so we refine more of what we produce.",
+    "cost": 400,
+    "runningCost": 1,
+    "delayTicks": 39,
+    "delayRisk": {
+      "chance": 0.35,
+      "extraTicks": 13
+    },
+    "needsAssembly": true,
+    "assemblyThreshold": 50,
+    "effects": [
+      {
+        "kind": "ongoing",
+        "target": "revenue",
+        "scope": "all",
+        "perTick": 5,
+        "ticks": 9999
+      },
+      {
+        "kind": "ongoing",
+        "target": "inflation",
+        "scope": "all",
+        "perTick": -0.05,
+        "ticks": 104
+      },
+      {
+        "kind": "ongoing",
+        "target": "economy",
+        "scope": "all",
+        "perTick": 0.02,
+        "ticks": 104
+      }
+    ],
+    "sideEffects": [],
+    "advisorTake": {
+      "finance": "A very large bill with a long wait. Contractors love these.",
+      "security": "Refineries need guarding. Add that to the cost.",
+      "health": "Cleaner fuel supply helps hospital generators too.",
+      "politics": "A ribbon-cutting, eventually. Possibly in the next term."
+    }
+  },
+  {
+    "id": "power_reform",
+    "name": "Power sector reform",
+    "category": "energy",
+    "description": "Restructure distribution and raise tariffs so the lights stay on.",
+    "cost": 60,
+    "delayTicks": 26,
+    "needsAssembly": true,
+    "assemblyThreshold": 55,
+    "effects": [
+      {
+        "kind": "ongoing",
+        "target": "power",
+        "scope": "all",
+        "perTick": 0.12,
+        "ticks": 104
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "national",
+        "meter": "inflation",
+        "delta": 2,
+        "after": 2,
+        "note": "Tariff increases show up on electricity bills."
+      },
+      {
+        "kind": "stat",
+        "target": "mood",
+        "scope": "all",
+        "delta": -4,
+        "after": 2
+      }
+    ],
+    "advisorTake": {
+      "finance": "Subsidised power drains the budget. Reform pays for itself over time.",
+      "security": "Street lighting and working grids reduce crime.",
+      "health": "Hospitals need steady power more than anyone.",
+      "politics": "Higher bills, years before the benefit. Brave."
+    }
+  },
+  {
+    "id": "cash_transfer",
+    "name": "Social cash transfer",
+    "category": "social",
+    "description": "Send regular cash to the poorest households.",
+    "cost": 0,
+    "runningCost": 6,
+    "delayTicks": 4,
+    "needsAssembly": false,
+    "effects": [
+      {
+        "kind": "ongoing",
+        "target": "welfare",
+        "scope": "all",
+        "perTick": 0.15,
+        "ticks": 9999
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "ongoing",
+        "target": "corruption",
+        "scope": "all",
+        "perTick": 0.015,
+        "ticks": 9999,
+        "after": 6,
+        "note": "Some of the money does not reach the people it was meant for."
+      },
+      {
+        "kind": "ongoing",
+        "target": "inflation",
+        "scope": "all",
+        "perTick": 0.03,
+        "ticks": 52,
+        "after": 6
+      }
+    ],
+    "advisorTake": {
+      "finance": "A permanent commitment. Check the beneficiary list first.",
+      "security": "Hungry people are easier to recruit for the wrong causes. I approve.",
+      "health": "Better nutrition shows up in clinic numbers within a year.",
+      "politics": "Popular, visible, and hard to cancel later."
+    }
+  },
+  {
+    "id": "anticorruption_drive",
+    "name": "Anti-corruption drive",
+    "category": "governance",
+    "description": "Strengthen audits and prosecutions across federal and state offices.",
+    "cost": 50,
+    "runningCost": 1.5,
+    "delayTicks": 8,
+    "needsAssembly": true,
+    "assemblyThreshold": 60,
+    "effects": [
+      {
+        "kind": "ongoing",
+        "target": "corruption",
+        "scope": "all",
+        "perTick": -0.08,
+        "ticks": 156
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "national",
+        "meter": "assemblySupport",
+        "delta": -8,
+        "after": 1,
+        "note": "Powerful people in the Assembly do not enjoy being audited."
+      },
+      {
+        "kind": "national",
+        "meter": "opposition",
+        "delta": 6,
+        "after": 1
+      },
+      {
+        "kind": "national",
+        "meter": "stability",
+        "delta": -2,
+        "after": 1
+      }
+    ],
+    "advisorTake": {
+      "finance": "Every naira recovered is a naira we do not have to borrow.",
+      "security": "Investigators need protection. Add it to the plan.",
+      "health": "Procurement leakage is why our clinics lack basics. Do it.",
+      "politics": "You will make enemies in your own party. Plan your votes."
+    }
+  },
+  {
+    "id": "civil_service_pay_rise",
+    "name": "Civil service pay rise",
+    "category": "social",
+    "description": "Raise public sector pay to keep staff working and unions calm.",
+    "cost": 0,
+    "runningCost": 5,
+    "delayTicks": 2,
+    "needsAssembly": false,
+    "effects": [
+      {
+        "kind": "national",
+        "meter": "stability",
+        "delta": 4
+      },
+      {
+        "kind": "ongoing",
+        "target": "governorLoyalty",
+        "scope": "all",
+        "perTick": 0.03,
+        "ticks": 104
+      },
+      {
+        "kind": "national",
+        "meter": "crisisLoad",
+        "delta": -10
+      }
+    ],
+    "sideEffects": [
+      {
+        "kind": "ongoing",
+        "target": "inflation",
+        "scope": "all",
+        "perTick": 0.04,
+        "ticks": 52,
+        "after": 4,
+        "note": "Higher wages add to price pressure."
+      }
+    ],
+    "advisorTake": {
+      "finance": "Recurring cost with no end date. Be sure you can sustain it.",
+      "security": "Underpaid officers cut corners. Better pay helps discipline.",
+      "health": "Nurses and doctors need it most. Do not forget them.",
+      "politics": "Strike risk down, loyalty up. An easy trade."
+    }
+  }
+]

@@ -3,6 +3,7 @@ export * from './budget';
 export * from './clock';
 export * from './effects';
 export * from './endConditions';
+export * from './policies';
 export * from './rng';
 export * from './state';
 export * from './tick';
