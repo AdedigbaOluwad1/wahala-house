@@ -31,7 +31,7 @@ function Round({ title, round, candidates }: { title: string; round: ElectionRou
       <div className="mt-1 flex flex-col gap-1 text-xs text-muted-foreground">
         <div>{t.statesMeeting(t.candidates[round.leader], round.statesMeeting[round.leader], round.statesRequired)}</div>
         <div className="flex items-center gap-1">
-          {round.fctMet[round.leader] ? <CheckCircle2 className="size-3.5 text-success" aria-hidden="true" /> : <XCircle className="size-3.5 text-destructive" aria-hidden="true" />}
+          {round.fctMet[round.leader] ? <CheckCircle2 className="size-3.5 text-success-ink" aria-hidden="true" /> : <XCircle className="size-3.5 text-destructive-ink" aria-hidden="true" />}
           {t.fct}: {round.fctMet[round.leader] ? t.yes : t.no}
         </div>
       </div>
@@ -54,7 +54,7 @@ export function ElectionDialog({ result, nextTerm, onContinue }: { result: Elect
         </DialogHeader>
         <Round title={t.firstRound} round={result.first} candidates={['player', 'uda', 'third']} />
         {result.runoff && <Round title={t.runoff} round={result.runoff} candidates={finalists} />}
-        <div className={cn('rounded-xl p-3 text-center font-extrabold', result.playerWon ? 'bg-success/20 text-success' : 'bg-destructive/20 text-destructive')}>
+        <div className={cn('rounded-xl p-3 text-center font-extrabold', result.playerWon ? 'bg-success/20 text-success-ink' : 'bg-destructive/20 text-destructive-ink')}>
           {verdict}
           <div className="text-xs font-semibold text-foreground">{t.winnerLine(t.candidates[result.winner])}</div>
         </div>

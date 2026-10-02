@@ -19,10 +19,10 @@ type AllocationKey = (typeof ALLOCATION_KEYS)[number];
 
 function level(ratio: number): { label: string; className: string } {
   const l = strings.budget.levels;
-  if (ratio < 0.5) return { label: l.starved, className: 'bg-destructive/25 text-destructive' };
+  if (ratio < 0.5) return { label: l.starved, className: 'bg-destructive/25 text-destructive-ink' };
   if (ratio < 0.8) return { label: l.thin, className: 'bg-primary/25 text-primary' };
-  if (ratio < 1.1) return { label: l.ok, className: 'bg-success/25 text-success' };
-  return { label: l.full, className: 'bg-success/25 text-success' };
+  if (ratio < 1.1) return { label: l.ok, className: 'bg-success/25 text-success-ink' };
+  return { label: l.full, className: 'bg-success/25 text-success-ink' };
 }
 
 function Row({ icon: Icon, title, help, value, onChange, trailing }: {

@@ -1,9 +1,9 @@
 import { DIFFICULTY, DEFAULT_ALLOCATION, DEFAULT_SHARES, TICKS_PER_YEAR } from './balance';
 import type { ElectionResult } from './election';
-import { emptyEventsState } from './events';
-import type { EventsState } from './events';
-import { emptyNewsState } from './news';
-import type { NewsState } from './news';
+import { emptyEventsState } from './eventsState';
+import type { EventsState } from './eventsState';
+import { emptyNewsState } from './newsState';
+import type { NewsState } from './newsState';
 import { Rng } from './rng';
 import {
   GOVERNOR_FIRST_NAMES, GOVERNOR_LAST_NAMES, GOVERNOR_TITLES, STATE_OVERRIDES, STATE_ROWS,

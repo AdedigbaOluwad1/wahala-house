@@ -13,8 +13,8 @@ export function MeterCard({ label, value, icon: Icon, tone = 'default', fill }: 
       <div className="flex items-center gap-2">
         <span className={cn(
           'grid size-7 shrink-0 place-items-center rounded-lg',
-          tone === 'good' && 'bg-success/25 text-success',
-          tone === 'bad' && 'bg-destructive/25 text-destructive',
+          tone === 'good' && 'bg-success/25 text-success-ink',
+          tone === 'bad' && 'bg-destructive/25 text-destructive-ink',
           tone === 'default' && 'bg-primary/20 text-primary',
         )}>
           <Icon className="size-4" aria-hidden="true" />

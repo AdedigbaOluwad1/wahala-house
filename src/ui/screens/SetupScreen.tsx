@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { DEFAULT_CONFIG } from '../../engine';
-import type { GameConfig } from '../../engine';
+import { DEFAULT_CONFIG } from '../../engine/state';
+import type { GameConfig } from '../../engine/state';
 import { strings } from '../../content/strings/en';
+import { useSettings } from '../../store/settingsStore';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -32,7 +33,8 @@ function Group<T extends string | number>({ label, value, options, onChange, hel
 }
 
 export function SetupScreen({ onStart, onBack }: { onStart: (config: GameConfig) => void; onBack: () => void }) {
-  const [config, setConfig] = useState<GameConfig>({ ...DEFAULT_CONFIG, seed: '' });
+  const defaults = useSettings((st) => st.settings);
+  const [config, setConfig] = useState<GameConfig>({ ...DEFAULT_CONFIG, tone: defaults.tone, speed: defaults.speed, seed: '' });
   const set = <K extends keyof GameConfig>(k: K, v: GameConfig[K]) => setConfig((c) => ({ ...c, [k]: v }));
 
   return (

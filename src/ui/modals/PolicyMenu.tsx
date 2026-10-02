@@ -51,7 +51,7 @@ function PolicyCard({ game, policy, onOpen }: { game: GameState; policy: Policy;
         {policy.needsAssembly && <span className="flex items-center gap-1"><Gavel className="size-3.5" aria-hidden="true" />{p.assembly}</span>}
       </div>
       {status.tone !== 'none' && (
-        <span className={cn('w-fit rounded-full px-2 py-0.5 text-xs font-bold', status.tone === 'ok' ? 'bg-success/25 text-success' : 'bg-primary/25 text-primary')}>
+        <span className={cn('w-fit rounded-full px-2 py-0.5 text-xs font-bold', status.tone === 'ok' ? 'bg-success/25 text-success-ink' : 'bg-primary/25 text-primary')}>
           {status.label}
         </span>
       )}

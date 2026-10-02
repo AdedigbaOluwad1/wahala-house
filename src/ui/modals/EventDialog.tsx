@@ -58,7 +58,7 @@ export function EventDialog({ game, active, forced, onDismiss }: {
                     {c.cost ? formatMoney(c.cost) : e.free}
                   </span>
                 </div>
-                {short && <span className="text-xs font-semibold text-destructive">{e.cantAfford}</span>}
+                {short && <span className="text-xs font-semibold text-destructive-ink">{e.cantAfford}</span>}
                 {c.advisorReactions && (
                   <div className="flex flex-col gap-1">
                     {ADVISOR_IDS.filter((id) => c.advisorReactions?.[id]).map((id: AdvisorId) => {
