@@ -61,7 +61,8 @@
       "security": "Fuel queues and angry crowds are a security problem. Plan for protests.",
       "health": "Ambulances run on fuel too. Please protect emergency services.",
       "politics": "Senators will want something in return, and the unions will want your head."
-    }
+    },
+    "tradeoff": "You freed up treasury money and paid for it in inflation, strikes and a sour national mood."
   },
   {
     "id": "float_naira",
@@ -109,7 +110,8 @@
       "security": "Black-market dealers lose out. Expect noise from them.",
       "health": "Imported medicines will cost more. Budget for it.",
       "politics": "Nobody ever won votes on a falling currency, even a correct one."
-    }
+    },
+    "tradeoff": "You closed the exchange gap and paid for it with a weaker naira and imported inflation."
   },
   {
     "id": "raise_vat",
@@ -152,7 +154,8 @@
       "security": "More revenue could fund more patrols. I am listening.",
       "health": "Please ring-fence some of it for hospitals.",
       "politics": "Everyone pays it, so everyone hates it. Time it carefully."
-    }
+    },
+    "tradeoff": "You raised steady revenue and paid for it in household mood and a slower economy."
   },
   {
     "id": "ban_imports",
@@ -210,7 +213,8 @@
       "security": "Bans create smuggling. That means more work at the borders.",
       "health": "Medical supplies must be exempt. Please.",
       "politics": "Local manufacturers will cheer. Traders will not."
-    }
+    },
+    "tradeoff": "You protected local industry and paid for it in shortages, smuggling and higher prices."
   },
   {
     "id": "recruit_police",
@@ -252,7 +256,8 @@
       "security": "Finally, a sensible idea. Boots on the ground win.",
       "health": "Fewer incidents means fewer casualties. I support it.",
       "politics": "Jobs for young people in every state. Very good optics."
-    }
+    },
+    "tradeoff": "You bought security and paid for it in a heavy running cost and more room for corruption."
   },
   {
     "id": "military_surge",
@@ -303,7 +308,8 @@
       "security": "Concentrated force works quickly. Short and decisive.",
       "health": "Displaced families need clinics. Please plan for them.",
       "politics": "Governors in that zone will want a say."
-    }
+    },
+    "tradeoff": "You bought short-term security in one zone and paid for it in cost and civilian goodwill."
   },
   {
     "id": "amnesty_programme",
@@ -351,7 +357,8 @@
       "security": "It can work alongside pressure, not instead of it.",
       "health": "Rehabilitation needs counsellors and clinics, not just paperwork.",
       "politics": "A hard sell. You will pay for it before you benefit."
-    }
+    },
+    "tradeoff": "You traded political backlash today for lower insurgency risk years later."
   },
   {
     "id": "refinery_refurbishment",
@@ -396,7 +403,8 @@
       "security": "Refineries need guarding. Add that to the cost.",
       "health": "Cleaner fuel supply helps hospital generators too.",
       "politics": "A ribbon-cutting, eventually. Possibly in the next term."
-    }
+    },
+    "tradeoff": "You staked a huge sum on fuel supply that took years to arrive."
   },
   {
     "id": "power_reform",
@@ -437,7 +445,8 @@
       "security": "Street lighting and working grids reduce crime.",
       "health": "Hospitals need steady power more than anyone.",
       "politics": "Higher bills, years before the benefit. Brave."
-    }
+    },
+    "tradeoff": "You asked people to accept higher tariffs now for a more reliable grid later."
   },
   {
     "id": "cash_transfer",
@@ -481,7 +490,8 @@
       "security": "Hungry people are easier to recruit for the wrong causes. I approve.",
       "health": "Better nutrition shows up in clinic numbers within a year.",
       "politics": "Popular, visible, and hard to cancel later."
-    }
+    },
+    "tradeoff": "You lifted the poorest households and took on a permanent bill with some leakage."
   },
   {
     "id": "anticorruption_drive",
@@ -528,7 +538,8 @@
       "security": "Investigators need protection. Add it to the plan.",
       "health": "Procurement leakage is why our clinics lack basics. Do it.",
       "politics": "You will make enemies in your own party. Plan your votes."
-    }
+    },
+    "tradeoff": "You cut leakage and paid for it in political enemies and Assembly support."
   },
   {
     "id": "civil_service_pay_rise",
@@ -574,6 +585,7 @@
       "security": "Underpaid officers cut corners. Better pay helps discipline.",
       "health": "Nurses and doctors need it most. Do not forget them.",
       "politics": "Strike risk down, loyalty up. An easy trade."
-    }
+    },
+    "tradeoff": "You bought calm and loyalty with a permanent payroll cost and inflation pressure."
   }
 ]

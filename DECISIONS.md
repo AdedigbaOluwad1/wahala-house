@@ -50,6 +50,17 @@
 - **Map markers** appear on states with a pending severity 2 or 3 event and flash briefly after any state event resolves; the per-choice `mapEffect` field is stored but not yet used by the UI.
 - **E2E hook:** builds made with `VITE_E2E=1` expose `window.__wahala` (engine and store) so Playwright can trigger events deterministically. It is absent from normal builds.
 
+## Phase 5 decisions
+- **Election rule as implemented:** a candidate wins the first round outright only with the most votes AND at least 25% in 24 of the 36 states (two-thirds, rounded up) AND at least 25% in the FCT, counted separately. Otherwise the top two go to a runoff decided by plurality, with a share of eliminated voters moving mostly to the non-incumbent finalist. This follows a strict reading of the spec; the constitutional wording and court interpretation still need checking (toggle `ELECTION.fctSeparate` in `balance.ts`).
+- **Vote model:** per-state strengths from mood, national approval, governor loyalty, stability and opposition strength, raised to a power and normalised, with a national swing of about 4 points and small per-state noise. Turnout is population times a mood-based factor. A do-nothing game loses, a balanced game with mood above about 50 wins, and the margin in between is noisy by design.
+- **Terms:** with terms allowed set to N, the election at the end of term N is skipped and the game ends as "term limit". With one allowed term there is no election. Winning an election starts a new term with a small honeymoon (stability, approval, Assembly support up, opposition down).
+- **Survival mode** has no scheduled election and uses a survival-only opposition surge event instead.
+- **Score:** weeks survived x (0.4 + 0.3 x average approval + 0.3 x average stability, each as a fraction), plus 500 per election won and 300 for completing the allowed terms.
+- **Biggest trade-off:** the enacted policy with the most landed side effects and cost, using a one-line `tradeoff` string per policy; with no policies, the biggest gap between budget shares and the defaults.
+- **Share image** is drawn on a canvas in the browser and shared with the Web Share API when it supports files, otherwise downloaded as a PNG.
+- **Language flavour** (English or English plus Pidgin) is not in the setup screen yet: the Pidgin string file arrives in Phase 7, so the control would do nothing. The news tone toggle covers the Pidgin headlines for now.
+- **UI flow:** title, setup, game, legacy. An election dialog takes priority over any event or budget dialog opened on the same tick.
+
 ## Open (from spec section 16 and review)
 - Election rule: is the 25% threshold required in 24 of 36 states plus a separate FCT check, or 24 of 37 units? Verify against the constitution before shipping.
 - Define `needBaseline[state, sector]` (spec 6.3 uses it but never defines it).

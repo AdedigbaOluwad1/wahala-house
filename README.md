@@ -4,7 +4,7 @@ A browser-based governance sandbox set in a Nigeria-scale country. You are the p
 
 The point is to make the complexity of governing felt. Every decision costs something somewhere else.
 
-> Status: early development. Phases 0-4 are done (scaffold, headless engine, map and HUD, budget and policies, events and news). Setup screen, election and legacy report, and saving are not built yet. See [Roadmap](#roadmap).
+> Status: early development. Phases 0-5 are done (scaffold, headless engine, map and HUD, budget and policies, events and news, game modes and endings). Saving and offline support are not built yet. See [Roadmap](#roadmap).
 
 ## Principles
 
@@ -67,7 +67,7 @@ CONTENT_GUIDE.md  how to write events and news (schema, tone rules)
 - Advisers brief you each quarter and weigh in on events and policies. They often disagree.
 - All tunable constants live in `src/engine/balance.ts`.
 
-Removal can come by coup, impeachment or fiscal collapse. Term mode adds an election at the end of the term; survival mode runs until you are removed.
+Removal can come by coup, impeachment or fiscal collapse. Term mode adds an election at the end of each term; survival mode runs until you are removed. To win an election a candidate needs the most votes and at least 25% of the vote in two-thirds of the states and in the FCT; miss that and the country goes to a runoff. When the game ends you get a legacy report (score, what changed, what you traded away, key moments) and a shareable image.
 
 ## Roadmap
 
@@ -78,8 +78,8 @@ Removal can come by coup, impeachment or fiscal collapse. Term mode adds an elec
 | 2 | Map and HUD | Done |
 | 3 | Budget dialog, 12 policies, Assembly votes | Done |
 | 4 | Events, news in two tones, advisors | Done |
-| 5 | Setup screen, modes, election, legacy report | Next |
-| 6 | Saving, offline, accessibility and performance pass | Planned |
+| 5 | Setup screen, modes, election, legacy report | Done |
+| 6 | Saving, offline, accessibility and performance pass | Next |
 | 7 | Content fill, Pidgin pass, balance tuning with bots | Planned |
 
 ## UI

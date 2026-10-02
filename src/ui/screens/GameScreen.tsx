@@ -14,10 +14,11 @@ import { BudgetDialog } from '../modals/BudgetDialog';
 import { PolicyMenu } from '../modals/PolicyMenu';
 import { StatePanel } from '../panels/StatePanel';
 import { useGameLoop } from '../useGameLoop';
+import { ElectionDialog } from '../modals/ElectionDialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-export function GameScreen({ onExit }: { onExit: () => void }) {
+export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinished: () => void }) {
   useGameLoop();
   useGame((s) => s.rev);
   const game = useGame((s) => s.game);
@@ -28,6 +29,10 @@ export function GameScreen({ onExit }: { onExit: () => void }) {
   const [policiesOpen, setPoliciesOpen] = useState(false);
   const openEventUid = useGame((s) => s.openEventUid);
   const openEvent = useGame((s) => s.openEvent);
+  const election = useGame((s) => s.election);
+  const endTerm = useGame((s) => s.endTerm);
+  const dismissElection = useGame((s) => s.dismissElection);
+  const status = game.status;
   const seenLanded = useRef(game.landed.length);
   const seenEvents = useRef(new Set<number>());
 
@@ -53,9 +58,17 @@ export function GameScreen({ onExit }: { onExit: () => void }) {
     }
   }, [game, game.events.active, openEvent]);
 
+  useEffect(() => {
+    if (status.kind === 'term_end') endTerm();
+  }, [status.kind, endTerm]);
+
+  useEffect(() => {
+    if (!election && (status.kind === 'removed' || status.kind === 'finished')) onFinished();
+  }, [status.kind, election, onFinished]);
+
   const decision = pendingDecision(game);
   const shownUid = decision?.uid ?? openEventUid;
-  const shown = game.events.active.find((a) => a.uid === shownUid);
+  const shown = election ? undefined : game.events.active.find((a) => a.uid === shownUid);
   const markers: MapMarker[] = game.events.active
     .filter((a) => a.stateId && a.severity >= 2)
     .map((a) => {
@@ -108,8 +121,15 @@ export function GameScreen({ onExit }: { onExit: () => void }) {
         </Button>
       </footer>
       {shown && <EventDialog key={shown.uid} game={game} active={shown} forced={shown.severity === 3} onDismiss={() => openEvent(null)} />}
+      {election && (
+        <ElectionDialog
+          result={election}
+          nextTerm={game.term}
+          onContinue={() => dismissElection()}
+        />
+      )}
       <PolicyMenu game={game} open={policiesOpen} onOpenChange={setPoliciesOpen} />
-      {game.budgetWindowOpen && !shown && <BudgetDialog key={game.tick} game={game} onConfirm={confirmBudget} />}
+      {game.budgetWindowOpen && !shown && !election && status.kind === 'running' && <BudgetDialog key={game.tick} game={game} onConfirm={confirmBudget} />}
     </div>
   );
 }

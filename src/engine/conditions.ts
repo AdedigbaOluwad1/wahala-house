@@ -17,7 +17,8 @@ export type Condition =
   | { type: 'state'; id: string }
   | { type: 'policy'; policyId: string; active: boolean }
   | { type: 'quarter'; quarters: number[] }
-  | { type: 'minTick'; tick: number };
+  | { type: 'minTick'; tick: number }
+  | { type: 'mode'; mode: 'term' | 'survival' };
 
 
 interface HasConditions {
@@ -47,6 +48,7 @@ function holdsNow(g: GameState, c: Condition, s?: StateData): boolean {
     case 'policy': return isActive(g, c.policyId) === c.active;
     case 'quarter': return c.quarters.includes(Math.floor((g.tick % 52) / 13) + 1);
     case 'minTick': return g.tick >= c.tick;
+    case 'mode': return g.config.mode === c.mode;
   }
 }
 
