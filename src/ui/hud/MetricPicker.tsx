@@ -1,26 +1,28 @@
 import { strings } from '../../content/strings/en';
-import { LEGEND_GRADIENT } from '../map/colors';
 import { METRICS, useGame } from '../../store/gameStore';
+import { LEGEND_GRADIENT } from '../map/colors';
+import { METRIC_ICONS } from '../icons';
+import { Button } from '@/components/ui/button';
 
 export function MetricPicker() {
   const metric = useGame((s) => s.metric);
   const setMetric = useGame((s) => s.setMetric);
   return (
-    <div className="flex flex-col gap-1 px-2 py-1">
-      <div className="flex items-center gap-2">
-        <label htmlFor="metric" className="sr-only text-sm text-emerald-100 sm:not-sr-only">{strings.metricLabel}</label>
-        <select
-          id="metric"
-          className="h-10 rounded bg-black/40 px-2 text-sm"
-          value={metric}
-          onChange={(e) => setMetric(e.target.value as typeof metric)}
-        >
-          {METRICS.map((m) => <option key={m} value={m}>{strings.metrics[m]}</option>)}
-        </select>
+    <div className="min-w-0 flex-1 px-2 py-1.5">
+      <div role="group" aria-label={strings.metricLabel} className="flex gap-1 overflow-x-auto pb-1">
+        {METRICS.map((m) => {
+          const Icon = METRIC_ICONS[m];
+          return (
+            <Button key={m} variant="secondary" size="sm" aria-pressed={metric === m} onClick={() => setMetric(m)} className="shrink-0">
+              <Icon aria-hidden="true" />
+              {strings.metrics[m]}
+            </Button>
+          );
+        })}
       </div>
-      <div className="flex items-center gap-2 text-xs text-emerald-100">
+      <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
         <span>{strings.legendLow}</span>
-        <div className="h-2 flex-1 rounded" style={{ background: LEGEND_GRADIENT }} aria-hidden="true" />
+        <div className="h-2 w-40 rounded-full" style={{ background: LEGEND_GRADIENT }} aria-hidden="true" />
         <span>{strings.legendHigh}</span>
       </div>
     </div>

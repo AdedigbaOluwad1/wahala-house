@@ -14,9 +14,10 @@ test('renders 37 clickable regions and selects one', async ({ page }) => {
 });
 
 test('metric switch recolours the map', async ({ page }) => {
+  await page.getByRole('button', { name: 'Continue' }).click();
   const region = page.locator('[data-region="borno"]');
   const before = await region.getAttribute('fill');
-  await page.getByLabel('Map colours show').selectOption('security');
+  await page.getByRole('group', { name: 'Map colours show' }).getByRole('button', { name: 'Security' }).click();
   await expect.poll(() => region.getAttribute('fill')).not.toBe(before);
 });
 
