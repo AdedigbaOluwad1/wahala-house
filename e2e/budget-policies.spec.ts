@@ -2,7 +2,8 @@ import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('button', { name: 'Start' }).click();
+  await page.getByRole('button', { name: 'Start', exact: true }).click();
+  await page.getByRole('button', { name: 'Start your term' }).click();
 });
 
 test('budget dialog adjusts a share and keeps the total at 100%', async ({ page }) => {
