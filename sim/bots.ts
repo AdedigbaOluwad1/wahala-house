@@ -1,4 +1,4 @@
-import { DEFAULT_ALLOCATION, DEFAULT_SHARES, SECTORS, enactPolicy, getEvent, resolveEvent, setBudget } from '../src/engine';
+import { DEFAULT_ALLOCATION, SECTORS, enactPolicy, getEvent, getPolicy, resolveEvent, setBudget } from '../src/engine';
 import type { Budget, GameState, Sector } from '../src/engine';
 import { weightedMean } from '../src/engine/aggregate';
 
@@ -58,17 +58,18 @@ export const balanced: Bot = {
     resolveAll(g, (s, id) => cheapestUseful(s, id, 120));
     if (g.budgetWindowOpen) {
       const low = weakest(g);
-      const shares = { ...DEFAULT_SHARES };
-      shares[low[0]] += 0.04;
-      shares[low[1]] += 0.02;
-      shares[low[SECTORS.length - 1]] -= 0.03;
-      shares[low[SECTORS.length - 2]] -= 0.03;
-      setBudget(g, budgetOf(shares));
+      const shares = { security: 0.22, economy: 0.17, health: 0.15, power: 0.12, infrastructure: 0.14, education: 0.08, welfare: 0.12 };
+      shares[low[0]] += 0.05;
+      shares[low[1]] += 0.03;
+      shares[low[SECTORS.length - 1]] -= 0.04;
+      shares[low[SECTORS.length - 2]] -= 0.04;
+      setBudget(g, budgetOf(shares, { need: 0.6, population: 0.35, loyalty: 0.05 }));
     }
     if (g.tick % 13 === 1) {
-      const plan = ['power_reform', 'anticorruption_drive', 'recruit_police', 'cash_transfer'];
+      const plan = ['anticorruption_drive', 'power_reform', 'refinery_refurbishment', 'recruit_police'];
       for (const id of plan) {
-        if (g.national.treasury > 400) enactPolicy(g, id, { sweetener: 20 });
+        const policy = getPolicy(id);
+        if (policy && g.national.treasury > policy.cost + 300) enactPolicy(g, id, { sweetener: 25 });
       }
     }
   },
@@ -93,7 +94,7 @@ export const austerity: Bot = {
   act(g) {
     resolveAll(g, () => undefined);
     if (g.budgetWindowOpen) {
-      setBudget(g, budgetOf({ security: 0.25, health: 0.1, education: 0.08, infrastructure: 0.15, power: 0.15, economy: 0.2, welfare: 0.07 }));
+      setBudget(g, budgetOf({ security: 0.3, health: 0.03, education: 0.03, infrastructure: 0.15, power: 0.15, economy: 0.3, welfare: 0.04 }));
     }
     if (g.tick % 13 === 1) {
       enactPolicy(g, 'remove_fuel_subsidy', { sweetener: 30 });

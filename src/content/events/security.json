@@ -24,7 +24,7 @@
         "value": 45
       }
     ],
-    "baseProbability": 0.004,
+    "baseProbability": 0.002,
     "risk": "insurgencyRisk",
     "cooldownTicks": 39,
     "severity": 3,
@@ -166,7 +166,7 @@
         "value": 40
       }
     ],
-    "baseProbability": 0.004,
+    "baseProbability": 0.002,
     "risk": "insurgencyRisk",
     "cooldownTicks": 52,
     "severity": 3,
@@ -290,7 +290,7 @@
         "value": 50
       }
     ],
-    "baseProbability": 0.004,
+    "baseProbability": 0.0008,
     "risk": "insurgencyRisk",
     "cooldownTicks": 39,
     "severity": 2,
@@ -411,7 +411,7 @@
         "value": 50
       }
     ],
-    "baseProbability": 0.003,
+    "baseProbability": 0.0015,
     "risk": "unrest",
     "cooldownTicks": 39,
     "severity": 2,
@@ -529,7 +529,7 @@
         "type": "stat",
         "stat": "insurgencyRisk",
         "op": ">",
-        "value": 40
+        "value": 30
       }
     ],
     "baseProbability": 0.004,

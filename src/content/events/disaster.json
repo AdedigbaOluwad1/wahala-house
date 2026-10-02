@@ -23,7 +23,7 @@
         ]
       }
     ],
-    "baseProbability": 0.01,
+    "baseProbability": 0.004,
     "cooldownTicks": 52,
     "severity": 2,
     "newsTemplateId": "ev.flood_warning",

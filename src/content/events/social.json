@@ -23,7 +23,7 @@
         "value": 55
       }
     ],
-    "baseProbability": 0.004,
+    "baseProbability": 0.0015,
     "risk": "unrest",
     "cooldownTicks": 39,
     "severity": 2,
@@ -355,7 +355,7 @@
         "value": 50
       }
     ],
-    "baseProbability": 0.004,
+    "baseProbability": 0.0015,
     "risk": "unrest",
     "cooldownTicks": 39,
     "severity": 2,

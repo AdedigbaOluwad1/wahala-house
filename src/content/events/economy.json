@@ -14,7 +14,7 @@
         "type": "national",
         "field": "inflation",
         "op": ">",
-        "value": 18
+        "value": 15
       },
       {
         "type": "avg",
@@ -121,7 +121,7 @@
         "type": "national",
         "field": "inflation",
         "op": ">",
-        "value": 20
+        "value": 17
       }
     ],
     "baseProbability": 0.01,
@@ -349,7 +349,7 @@
         "type": "national",
         "field": "nairaStrength",
         "op": "<",
-        "value": 35
+        "value": 42
       }
     ],
     "baseProbability": 0.008,

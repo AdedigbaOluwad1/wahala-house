@@ -15,9 +15,9 @@ export const DEFAULT_SHARES: Record<Sector, number> = {
 };
 export const DEFAULT_ALLOCATION = { need: 0.4, population: 0.5, loyalty: 0.1 };
 
-export const REFERENCE_PROGRAMME_PER_TICK = 36;
-export const FULL_FUNDING_GAIN = 0.15;
-export const BASE_DECAY = 0.12;
+export const REFERENCE_PROGRAMME_PER_TICK = 32;
+export const FULL_FUNDING_GAIN = 0.4;
+export const BASE_DECAY = 0.365;
 export const DIMINISHING_ABOVE = 80;
 export const MAX_FUNDING_RATIO = 1.5;
 export const MAX_LEAKAGE = 0.5;
@@ -50,6 +50,8 @@ export const EVENT_MOOD_DECAY = 0.9;
 export const UNREST_LOW_MOOD = 40;
 export const UNREST_HIGH_MOOD = 60;
 export const UNREST_RATE = 0.02;
+export const UNREST_RELAX = 0.005;
+export const UNREST_FLOOR = 10;
 export const CORRUPTION_DRIFT = 0.01;
 export const INSURGENCY_REVERT = 0.03;
 export const LOYALTY_RATE = 0.3;
@@ -65,9 +67,10 @@ export const TREASURY_RESERVE = 100;
 export const BORROW_PREMIUM = 0.06;
 
 export const APPROVAL_SMOOTHING = 4;
-export const CRISIS_DECAY = 0.03;
+export const CRISIS_DECAY = 0.04;
+export const CRISIS_PER_SEVERITY = { 1: 0.5, 2: 2, 3: 7 } as const;
 
-export const COUP = { stability: 25, ticks: 12 };
+export const COUP = { stability: 42, ticks: 12 };
 export const IMPEACHMENT = { approval: 30, assembly: 35, opposition: 60, ticks: 8 };
 export const COLLAPSE = { unrest: 50, ticks: 4 };
 
@@ -79,9 +82,9 @@ export interface DifficultyScale {
   eventFrequency: number;
 }
 export const DIFFICULTY: Record<Difficulty, DifficultyScale> = {
-  easy: { startingTreasury: 1500, decayMult: 0.8, approvalSensitivity: 0.8, assemblyResistance: 0.8, eventFrequency: 0.7 },
+  easy: { startingTreasury: 1500, decayMult: 0.93, approvalSensitivity: 0.85, assemblyResistance: 0.8, eventFrequency: 0.7 },
   realistic: { startingTreasury: 1000, decayMult: 1, approvalSensitivity: 1, assemblyResistance: 1, eventFrequency: 1 },
-  brutal: { startingTreasury: 600, decayMult: 1.25, approvalSensitivity: 1.25, assemblyResistance: 1.3, eventFrequency: 1.4 },
+  brutal: { startingTreasury: 600, decayMult: 1.04, approvalSensitivity: 1.1, assemblyResistance: 1.3, eventFrequency: 1.4 },
 };
 
 export const ASSEMBLY = {
