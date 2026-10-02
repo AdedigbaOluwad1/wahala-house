@@ -168,7 +168,7 @@ describe('end checks', () => {
   it('a bigger security budget lowers the stability at which a coup happens', () => {
     const a = primed(), b = primed();
     setBudget(b, { ...defaultBudget(), shares: { ...defaultBudget().shares, security: 0.4, welfare: 0, economy: 0.02 } });
-    a.national.stability = b.national.stability = 22;
+    a.national.stability = b.national.stability = 40;
     for (let i = 0; i < 12; i++) { checkEnd(a); checkEnd(b); }
     expect(a.status).toMatchObject({ kind: 'removed', reason: 'coup' });
     expect(b.status.kind).toBe('running');

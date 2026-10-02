@@ -2,7 +2,7 @@ import {
   APPROVAL_SMOOTHING, BASE_DECAY, CORRUPTION_DRIFT, CRISIS_DECAY, CROSS_EFFECTS, DEBT_CEILING, DIFFICULTY,
   DIMINISHING_ABOVE, EVENT_MOOD_DECAY, FULL_FUNDING_GAIN, INFLATION_ECONOMY_DRAG, INFLATION_MOOD_PENALTY,
   INSURGENCY_REVERT, LOYALTY_MAX_STEP, LOYALTY_RATE, MAX_FUNDING_RATIO, MOOD_WEIGHTS, NEUTRAL_INFLATION, OIL_OUTPUT,
-  OTHER_REVENUE, TAX_K, TREASURY_RESERVE, UNREST_HIGH_MOOD, UNREST_LOW_MOOD, UNREST_MOOD_PENALTY, UNREST_RATE,
+  OTHER_REVENUE, TAX_K, TREASURY_RESERVE, UNREST_HIGH_MOOD, UNREST_LOW_MOOD, UNREST_FLOOR, UNREST_MOOD_PENALTY, UNREST_RATE, UNREST_RELAX,
 } from './balance';
 import { affordability, computeFunding, debtServicePerTick, needBaseline, openBudgetWindow } from './budget';
 import type { Funding } from './budget';
@@ -52,7 +52,10 @@ function updateHidden(g: GameState, funding: Funding): void {
   g.states.forEach((s, i) => {
     const m = s.mood;
     if (m < UNREST_LOW_MOOD) s.unrest += (UNREST_LOW_MOOD - m) * UNREST_RATE;
-    else if (m > UNREST_HIGH_MOOD) s.unrest -= (m - UNREST_HIGH_MOOD) * UNREST_RATE;
+    else {
+      s.unrest -= Math.max(0, s.unrest - UNREST_FLOOR) * UNREST_RELAX;
+      if (m > UNREST_HIGH_MOOD) s.unrest -= (m - UNREST_HIGH_MOOD) * UNREST_RATE;
+    }
     s.unrest += (50 - s.economy) * 0.002 - (s.education - 50) * 0.001;
     s.unrest = clamp(s.unrest);
 

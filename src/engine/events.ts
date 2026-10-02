@@ -1,4 +1,4 @@
-import { DIFFICULTY, EVENTS as EVENT_LIMITS } from './balance';
+import { CRISIS_PER_SEVERITY, DIFFICULTY, EVENTS as EVENT_LIMITS } from './balance';
 import { conditionHolds, updateStreaks } from './conditions';
 import type { Condition } from './conditions';
 import { applyEffect } from './effects';
@@ -134,7 +134,7 @@ export function fireEvent(g: GameState, ev: GameEvent, stateId?: string, events:
     expiresTick: ev.severity === 2 ? g.tick + EVENT_LIMITS.optionalWindow : undefined,
   };
   g.events.cooldowns[cooldownKey(ev, stateId)] = g.tick + ev.cooldownTicks;
-  g.national.crisisLoad = Math.min(100, g.national.crisisLoad + (ev.severity === 3 ? 10 : ev.severity === 2 ? 4 : 1));
+  g.national.crisisLoad = Math.min(100, g.national.crisisLoad + CRISIS_PER_SEVERITY[ev.severity]);
   if (ev.newsTemplateId) pushNews(g, ev.newsTemplateId, eventTokens(g, active, events), { severity: ev.severity });
 
   if (ev.severity === 1) {
