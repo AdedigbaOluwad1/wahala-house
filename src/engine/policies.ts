@@ -27,6 +27,7 @@ export interface Policy {
   effects: PolicyEffect[];
   sideEffects: PolicyEffect[];
   advisorTake: Record<AdvisorId, string>;
+  tradeoff: string;
 }
 
 export interface EnactOptions {
@@ -125,6 +126,7 @@ export function enactPolicy(g: GameState, policyId: string, opts: EnactOptions =
       g.cooldowns[policyId] = g.tick + ASSEMBLY.retryTicks;
       g.rngState = rng.state;
       pushNews(g, 'policy_vote_failed', { policy: policy.name });
+      g.timeline.push({ tick: g.tick, type: 'policy_failed', refId: policy.id });
       return { ok: false, reason: 'vote_failed', vote: { ...odds, passed: false } };
     }
     vote = { ...odds, passed: true };
@@ -152,6 +154,7 @@ export function enactPolicy(g: GameState, policyId: string, opts: EnactOptions =
   if (policy.cooldownTicks) g.cooldowns[policyId] = g.tick + policy.cooldownTicks;
   if (vote) pushNews(g, 'policy_vote_passed', { policy: policy.name });
   pushNews(g, 'policy_enacted', { policy: policy.name });
+  g.timeline.push({ tick: g.tick, type: 'policy', refId: policy.id });
 
   return { ok: true, vote, delayedBy };
 }

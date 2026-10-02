@@ -1,4 +1,5 @@
-import { DIFFICULTY, DEFAULT_ALLOCATION, DEFAULT_SHARES } from './balance';
+import { DIFFICULTY, DEFAULT_ALLOCATION, DEFAULT_SHARES, TICKS_PER_YEAR } from './balance';
+import type { ElectionResult } from './election';
 import { emptyEventsState } from './events';
 import type { EventsState } from './events';
 import { emptyNewsState } from './news';
@@ -118,7 +119,28 @@ export interface LandedEffect {
 export type EndStatus =
   | { kind: 'running' }
   | { kind: 'removed'; reason: 'coup' | 'impeachment' | 'collapse'; tick: number }
-  | { kind: 'term_end'; tick: number };
+  | { kind: 'term_end'; tick: number }
+  | { kind: 'finished'; outcome: 'term_limit' | 'voted_out'; tick: number };
+
+export interface TimelineEntry {
+  tick: number;
+  type: 'policy' | 'policy_failed' | 'event' | 'election' | 'ended';
+  refId?: string;
+  choiceId?: string;
+  stateId?: string;
+  ignored?: boolean;
+  won?: boolean;
+}
+
+export interface RunStats {
+  ticks: number;
+  approvalSum: number;
+  stabilitySum: number;
+  peakInflation: number;
+  minTreasury: number;
+}
+
+export type StartStats = Record<StatKey | 'mood', number>;
 
 export interface Counters {
   coup: number;
@@ -144,6 +166,12 @@ export interface GameState {
   landed: LandedEffect[];
   events: EventsState;
   news: NewsState;
+  term: number;
+  termEndTick: number;
+  elections: ElectionResult[];
+  timeline: TimelineEntry[];
+  stats: RunStats;
+  startStats: StartStats;
   counters: Counters;
   status: EndStatus;
 }
@@ -211,6 +239,12 @@ export function createGame(config: GameConfig = DEFAULT_CONFIG): GameState {
     landed: [],
     events: emptyEventsState(),
     news: emptyNewsState(),
+    term: 1,
+    termEndTick: config.termYears * TICKS_PER_YEAR,
+    elections: [],
+    timeline: [],
+    stats: { ticks: 0, approvalSum: 0, stabilitySum: 0, peakInflation: 15, minTreasury: DIFFICULTY[config.difficulty].startingTreasury },
+    startStats: { mood: 50, economy: 0, security: 0, health: 0, education: 0, infrastructure: 0, power: 0, welfare: 0 },
     counters: { coup: 0, impeachment: 0, collapse: 0 },
     status: { kind: 'running' },
   };

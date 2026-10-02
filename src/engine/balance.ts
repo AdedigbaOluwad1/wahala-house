@@ -106,3 +106,24 @@ export const NEWS = {
   ambientChance: 0.07,
   ambientCooldown: 26,
 };
+
+export const ELECTION = {
+  minShare: 0.25,
+  statesRequiredFraction: 2 / 3,
+  fctSeparate: true,
+  exponent: 2.2,
+  noise: 0.04,
+  swingSd: 4,
+  baseTurnout: 0.45,
+  turnoutMoodWeight: 0.2,
+  runoffAntiIncumbentTransfer: 0.7,
+  honeymoon: { stability: 5, opposition: -5, assemblySupport: 5, approval: 4 },
+};
+
+export const SCORE = {
+  perElectionWon: 500,
+  termLimitBonus: 300,
+  base: 0.4,
+  approvalWeight: 0.3,
+  stabilityWeight: 0.3,
+};

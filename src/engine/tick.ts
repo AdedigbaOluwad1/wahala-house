@@ -8,6 +8,7 @@ import { affordability, computeFunding, debtServicePerTick, needBaseline, openBu
 import type { Funding } from './budget';
 import { isQuarterStart } from './clock';
 import { weightedMean } from './aggregate';
+import { awaitingElection, resolveTermEnd } from './election';
 import { resolveEvent, rollEvents } from './events';
 import { checkThresholds, rollAmbient } from './news';
 import { applyOngoing, applyScheduled, ongoingRevenue } from './effects';
@@ -80,6 +81,15 @@ function updateMood(g: GameState): void {
   }
 }
 
+function trackStats(g: GameState): void {
+  const st = g.stats;
+  st.ticks++;
+  st.approvalSum += g.national.approval;
+  st.stabilitySum += g.national.stability;
+  st.peakInflation = Math.max(st.peakInflation, g.national.inflation);
+  st.minTreasury = Math.min(st.minTreasury, g.national.treasury);
+}
+
 function updateNational(g: GameState, rng: Rng): void {
   const n = g.national;
   const sens = DIFFICULTY[g.config.difficulty];
@@ -139,6 +149,7 @@ export function stepTick(g: GameState): void {
   rollEvents(g, rng);
   checkThresholds(g);
   rollAmbient(g, rng);
+  trackStats(g);
   checkEnd(g);
 
   g.rngState = rng.state;
@@ -148,6 +159,16 @@ export function newGame(config?: GameConfig): GameState {
   const g = createGame(config);
   updateMood(g);
   g.national.approval = weightedMean(g, (s) => s.mood);
+  g.startStats = {
+    mood: weightedMean(g, (s) => s.mood),
+    economy: weightedMean(g, (s) => s.economy),
+    security: weightedMean(g, (s) => s.security),
+    health: weightedMean(g, (s) => s.health),
+    education: weightedMean(g, (s) => s.education),
+    infrastructure: weightedMean(g, (s) => s.infrastructure),
+    power: weightedMean(g, (s) => s.power),
+    welfare: weightedMean(g, (s) => s.welfare),
+  };
   openBudgetWindow(g);
   return g;
 }
@@ -170,6 +191,7 @@ export function replay(config: GameConfig, actions: Action[], ticks: number): Ga
   while (g.tick < ticks && g.status.kind === 'running') {
     while (i < queue.length && queue[i].tick <= g.tick) applyAction(g, queue[i++]);
     stepTick(g);
+    if (awaitingElection(g)) resolveTermEnd(g);
   }
   return g;
 }

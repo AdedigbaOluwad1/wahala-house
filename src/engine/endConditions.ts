@@ -1,4 +1,4 @@
-import { COLLAPSE, COUP, DEFAULT_SHARES, IMPEACHMENT, TICKS_PER_YEAR } from './balance';
+import { COLLAPSE, COUP, DEFAULT_SHARES, IMPEACHMENT } from './balance';
 import type { GameState } from './state';
 
 function forcesSatisfaction(g: GameState): number {
@@ -31,7 +31,8 @@ export function checkEnd(g: GameState): void {
   if (c.coup >= COUP.ticks) g.status = { kind: 'removed', reason: 'coup', tick: g.tick };
   else if (c.impeachment >= IMPEACHMENT.ticks) g.status = { kind: 'removed', reason: 'impeachment', tick: g.tick };
   else if (c.collapse >= COLLAPSE.ticks) g.status = { kind: 'removed', reason: 'collapse', tick: g.tick };
-  else if (g.config.mode === 'term' && g.tick >= g.config.termYears * TICKS_PER_YEAR) {
+  if (g.status.kind === 'removed') g.timeline.push({ tick: g.tick, type: 'ended' });
+  else if (g.config.mode === 'term' && g.tick >= g.termEndTick) {
     g.status = { kind: 'term_end', tick: g.tick };
   }
 }

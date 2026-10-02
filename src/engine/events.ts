@@ -149,6 +149,7 @@ export function resolveEvent(g: GameState, uid: number, choiceId: string, auto =
   applyChoiceEffects(g, choice, s, ev.id);
   g.events.active = g.events.active.filter((x) => x.uid !== uid);
   recordResolution(g, a, choice, auto);
+  if (ev.severity >= 2) g.timeline.push({ tick: g.tick, type: 'event', refId: ev.id, choiceId: choice.id, stateId: a.stateId, ignored: !!choice.ignore });
   if (choice.newsTemplateId) pushNews(g, choice.newsTemplateId, eventTokens(g, a, events), { severity: ev.severity });
 
   for (const chain of ev.chains ?? []) {
