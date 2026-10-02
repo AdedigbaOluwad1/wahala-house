@@ -1,0 +1,463 @@
+[
+  {
+    "id": "flood_warning",
+    "title": "Flood warning for {state}",
+    "body": "Heavy rains are forecast and the rivers in {state} are rising. {governor} asks whether the federal government will act before the water arrives or after.",
+    "tags": [
+      "disaster",
+      "flood",
+      "seasonal"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "flood_prone"
+      },
+      {
+        "type": "quarter",
+        "quarters": [
+          3,
+          4
+        ]
+      }
+    ],
+    "baseProbability": 0.01,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.flood_warning",
+    "choices": [
+      {
+        "id": "pre_emptive_relief",
+        "label": "Pre-position relief and evacuate",
+        "cost": 50,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.flood_warning.pre_emptive_relief",
+        "advisorReactions": {
+          "health": "Prevention is always cheaper than treatment.",
+          "finance": "Spend now to avoid spending three times as much later."
+        }
+      },
+      {
+        "id": "early_warning_only",
+        "label": "Issue warnings only",
+        "cost": 15,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 1
+          }
+        ],
+        "newsTemplateId": "ev.flood_warning.early_warning_only",
+        "advisorReactions": {
+          "finance": "A cheap middle path.",
+          "health": "Warnings help, but not without shelters."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait and see",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.flood_warning.ignore",
+        "advisorReactions": {
+          "politics": "If the river rises, so will the criticism.",
+          "finance": "No cost, for now."
+        }
+      }
+    ],
+    "chains": [
+      {
+        "eventId": "flood_aftermath",
+        "delayTicks": 3,
+        "ifChoice": "ignore"
+      }
+    ]
+  },
+  {
+    "id": "flood_aftermath",
+    "title": "Flood displacement in {state}",
+    "body": "Floodwater has displaced families in {state}. Camps are filling quickly and {governor} is asking for shelter and supplies.",
+    "tags": [
+      "disaster",
+      "flood",
+      "serious",
+      "chain"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "minTick",
+        "tick": 1000000
+      }
+    ],
+    "baseProbability": 0.01,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.flood_aftermath",
+    "choices": [
+      {
+        "id": "emergency_shelters",
+        "label": "Open emergency shelters",
+        "cost": 70,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 4
+          }
+        ],
+        "newsTemplateId": "ev.flood_aftermath.emergency_shelters",
+        "advisorReactions": {
+          "health": "Shelters with clean water prevent the next crisis.",
+          "politics": "People will remember who showed up."
+        }
+      },
+      {
+        "id": "relief_supplies",
+        "label": "Send relief supplies",
+        "cost": 35,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.flood_aftermath.relief_supplies",
+        "advisorReactions": {
+          "finance": "The minimum, and affordable.",
+          "health": "Supplies without shelter will not be enough."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state government",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -8
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 5
+          }
+        ],
+        "newsTemplateId": "ev.flood_aftermath.ignore",
+        "advisorReactions": {
+          "health": "Standing water and crowded camps will bring disease.",
+          "finance": "This will cost more later."
+        }
+      }
+    ],
+    "chains": [
+      {
+        "eventId": "cholera_outbreak",
+        "delayTicks": 6,
+        "ifChoice": "ignore"
+      }
+    ]
+  },
+  {
+    "id": "building_collapse",
+    "title": "Building collapse in {state}",
+    "body": "A building has collapsed in {state}, and rescue teams are searching the rubble. {advisor} says the safety inspectors never signed off.",
+    "tags": [
+      "disaster",
+      "building_collapse",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "urban_dense"
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.003,
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.building_collapse",
+    "choices": [
+      {
+        "id": "inspections_drive",
+        "label": "Order a building inspection drive",
+        "cost": 45,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.building_collapse.inspections_drive",
+        "advisorReactions": {
+          "finance": "Cheaper than another collapse.",
+          "politics": "Developers will push back hard."
+        }
+      },
+      {
+        "id": "rescue_and_compensation",
+        "label": "Support the rescue and compensate families",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.building_collapse.rescue_and_compensation",
+        "advisorReactions": {
+          "health": "Families need support now.",
+          "finance": "Contained cost, but does not stop the next one."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state government",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -8
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.building_collapse.ignore",
+        "advisorReactions": {
+          "politics": "People expect more than silence.",
+          "finance": "No immediate cost."
+        }
+      }
+    ]
+  },
+  {
+    "id": "road_washout",
+    "title": "Roads washed out in {state}",
+    "body": "Heavy rain has washed out key roads in {state}. {governor} says markets are cut off and farmers cannot get produce out.",
+    "tags": [
+      "disaster",
+      "flood",
+      "seasonal"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "flood_prone"
+      },
+      {
+        "type": "quarter",
+        "quarters": [
+          3
+        ]
+      },
+      {
+        "type": "stat",
+        "stat": "infrastructure",
+        "op": "<",
+        "value": 55
+      }
+    ],
+    "baseProbability": 0.004,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.road_washout",
+    "choices": [
+      {
+        "id": "repair_now",
+        "label": "Fund immediate repairs",
+        "cost": 55,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 6
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.road_washout.repair_now",
+        "advisorReactions": {
+          "finance": "Roads pay back through trade.",
+          "politics": "Visible and popular."
+        }
+      },
+      {
+        "id": "temporary_diversion",
+        "label": "Build temporary diversions",
+        "cost": 15,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "ongoing",
+            "target": "economy",
+            "scope": "$state",
+            "perTick": -0.05,
+            "ticks": 13
+          }
+        ],
+        "newsTemplateId": "ev.road_washout.temporary_diversion",
+        "advisorReactions": {
+          "finance": "Cheap, but the road fix is only postponed.",
+          "security": "Diversions are harder to patrol."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait until the rains stop",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "ongoing",
+            "target": "economy",
+            "scope": "$state",
+            "perTick": -0.08,
+            "ticks": 26
+          }
+        ],
+        "newsTemplateId": "ev.road_washout.ignore",
+        "advisorReactions": {
+          "finance": "Lost trade adds up every week.",
+          "politics": "Farmers will notice."
+        }
+      }
+    ]
+  }
+]

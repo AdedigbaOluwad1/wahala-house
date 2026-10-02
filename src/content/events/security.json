@@ -1,0 +1,635 @@
+[
+  {
+    "id": "insurgent_attack",
+    "title": "Attack in {state}",
+    "body": "An armed group has attacked communities in {state}. {governor} is asking for a federal response, and {advisor} wants an answer within the hour.",
+    "tags": [
+      "security",
+      "insurgent_attack",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "insurgencyRisk",
+        "op": ">",
+        "value": 55
+      },
+      {
+        "type": "stat",
+        "stat": "security",
+        "op": "<",
+        "value": 45
+      }
+    ],
+    "baseProbability": 0.004,
+    "risk": "insurgencyRisk",
+    "cooldownTicks": 39,
+    "severity": 3,
+    "newsTemplateId": "ev.insurgent_attack",
+    "choices": [
+      {
+        "id": "reinforce",
+        "label": "Send reinforcements",
+        "cost": 90,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 10
+          },
+          {
+            "kind": "stat",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.insurgent_attack.reinforce",
+        "advisorReactions": {
+          "security": "Decisive and fast. Do it now.",
+          "finance": "Costly, but cheaper than a prolonged crisis."
+        }
+      },
+      {
+        "id": "relief_and_talks",
+        "label": "Relief and community talks",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "ongoing",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "perTick": -0.1,
+            "ticks": 26
+          }
+        ],
+        "newsTemplateId": "ev.insurgent_attack.relief_and_talks",
+        "advisorReactions": {
+          "health": "Displaced families need help first.",
+          "security": "Aid without protection will not hold."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to local authorities",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": -8
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -10
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 8
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.insurgent_attack.ignore",
+        "advisorReactions": {
+          "politics": "Silence will cost more than any deployment.",
+          "finance": "We save money now and pay for it later."
+        }
+      }
+    ],
+    "chains": [
+      {
+        "eventId": "kidnapping_incident",
+        "delayTicks": 6,
+        "ifChoice": "ignore"
+      }
+    ]
+  },
+  {
+    "id": "banditry_wave",
+    "title": "Armed gangs on the roads of {state}",
+    "body": "Armed gangs are blocking roads and raiding villages in {state}. {governor} says traders are staying home and farmers are leaving their fields.",
+    "tags": [
+      "security",
+      "banditry",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "security",
+        "op": "<",
+        "value": 40
+      },
+      {
+        "type": "stat",
+        "stat": "insurgencyRisk",
+        "op": ">",
+        "value": 40
+      }
+    ],
+    "baseProbability": 0.004,
+    "risk": "insurgencyRisk",
+    "cooldownTicks": 52,
+    "severity": 3,
+    "newsTemplateId": "ev.banditry_wave",
+    "choices": [
+      {
+        "id": "joint_operation",
+        "label": "Launch a joint operation",
+        "cost": 70,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 9
+          },
+          {
+            "kind": "stat",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "delta": -7
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.banditry_wave.joint_operation",
+        "advisorReactions": {
+          "security": "A joint operation clears the roads quickly.",
+          "finance": "Heavy cost. Set a time limit."
+        }
+      },
+      {
+        "id": "community_policing",
+        "label": "Fund community policing",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "ongoing",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "perTick": -0.15,
+            "ticks": 26
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.banditry_wave.community_policing",
+        "advisorReactions": {
+          "politics": "Local ownership builds goodwill.",
+          "security": "Slower, and only works with proper training."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait and monitor",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -8
+          },
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 5
+          }
+        ],
+        "newsTemplateId": "ev.banditry_wave.ignore",
+        "advisorReactions": {
+          "health": "Clinics are cut off already.",
+          "finance": "Trade is collapsing across the affected roads."
+        }
+      }
+    ]
+  },
+  {
+    "id": "kidnapping_incident",
+    "title": "Abduction reported in {state}",
+    "body": "A group of travellers has been abducted in {state}. Families are gathering and {advisor} says the next few hours matter.",
+    "tags": [
+      "security",
+      "kidnapping",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "security",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "security",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.004,
+    "risk": "insurgencyRisk",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.kidnapping_incident",
+    "choices": [
+      {
+        "id": "rescue_operation",
+        "label": "Authorise a rescue operation",
+        "cost": 60,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 5
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.kidnapping_incident.rescue_operation",
+        "advisorReactions": {
+          "security": "Specialist teams know what they are doing.",
+          "health": "Make sure medical teams go with them."
+        }
+      },
+      {
+        "id": "negotiate_quietly",
+        "label": "Quietly negotiate their release",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "delta": 4,
+            "after": 10
+          }
+        ],
+        "newsTemplateId": "ev.kidnapping_incident.negotiate_quietly",
+        "advisorReactions": {
+          "finance": "Cheaper, but payments invite repeats.",
+          "politics": "Fast and quiet, and the families will thank you."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state government",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -8
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.kidnapping_incident.ignore",
+        "advisorReactions": {
+          "politics": "Families will remember who stayed silent.",
+          "finance": "No cost today."
+        }
+      }
+    ]
+  },
+  {
+    "id": "farmer_herder_clash",
+    "title": "Land and grazing dispute in {state}",
+    "body": "A dispute over farmland and grazing routes has turned violent in {state}. {governor} warns that the planting season is at risk.",
+    "tags": [
+      "security",
+      "farmer_herder",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "agriculture"
+      },
+      {
+        "type": "stat",
+        "stat": "unrest",
+        "op": ">",
+        "value": 30
+      },
+      {
+        "type": "stat",
+        "stat": "welfare",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.003,
+    "risk": "unrest",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.farmer_herder_clash",
+    "choices": [
+      {
+        "id": "mediation_council",
+        "label": "Convene a mediation council",
+        "cost": 25,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -8
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.farmer_herder_clash.mediation_council",
+        "advisorReactions": {
+          "politics": "Local leaders on both sides must be at the table.",
+          "security": "Needs patrols to keep the peace while talks run."
+        }
+      },
+      {
+        "id": "grazing_and_compensation",
+        "label": "Fund grazing reserves and compensation",
+        "cost": 80,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -12
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "ongoing",
+            "target": "welfare",
+            "scope": "$state",
+            "perTick": 0.05,
+            "ticks": 26
+          }
+        ],
+        "newsTemplateId": "ev.farmer_herder_clash.grazing_and_compensation",
+        "advisorReactions": {
+          "finance": "A real fix, but expensive.",
+          "health": "Fewer clashes means fewer casualties."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to traditional leaders",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 10
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.farmer_herder_clash.ignore",
+        "advisorReactions": {
+          "security": "Without support it will flare again.",
+          "finance": "No cost, but the harvest will suffer."
+        }
+      }
+    ]
+  },
+  {
+    "id": "pipeline_sabotage",
+    "title": "Pipeline damaged in {state}",
+    "body": "A key oil pipeline in {state} has been damaged. The National Oil Corporation says output is falling by the day.",
+    "tags": [
+      "security",
+      "pipeline_sabotage"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "trait",
+        "trait": "oil"
+      },
+      {
+        "type": "stat",
+        "stat": "insurgencyRisk",
+        "op": ">",
+        "value": 40
+      }
+    ],
+    "baseProbability": 0.004,
+    "risk": "insurgencyRisk",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.pipeline_sabotage",
+    "choices": [
+      {
+        "id": "repair_and_guard",
+        "label": "Repair and guard the line",
+        "cost": 60,
+        "effects": [
+          {
+            "kind": "ongoing",
+            "target": "revenue",
+            "scope": "all",
+            "perTick": -1,
+            "ticks": 6
+          },
+          {
+            "kind": "stat",
+            "target": "security",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.pipeline_sabotage.repair_and_guard",
+        "advisorReactions": {
+          "finance": "Repairs pay for themselves in a few weeks.",
+          "security": "Guards must be paid properly or this repeats."
+        }
+      },
+      {
+        "id": "community_agreement",
+        "label": "Sign a community agreement",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "ongoing",
+            "target": "insurgencyRisk",
+            "scope": "$state",
+            "perTick": -0.1,
+            "ticks": 20
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.pipeline_sabotage.community_agreement",
+        "advisorReactions": {
+          "politics": "Communities want a share. Give them one.",
+          "finance": "Cheaper long term, if the money reaches them."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the oil company to fix it",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "ongoing",
+            "target": "revenue",
+            "scope": "all",
+            "perTick": -4,
+            "ticks": 13
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -1
+          }
+        ],
+        "newsTemplateId": "ev.pipeline_sabotage.ignore",
+        "advisorReactions": {
+          "finance": "Every week of delay costs revenue.",
+          "security": "Unguarded pipelines are an invitation."
+        }
+      }
+    ]
+  }
+]

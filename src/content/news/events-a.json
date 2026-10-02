@@ -1,0 +1,574 @@
+[
+  {
+    "id": "ev.insurgent_attack",
+    "dry": [
+      "An armed attack has been reported in {state}.",
+      "Communities in {state} were attacked, the state government has confirmed."
+    ],
+    "wahala": [
+      "An attack has been reported in {state}. Officials say they are monitoring the situation.",
+      "Communities in {state} were attacked; the state government has asked for federal support."
+    ]
+  },
+  {
+    "id": "ev.insurgent_attack.reinforce",
+    "dry": [
+      "Federal reinforcements have been deployed to {state}.",
+      "Additional security forces arrive in {state}."
+    ],
+    "wahala": [
+      "Reinforcements have arrived in {state}; a committee will review how they got there so fast.",
+      "Security forces are deployed in {state}, and residents hope they stay."
+    ]
+  },
+  {
+    "id": "ev.insurgent_attack.relief_and_talks",
+    "dry": [
+      "Relief supplies and community talks begin in {state}.",
+      "Aid and dialogue are under way in {state}."
+    ],
+    "wahala": [
+      "Relief is moving to {state}, with community leaders at the table.",
+      "Aid trucks and mediators reach {state}."
+    ]
+  },
+  {
+    "id": "ev.insurgent_attack.ignore",
+    "dry": [
+      "No federal response has been announced for {state}.",
+      "Residents of {state} say they are waiting for help."
+    ],
+    "wahala": [
+      "Residents of {state} are still waiting for the federal statement to arrive.",
+      "Still no federal response for {state}; the press release is reportedly in review."
+    ]
+  },
+  {
+    "id": "ev.banditry_wave",
+    "dry": [
+      "Armed gangs are disrupting roads and villages in {state}.",
+      "Banditry is spreading in {state}, local officials report."
+    ],
+    "wahala": [
+      "Armed gangs have blocked roads in {state}, and traders are staying home.",
+      "Banditry has gripped parts of {state}; the state government wants federal help."
+    ]
+  },
+  {
+    "id": "ev.banditry_wave.joint_operation",
+    "dry": [
+      "A joint security operation begins in {state}.",
+      "Security agencies launch a coordinated operation in {state}."
+    ],
+    "wahala": [
+      "A joint operation has started in {state}; agencies promise to share the same map this time.",
+      "Security agencies coordinate in {state}, with a new committee for the coordination."
+    ]
+  },
+  {
+    "id": "ev.banditry_wave.community_policing",
+    "dry": [
+      "Community policing funds are released in {state}.",
+      "The federal government backs community policing in {state}."
+    ],
+    "wahala": [
+      "Community policing funds have reached {state}.",
+      "Local watch groups in {state} get training and funding."
+    ]
+  },
+  {
+    "id": "ev.banditry_wave.ignore",
+    "dry": [
+      "No new measures announced as banditry continues in {state}.",
+      "Roads in {state} remain unsafe."
+    ],
+    "wahala": [
+      "Roads in {state} remain unsafe while the review continues.",
+      "Officials say they are watching {state}; residents say watching is not enough."
+    ]
+  },
+  {
+    "id": "ev.kidnapping_incident",
+    "dry": [
+      "Travellers have been abducted in {state}.",
+      "An abduction has been reported in {state}."
+    ],
+    "wahala": [
+      "Travellers have been abducted in {state}. Families are waiting for news.",
+      "An abduction in {state} has the state government calling for urgent help."
+    ]
+  },
+  {
+    "id": "ev.kidnapping_incident.rescue_operation",
+    "dry": [
+      "A rescue operation is under way in {state}.",
+      "Specialist teams are searching for the abducted in {state}."
+    ],
+    "wahala": [
+      "A rescue operation is under way in {state}. Officials ask the public to stay calm.",
+      "Specialist teams are searching in {state}; a briefing is expected at some point."
+    ]
+  },
+  {
+    "id": "ev.kidnapping_incident.negotiate_quietly",
+    "dry": [
+      "Talks are reported for the release of those abducted in {state}.",
+      "Officials decline to comment on reports of negotiations in {state}."
+    ],
+    "wahala": [
+      "Officials decline to say whether talks are happening in {state}, and also decline to say they are not.",
+      "Reports of negotiations in {state} are neither confirmed nor denied."
+    ]
+  },
+  {
+    "id": "ev.kidnapping_incident.ignore",
+    "dry": [
+      "The federal government has not responded to the abduction in {state}.",
+      "Families in {state} are calling for federal action."
+    ],
+    "wahala": [
+      "Families in {state} are still waiting to hear from Abuja.",
+      "No federal statement yet on the abduction in {state}."
+    ]
+  },
+  {
+    "id": "ev.farmer_herder_clash",
+    "dry": [
+      "A land and grazing dispute has turned violent in {state}.",
+      "Clashes over farmland and grazing routes are reported in {state}."
+    ],
+    "wahala": [
+      "A land dispute has turned violent in {state}, and the state government wants a lasting solution.",
+      "Clashes over farmland and grazing routes are reported in {state}; officials call for calm."
+    ]
+  },
+  {
+    "id": "ev.farmer_herder_clash.mediation_council",
+    "dry": [
+      "A mediation council meets in {state}.",
+      "Community leaders gather for talks in {state}."
+    ],
+    "wahala": [
+      "A mediation council has met in {state}, and for once nobody walked out.",
+      "Community leaders sit down in {state}; the committee has agreed to meet again."
+    ]
+  },
+  {
+    "id": "ev.farmer_herder_clash.grazing_and_compensation",
+    "dry": [
+      "Funds for grazing reserves and compensation are announced for {state}.",
+      "The federal government backs a land-use settlement in {state}."
+    ],
+    "wahala": [
+      "Grazing reserves and compensation are announced for {state}; the paperwork is expected next year.",
+      "A land-use settlement is announced for {state}."
+    ]
+  },
+  {
+    "id": "ev.farmer_herder_clash.ignore",
+    "dry": [
+      "The dispute in {state} is left to traditional leaders.",
+      "No federal action on the land dispute in {state}."
+    ],
+    "wahala": [
+      "The dispute in {state} has been referred to traditional leaders, with no budget attached.",
+      "Tensions in {state} remain unresolved."
+    ]
+  },
+  {
+    "id": "ev.pipeline_sabotage",
+    "dry": [
+      "The National Oil Corporation reports damage to a pipeline in {state}.",
+      "A pipeline in {state} has been damaged, reducing output."
+    ],
+    "wahala": [
+      "A pipeline in {state} has been damaged, and the National Oil Corporation is investigating who is investigating.",
+      "The National Oil Corporation reports a damaged pipeline in {state} and falling output."
+    ]
+  },
+  {
+    "id": "ev.pipeline_sabotage.repair_and_guard",
+    "dry": [
+      "Repairs and guards deployed to the pipeline in {state}.",
+      "The damaged pipeline in {state} is being repaired under guard."
+    ],
+    "wahala": [
+      "Repairs begin on the {state} pipeline, with guards for the guards.",
+      "The {state} pipeline is being repaired under heavy watch."
+    ]
+  },
+  {
+    "id": "ev.pipeline_sabotage.community_agreement",
+    "dry": [
+      "A community agreement is signed over the pipeline in {state}.",
+      "Local leaders and the government agree terms in {state}."
+    ],
+    "wahala": [
+      "A community agreement is signed in {state}; a share of the revenue is promised, in writing.",
+      "Local leaders in {state} reach terms with the government."
+    ]
+  },
+  {
+    "id": "ev.pipeline_sabotage.ignore",
+    "dry": [
+      "No action on the damaged pipeline in {state}; output keeps falling.",
+      "Oil output declines as the {state} pipeline stays shut."
+    ],
+    "wahala": [
+      "The {state} pipeline waits for repairs while the committee waits for the report.",
+      "Output keeps falling while the {state} pipeline stays shut."
+    ]
+  },
+  {
+    "id": "ev.flood_warning",
+    "dry": [
+      "Flood warning issued for {state} as rivers rise.",
+      "The weather service warns of flooding in {state}."
+    ],
+    "wahala": [
+      "A flood warning is out for {state}. Residents are advised to move before the water makes the decision for them.",
+      "Rivers are rising in {state}; the weather service has issued a flood warning."
+    ]
+  },
+  {
+    "id": "ev.flood_warning.pre_emptive_relief",
+    "dry": [
+      "Relief supplies and evacuation plans are set in motion in {state}.",
+      "Authorities pre-position relief in {state} ahead of flooding."
+    ],
+    "wahala": [
+      "Relief is moving to {state} before the water arrives, which officials note is unusual.",
+      "Authorities pre-position relief in {state} ahead of the flood."
+    ]
+  },
+  {
+    "id": "ev.flood_warning.early_warning_only",
+    "dry": [
+      "Flood alerts are broadcast across {state}.",
+      "Residents of {state} receive flood alerts."
+    ],
+    "wahala": [
+      "Alerts go out across {state}. Residents are asked to read them.",
+      "Flood alerts reach {state}."
+    ]
+  },
+  {
+    "id": "ev.flood_warning.ignore",
+    "dry": [
+      "No preparations announced as the flood warning stands in {state}.",
+      "Residents of {state} brace for floods without federal support."
+    ],
+    "wahala": [
+      "The flood warning stands in {state}; officials say they are watching the river carefully.",
+      "Residents of {state} brace for floods with no federal plan announced."
+    ]
+  },
+  {
+    "id": "ev.flood_aftermath",
+    "dry": [
+      "Families displaced by floods in {state} are in need of shelter.",
+      "Flooding has displaced families across {state}."
+    ],
+    "wahala": [
+      "Flooding has displaced families across {state}, and camps are filling quickly.",
+      "Displaced families in {state} need shelter and supplies, the state government says."
+    ]
+  },
+  {
+    "id": "ev.flood_aftermath.emergency_shelters",
+    "dry": [
+      "Emergency shelters open in {state} for flood victims.",
+      "The federal government opens shelters for displaced families in {state}."
+    ],
+    "wahala": [
+      "Emergency shelters open in {state}, and the water-purification order has finally been approved.",
+      "Shelters are open in {state} for families displaced by the floods."
+    ]
+  },
+  {
+    "id": "ev.flood_aftermath.relief_supplies",
+    "dry": [
+      "Relief supplies are on their way to flood victims in {state}.",
+      "Aid shipments reach flood-hit communities in {state}."
+    ],
+    "wahala": [
+      "Relief supplies are on the way to {state}.",
+      "Aid shipments reach flood-hit communities in {state}."
+    ]
+  },
+  {
+    "id": "ev.flood_aftermath.ignore",
+    "dry": [
+      "Flood victims in {state} say they have received no federal help.",
+      "Families displaced by floods in {state} are still waiting for aid."
+    ],
+    "wahala": [
+      "Flood victims in {state} are still waiting for aid. The relief committee has not yet met.",
+      "Displaced families in {state} say no help has arrived."
+    ]
+  },
+  {
+    "id": "ev.building_collapse",
+    "dry": [
+      "A building has collapsed in {state}; rescue efforts are under way.",
+      "Rescue teams respond to a building collapse in {state}."
+    ],
+    "wahala": [
+      "A building has collapsed in {state}. Rescue teams are working at the site.",
+      "A building collapse in {state} has prompted calls for stricter inspections."
+    ]
+  },
+  {
+    "id": "ev.building_collapse.inspections_drive",
+    "dry": [
+      "A building inspection drive is ordered in {state}.",
+      "The federal government orders inspections after the collapse in {state}."
+    ],
+    "wahala": [
+      "An inspection drive is ordered in {state}; inspectors are asked to bring their own certificates.",
+      "Inspections are ordered in {state} after the collapse."
+    ]
+  },
+  {
+    "id": "ev.building_collapse.rescue_and_compensation",
+    "dry": [
+      "Rescue support and compensation are promised in {state}.",
+      "Families affected by the collapse in {state} will receive support."
+    ],
+    "wahala": [
+      "Support is promised for families affected in {state}.",
+      "Rescue efforts continue in {state} with federal support."
+    ]
+  },
+  {
+    "id": "ev.building_collapse.ignore",
+    "dry": [
+      "No federal response yet to the building collapse in {state}.",
+      "Calls grow for action after the collapse in {state}."
+    ],
+    "wahala": [
+      "Calls grow in {state} for answers after the collapse, and a committee is considering the calls.",
+      "No federal statement yet after the collapse in {state}."
+    ]
+  },
+  {
+    "id": "ev.road_washout",
+    "dry": [
+      "Heavy rain has washed out key roads in {state}.",
+      "Washed-out roads cut off markets in {state}."
+    ],
+    "wahala": [
+      "Heavy rain has washed out roads in {state}, and farmers cannot reach markets.",
+      "Roads in {state} are impassable after heavy rain."
+    ]
+  },
+  {
+    "id": "ev.road_washout.repair_now",
+    "dry": [
+      "Repairs begin on washed-out roads in {state}.",
+      "Federal funds release repairs to roads in {state}."
+    ],
+    "wahala": [
+      "Repairs begin on {state} roads, and the contractors promise to finish before the next rains.",
+      "Federal funds are released for road repairs in {state}."
+    ]
+  },
+  {
+    "id": "ev.road_washout.temporary_diversion",
+    "dry": [
+      "Temporary diversions are built around washed-out roads in {state}.",
+      "Diversions open in {state} while repairs wait."
+    ],
+    "wahala": [
+      "Temporary diversions open in {state}; the permanent fix is on the schedule.",
+      "Drivers in {state} are using temporary diversions."
+    ]
+  },
+  {
+    "id": "ev.road_washout.ignore",
+    "dry": [
+      "No repairs yet to the washed-out roads in {state}.",
+      "Roads in {state} stay closed as officials wait for the rains to end."
+    ],
+    "wahala": [
+      "Roads in {state} stay closed. Officials say the rain will stop eventually.",
+      "No repair date announced for the washed-out roads in {state}."
+    ]
+  },
+  {
+    "id": "ev.disease_outbreak",
+    "dry": [
+      "An outbreak has been confirmed in {state}.",
+      "Health authorities confirm a disease outbreak in {state}."
+    ],
+    "wahala": [
+      "An outbreak has been confirmed in {state}. Health authorities urge residents to follow guidance.",
+      "Health authorities in {state} report a spreading outbreak."
+    ]
+  },
+  {
+    "id": "ev.disease_outbreak.emergency_response",
+    "dry": [
+      "An emergency health response is launched in {state}.",
+      "Medical teams and supplies are sent to {state}."
+    ],
+    "wahala": [
+      "An emergency response is launched in {state}, and the procurement process has been asked to hurry.",
+      "Medical teams and supplies are sent to {state}."
+    ]
+  },
+  {
+    "id": "ev.disease_outbreak.containment_and_awareness",
+    "dry": [
+      "Containment measures and public awareness begin in {state}.",
+      "Health officials start a containment campaign in {state}."
+    ],
+    "wahala": [
+      "A containment campaign starts in {state}.",
+      "Health officials begin public awareness work in {state}."
+    ]
+  },
+  {
+    "id": "ev.disease_outbreak.ignore",
+    "dry": [
+      "The outbreak in {state} spreads as no federal response is announced.",
+      "Neighbouring states report cases linked to {state}."
+    ],
+    "wahala": [
+      "The outbreak is spreading from {state}. A statement is being drafted.",
+      "Neighbouring states report cases linked to {state}."
+    ]
+  },
+  {
+    "id": "ev.cholera_outbreak",
+    "dry": [
+      "Cholera has been confirmed in flood-affected areas of {state}.",
+      "Cholera cases rise in {state}."
+    ],
+    "wahala": [
+      "Cholera has been confirmed in flood-affected areas of {state}. Health officials urge clean water use.",
+      "Cholera cases are rising in {state}; the state government appeals for help."
+    ]
+  },
+  {
+    "id": "ev.cholera_outbreak.treatment_centres",
+    "dry": [
+      "Treatment centres and clean water points open in {state}.",
+      "The federal government opens cholera treatment centres in {state}."
+    ],
+    "wahala": [
+      "Treatment centres open in {state}, with clean water on site.",
+      "Cholera treatment centres open in {state}."
+    ]
+  },
+  {
+    "id": "ev.cholera_outbreak.mobile_clinics",
+    "dry": [
+      "Mobile clinics are sent to cholera-hit communities in {state}.",
+      "Mobile health teams reach affected areas in {state}."
+    ],
+    "wahala": [
+      "Mobile clinics reach {state}.",
+      "Mobile health teams reach affected areas in {state}."
+    ]
+  },
+  {
+    "id": "ev.cholera_outbreak.ignore",
+    "dry": [
+      "Cholera spreads in {state} as federal help is delayed.",
+      "Neighbouring states report cholera cases from {state}."
+    ],
+    "wahala": [
+      "Cholera spreads in {state} while the committee on waterborne disease prepares its terms of reference.",
+      "Neighbouring states report cholera cases from {state}."
+    ]
+  },
+  {
+    "id": "ev.hospital_staff_strike",
+    "dry": [
+      "Hospital staff in {state} have begun a strike over unpaid allowances.",
+      "A strike by health workers is under way in {state}."
+    ],
+    "wahala": [
+      "Hospital staff in {state} have begun a strike over unpaid allowances, and wards are closing.",
+      "A health workers strike is under way in {state}; patients are being turned away."
+    ]
+  },
+  {
+    "id": "ev.hospital_staff_strike.pay_arrears",
+    "dry": [
+      "Unpaid allowances are cleared for health workers in {state}.",
+      "The strike in {state} ends after arrears are paid."
+    ],
+    "wahala": [
+      "Arrears are paid in {state} and the strike ends. Finance would like it noted that no one asked it first.",
+      "The strike in {state} ends after arrears are paid."
+    ]
+  },
+  {
+    "id": "ev.hospital_staff_strike.negotiate_schedule",
+    "dry": [
+      "A payment schedule is agreed with health workers in {state}.",
+      "Health workers in {state} agree a payment plan."
+    ],
+    "wahala": [
+      "A payment schedule is agreed in {state}, with a review in six months.",
+      "Health workers in {state} accept a payment plan."
+    ]
+  },
+  {
+    "id": "ev.hospital_staff_strike.ignore",
+    "dry": [
+      "The strike in {state} is declared illegal; wards remain closed.",
+      "Patients in {state} are turned away as the strike continues."
+    ],
+    "wahala": [
+      "The strike in {state} is declared illegal. Wards remain closed.",
+      "Patients in {state} are turned away as the dispute continues."
+    ]
+  },
+  {
+    "id": "ev.medicine_shortage",
+    "dry": [
+      "Essential medicines are in short supply across the country.",
+      "Pharmacies report shortages of essential medicines."
+    ],
+    "wahala": [
+      "Essential medicines are in short supply nationwide, and pharmacies are rationing.",
+      "Hospitals and pharmacies report shortages as import costs rise."
+    ]
+  },
+  {
+    "id": "ev.medicine_shortage.emergency_import",
+    "dry": [
+      "Emergency medicine imports are authorised.",
+      "The government funds urgent imports of essential medicines."
+    ],
+    "wahala": [
+      "Emergency imports of medicines are authorised, and the forms were approved in record time.",
+      "The government funds urgent imports of essential medicines."
+    ]
+  },
+  {
+    "id": "ev.medicine_shortage.local_production_push",
+    "dry": [
+      "The government backs local medicine production.",
+      "Local pharmaceutical makers receive support."
+    ],
+    "wahala": [
+      "Local medicine makers receive support. Results are expected in due course.",
+      "The government backs local pharmaceutical production."
+    ]
+  },
+  {
+    "id": "ev.medicine_shortage.ignore",
+    "dry": [
+      "No new measures as medicine shortages continue.",
+      "Shortages of essential medicines persist."
+    ],
+    "wahala": [
+      "Medicine shortages persist while officials wait for the market to correct itself.",
+      "No new measures on shortages of essential medicines."
+    ]
+  }
+]

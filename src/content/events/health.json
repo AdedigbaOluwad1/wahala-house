@@ -1,0 +1,450 @@
+[
+  {
+    "id": "disease_outbreak",
+    "title": "Disease outbreak in {state}",
+    "body": "Health workers in {state} report a fast-spreading outbreak. Clinics are short of supplies and {advisor} wants a decision today.",
+    "tags": [
+      "health",
+      "outbreak",
+      "serious"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "health",
+        "op": "<",
+        "value": 40
+      },
+      {
+        "type": "stat",
+        "stat": "welfare",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.003,
+    "cooldownTicks": 52,
+    "severity": 3,
+    "newsTemplateId": "ev.disease_outbreak",
+    "choices": [
+      {
+        "id": "emergency_response",
+        "label": "Launch an emergency response",
+        "cost": 80,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 8
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "crisisLoad",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.disease_outbreak.emergency_response",
+        "advisorReactions": {
+          "health": "Fast action stops this before it spreads.",
+          "finance": "Expensive, and still the right call."
+        }
+      },
+      {
+        "id": "containment_and_awareness",
+        "label": "Containment and public awareness",
+        "cost": 35,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "ongoing",
+            "target": "health",
+            "scope": "$state",
+            "perTick": 0.1,
+            "ticks": 13
+          }
+        ],
+        "newsTemplateId": "ev.disease_outbreak.containment_and_awareness",
+        "advisorReactions": {
+          "health": "Good, but we need more supplies.",
+          "politics": "Clear public messaging matters."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Treat it as a local matter",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$zone",
+            "delta": -10
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -8
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 6
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.disease_outbreak.ignore",
+        "advisorReactions": {
+          "health": "This will spread to neighbouring states.",
+          "finance": "It saves money only for a short while."
+        }
+      }
+    ]
+  },
+  {
+    "id": "cholera_outbreak",
+    "title": "Cholera outbreak in {state}",
+    "body": "Cholera is spreading through flood-affected communities in {state}. {governor} reports crowded camps and no clean water.",
+    "tags": [
+      "health",
+      "outbreak",
+      "serious",
+      "chain"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "minTick",
+        "tick": 1000000
+      }
+    ],
+    "baseProbability": 0.01,
+    "cooldownTicks": 52,
+    "severity": 3,
+    "newsTemplateId": "ev.cholera_outbreak",
+    "choices": [
+      {
+        "id": "treatment_centres",
+        "label": "Open treatment centres and clean water points",
+        "cost": 95,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 9
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "crisisLoad",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.cholera_outbreak.treatment_centres",
+        "advisorReactions": {
+          "health": "This is what should have happened weeks ago.",
+          "finance": "A heavy bill, but unavoidable now."
+        }
+      },
+      {
+        "id": "mobile_clinics",
+        "label": "Send mobile clinics",
+        "cost": 45,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 5
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          }
+        ],
+        "newsTemplateId": "ev.cholera_outbreak.mobile_clinics",
+        "advisorReactions": {
+          "health": "Helps, but cannot replace treatment centres.",
+          "finance": "More affordable."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Leave it to the state government",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$zone",
+            "delta": -10
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -10
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 7
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -4
+          }
+        ],
+        "newsTemplateId": "ev.cholera_outbreak.ignore",
+        "advisorReactions": {
+          "politics": "This will define the year.",
+          "finance": "We will pay far more later."
+        }
+      }
+    ]
+  },
+  {
+    "id": "hospital_staff_strike",
+    "title": "Hospital staff strike in {state}",
+    "body": "Doctors and nurses in {state} have downed tools over unpaid allowances. Wards are closing and {governor} is looking for a way out.",
+    "tags": [
+      "health",
+      "hospital_strike"
+    ],
+    "scope": "state",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "health",
+        "op": "<",
+        "value": 45
+      },
+      {
+        "type": "stat",
+        "stat": "welfare",
+        "op": "<",
+        "value": 45
+      }
+    ],
+    "baseProbability": 0.004,
+    "risk": "unrest",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.hospital_staff_strike",
+    "choices": [
+      {
+        "id": "pay_arrears",
+        "label": "Pay the arrears",
+        "cost": 50,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.hospital_staff_strike.pay_arrears",
+        "advisorReactions": {
+          "health": "Staff stay when they are paid.",
+          "finance": "Cheaper than losing them."
+        }
+      },
+      {
+        "id": "negotiate_schedule",
+        "label": "Agree a payment schedule",
+        "cost": 10,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 3,
+            "after": 10
+          }
+        ],
+        "newsTemplateId": "ev.hospital_staff_strike.negotiate_schedule",
+        "advisorReactions": {
+          "finance": "Cheap, but staff may walk out again.",
+          "politics": "Buys time, nothing more."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Declare the strike illegal",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 4
+          }
+        ],
+        "newsTemplateId": "ev.hospital_staff_strike.ignore",
+        "advisorReactions": {
+          "security": "Order must be maintained.",
+          "health": "Patients will pay for this."
+        }
+      }
+    ]
+  },
+  {
+    "id": "medicine_shortage",
+    "title": "Medicine shortage",
+    "body": "Pharmacies and hospitals report shortages of essential medicines as import costs climb. {advisor} says the weak naira is the root cause.",
+    "tags": [
+      "health",
+      "economy"
+    ],
+    "scope": "national",
+    "advisor": "health",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "nairaStrength",
+        "op": "<",
+        "value": 40
+      },
+      {
+        "type": "avg",
+        "stat": "health",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.006,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.medicine_shortage",
+    "choices": [
+      {
+        "id": "emergency_import",
+        "label": "Fund emergency imports",
+        "cost": 90,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "all",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "nairaStrength",
+            "delta": -1
+          }
+        ],
+        "newsTemplateId": "ev.medicine_shortage.emergency_import",
+        "advisorReactions": {
+          "health": "Lifesaving, and fast.",
+          "finance": "Hard currency is limited, so use it carefully."
+        }
+      },
+      {
+        "id": "local_production_push",
+        "label": "Back local production",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "ongoing",
+            "target": "health",
+            "scope": "all",
+            "perTick": 0.04,
+            "ticks": 26
+          }
+        ],
+        "newsTemplateId": "ev.medicine_shortage.local_production_push",
+        "advisorReactions": {
+          "finance": "Better long term.",
+          "health": "Too slow for the shortages we have today."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the market to adjust",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "health",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.medicine_shortage.ignore",
+        "advisorReactions": {
+          "finance": "Markets may fix it, but not soon.",
+          "health": "People cannot wait for markets."
+        }
+      }
+    ]
+  }
+]

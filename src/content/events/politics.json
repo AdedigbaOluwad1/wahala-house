@@ -1,0 +1,411 @@
+[
+  {
+    "id": "governor_feud",
+    "title": "Governor feud in {state}",
+    "body": "{governor} of {state} is feuding publicly with federal officials over allocations. {advisor} says it could turn into a loyalty problem.",
+    "tags": [
+      "politics",
+      "governor_feud"
+    ],
+    "scope": "state",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "governorLoyalty",
+        "op": "<",
+        "value": 40
+      }
+    ],
+    "baseProbability": 0.004,
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.governor_feud",
+    "choices": [
+      {
+        "id": "mediate",
+        "label": "Mediate personally",
+        "cost": 30,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": 8
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": 1
+          }
+        ],
+        "newsTemplateId": "ev.governor_feud.mediate",
+        "advisorReactions": {
+          "politics": "A call from the top works wonders.",
+          "finance": "It costs a little, and buys goodwill."
+        }
+      },
+      {
+        "id": "side_with_governor",
+        "label": "Give the governor what they want",
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": 10
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.governor_feud.side_with_governor",
+        "advisorReactions": {
+          "politics": "Loyalty bought, but others will ask for the same.",
+          "finance": "It sets a precedent."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Let them shout",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -2
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.governor_feud.ignore",
+        "advisorReactions": {
+          "security": "Public feuds weaken the state.",
+          "politics": "Silence will be taken as disrespect."
+        }
+      }
+    ]
+  },
+  {
+    "id": "assembly_standoff",
+    "title": "Assembly standoff",
+    "body": "Lawmakers are stalling government business and demanding concessions. {advisor} says quiet deals are possible if you pay for them.",
+    "tags": [
+      "politics",
+      "assembly_standoff"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "assemblySupport",
+        "op": "<",
+        "value": 45
+      }
+    ],
+    "baseProbability": 0.008,
+    "cooldownTicks": 52,
+    "severity": 3,
+    "newsTemplateId": "ev.assembly_standoff",
+    "choices": [
+      {
+        "id": "constituency_projects",
+        "label": "Fund constituency projects",
+        "cost": 120,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": 10
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.assembly_standoff.constituency_projects",
+        "advisorReactions": {
+          "politics": "The usual language of this chamber.",
+          "finance": "The most expensive form of agreement."
+        }
+      },
+      {
+        "id": "horse_trade",
+        "label": "Trade favours behind closed doors",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": 6
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "all",
+            "delta": 2,
+            "after": 10
+          }
+        ],
+        "newsTemplateId": "ev.assembly_standoff.horse_trade",
+        "advisorReactions": {
+          "politics": "Cheap now, costly later.",
+          "finance": "Favours always cost something."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for them to blink",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -5
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "crisisLoad",
+            "delta": 5
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.assembly_standoff.ignore",
+        "advisorReactions": {
+          "security": "Gridlock helps nobody.",
+          "politics": "They will not blink first."
+        }
+      }
+    ]
+  },
+  {
+    "id": "defection_scandal",
+    "title": "Defections rock the ruling party",
+    "body": "Several lawmakers have defected from the PPF to the UDA. {advisor} says more may follow unless you act.",
+    "tags": [
+      "politics",
+      "defection_scandal"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "national",
+        "field": "approval",
+        "op": "<",
+        "value": 50
+      },
+      {
+        "type": "minTick",
+        "tick": 26
+      }
+    ],
+    "baseProbability": 0.005,
+    "cooldownTicks": 78,
+    "severity": 2,
+    "newsTemplateId": "ev.defection_scandal",
+    "choices": [
+      {
+        "id": "reaffirm_loyalty_dinner",
+        "label": "Host a party loyalty dinner",
+        "cost": 50,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": 4
+          }
+        ],
+        "newsTemplateId": "ev.defection_scandal.reaffirm_loyalty_dinner",
+        "advisorReactions": {
+          "politics": "Food and flattery, a classic combination.",
+          "finance": "A cheap price for four votes."
+        }
+      },
+      {
+        "id": "expel_defectors",
+        "label": "Expel the defectors",
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -4
+          },
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": 3
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": 1
+          }
+        ],
+        "newsTemplateId": "ev.defection_scandal.expel_defectors",
+        "advisorReactions": {
+          "politics": "It sends a message but burns bridges.",
+          "security": "Order in the party matters."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Say nothing",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": 4
+          },
+          {
+            "kind": "national",
+            "meter": "assemblySupport",
+            "delta": -3
+          }
+        ],
+        "newsTemplateId": "ev.defection_scandal.ignore",
+        "advisorReactions": {
+          "politics": "Silence will be read as weakness.",
+          "finance": "It costs nothing, for now."
+        }
+      }
+    ]
+  },
+  {
+    "id": "audit_scandal",
+    "title": "Audit scandal in {state}",
+    "body": "A leaked audit shows missing funds in {state}. {governor} denies wrongdoing and {advisor} says the press will not let this go.",
+    "tags": [
+      "politics"
+    ],
+    "scope": "state",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "corruption",
+        "op": ">",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.004,
+    "risk": "corruption",
+    "cooldownTicks": 52,
+    "severity": 2,
+    "newsTemplateId": "ev.audit_scandal",
+    "choices": [
+      {
+        "id": "independent_audit",
+        "label": "Order an independent audit",
+        "cost": 40,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": -10
+          },
+          {
+            "kind": "stat",
+            "target": "governorLoyalty",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.audit_scandal.independent_audit",
+        "advisorReactions": {
+          "finance": "The only way to recover the money.",
+          "politics": "The governor will remember this."
+        }
+      },
+      {
+        "id": "quiet_settlement",
+        "label": "Settle it quietly",
+        "cost": 20,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 4
+          },
+          {
+            "kind": "national",
+            "meter": "opposition",
+            "delta": 3,
+            "after": 8
+          }
+        ],
+        "newsTemplateId": "ev.audit_scandal.quiet_settlement",
+        "advisorReactions": {
+          "politics": "Quiet now, loud later.",
+          "finance": "Cheaper, but nothing changes."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Say it is a state matter",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "corruption",
+            "scope": "$state",
+            "delta": 2
+          }
+        ],
+        "newsTemplateId": "ev.audit_scandal.ignore",
+        "advisorReactions": {
+          "finance": "Missing funds are still missing.",
+          "politics": "The press will ask again tomorrow."
+        }
+      }
+    ]
+  }
+]

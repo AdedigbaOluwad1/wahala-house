@@ -1,0 +1,464 @@
+[
+  {
+    "id": "student_protests",
+    "title": "Student protests in {state}",
+    "body": "Students in {state} are protesting over fees and poor facilities. {governor} fears the protests may spread.",
+    "tags": [
+      "social",
+      "student_protest"
+    ],
+    "scope": "state",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "unrest",
+        "op": ">",
+        "value": 35
+      },
+      {
+        "type": "stat",
+        "stat": "education",
+        "op": "<",
+        "value": 55
+      }
+    ],
+    "baseProbability": 0.004,
+    "risk": "unrest",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.student_protests",
+    "choices": [
+      {
+        "id": "open_dialogue",
+        "label": "Open a dialogue with student leaders",
+        "cost": 20,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -6
+          },
+          {
+            "kind": "stat",
+            "target": "education",
+            "scope": "$state",
+            "delta": 1
+          }
+        ],
+        "newsTemplateId": "ev.student_protests.open_dialogue",
+        "advisorReactions": {
+          "politics": "Listening costs almost nothing.",
+          "security": "Dialogue calms things down."
+        }
+      },
+      {
+        "id": "fund_campus",
+        "label": "Fund campus facilities",
+        "cost": 70,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "education",
+            "scope": "$state",
+            "delta": 5
+          },
+          {
+            "kind": "stat",
+            "target": "infrastructure",
+            "scope": "$state",
+            "delta": 2
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -10
+          }
+        ],
+        "newsTemplateId": "ev.student_protests.fund_campus",
+        "advisorReactions": {
+          "finance": "A real fix, but expensive.",
+          "health": "Better facilities help everyone."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the protests to fade",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 8
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.student_protests.ignore",
+        "advisorReactions": {
+          "security": "Protests grow when ignored.",
+          "finance": "Disruption is costly."
+        }
+      }
+    ]
+  },
+  {
+    "id": "exam_leak",
+    "title": "Examination leak",
+    "body": "A national examination paper has leaked before the test. {advisor} says parents want accountability and the exam board wants time.",
+    "tags": [
+      "social",
+      "exam_leak"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "education",
+        "op": "<",
+        "value": 55
+      }
+    ],
+    "baseProbability": 0.005,
+    "cooldownTicks": 78,
+    "severity": 2,
+    "newsTemplateId": "ev.exam_leak",
+    "choices": [
+      {
+        "id": "independent_inquiry",
+        "label": "Order an independent inquiry",
+        "cost": 35,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "education",
+            "scope": "all",
+            "delta": 2
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 1
+          }
+        ],
+        "newsTemplateId": "ev.exam_leak.independent_inquiry",
+        "advisorReactions": {
+          "politics": "Credibility is worth the cost.",
+          "finance": "A modest bill for trust."
+        }
+      },
+      {
+        "id": "quiet_retake",
+        "label": "Reschedule the paper quietly",
+        "cost": 55,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "education",
+            "scope": "all",
+            "delta": 1
+          }
+        ],
+        "newsTemplateId": "ev.exam_leak.quiet_retake",
+        "advisorReactions": {
+          "finance": "The cheapest sensible option.",
+          "politics": "Parents will ask why nobody was named."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Say the results stand",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "education",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -3
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.exam_leak.ignore",
+        "advisorReactions": {
+          "politics": "Trust in results will fall.",
+          "health": "Students deserve fairness."
+        }
+      }
+    ]
+  },
+  {
+    "id": "nationwide_protests",
+    "title": "Nationwide protests",
+    "body": "Protests are spreading across major cities over living conditions. {advisor} says the next few days will define the government.",
+    "tags": [
+      "social"
+    ],
+    "scope": "national",
+    "advisor": "politics",
+    "conditions": [
+      {
+        "type": "avg",
+        "stat": "mood",
+        "op": "<",
+        "value": 38
+      },
+      {
+        "type": "avg",
+        "stat": "unrest",
+        "op": ">",
+        "value": 35
+      }
+    ],
+    "baseProbability": 0.02,
+    "cooldownTicks": 78,
+    "severity": 3,
+    "newsTemplateId": "ev.nationwide_protests",
+    "choices": [
+      {
+        "id": "listen_and_announce_relief",
+        "label": "Listen and announce relief",
+        "cost": 150,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": 6
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "all",
+            "delta": -8
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": 3
+          }
+        ],
+        "newsTemplateId": "ev.nationwide_protests.listen_and_announce_relief",
+        "advisorReactions": {
+          "politics": "People want to be heard and helped.",
+          "finance": "Expensive, but the alternative is worse."
+        }
+      },
+      {
+        "id": "deploy_security",
+        "label": "Deploy security forces",
+        "cost": 80,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "all",
+            "delta": -4
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "all",
+            "delta": -6
+          },
+          {
+            "kind": "national",
+            "meter": "approval",
+            "delta": -4
+          }
+        ],
+        "newsTemplateId": "ev.nationwide_protests.deploy_security",
+        "advisorReactions": {
+          "security": "Order must be restored.",
+          "politics": "It will deepen the anger."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Wait for the protests to end",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "all",
+            "delta": 8
+          },
+          {
+            "kind": "national",
+            "meter": "stability",
+            "delta": -6
+          },
+          {
+            "kind": "national",
+            "meter": "crisisLoad",
+            "delta": 8
+          }
+        ],
+        "newsTemplateId": "ev.nationwide_protests.ignore",
+        "advisorReactions": {
+          "security": "They will not end on their own.",
+          "finance": "Disruption is widespread."
+        }
+      }
+    ]
+  },
+  {
+    "id": "pay_delay_protest",
+    "title": "Pay delay protest in {state}",
+    "body": "Civil servants in {state} have not been paid for months and are protesting at the secretariat. {governor} blames federal transfers.",
+    "tags": [
+      "social"
+    ],
+    "scope": "state",
+    "advisor": "finance",
+    "conditions": [
+      {
+        "type": "stat",
+        "stat": "welfare",
+        "op": "<",
+        "value": 45
+      },
+      {
+        "type": "stat",
+        "stat": "economy",
+        "op": "<",
+        "value": 50
+      }
+    ],
+    "baseProbability": 0.004,
+    "risk": "unrest",
+    "cooldownTicks": 39,
+    "severity": 2,
+    "newsTemplateId": "ev.pay_delay_protest",
+    "choices": [
+      {
+        "id": "pay_arrears",
+        "label": "Release funds to clear arrears",
+        "cost": 55,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 5
+          },
+          {
+            "kind": "stat",
+            "target": "welfare",
+            "scope": "$state",
+            "delta": 3
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -6
+          }
+        ],
+        "newsTemplateId": "ev.pay_delay_protest.pay_arrears",
+        "advisorReactions": {
+          "finance": "A bailout, with strings attached.",
+          "politics": "Instantly popular."
+        }
+      },
+      {
+        "id": "phased_payment",
+        "label": "Agree a phased payment",
+        "cost": 20,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": 1
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": -2
+          },
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 3,
+            "after": 10
+          }
+        ],
+        "newsTemplateId": "ev.pay_delay_protest.phased_payment",
+        "advisorReactions": {
+          "finance": "Cheap, but only buys time.",
+          "politics": "It will return if the schedule slips."
+        }
+      },
+      {
+        "id": "ignore",
+        "label": "Say it is the state's problem",
+        "ignore": true,
+        "effects": [
+          {
+            "kind": "stat",
+            "target": "unrest",
+            "scope": "$state",
+            "delta": 7
+          },
+          {
+            "kind": "stat",
+            "target": "mood",
+            "scope": "$state",
+            "delta": -5
+          },
+          {
+            "kind": "stat",
+            "target": "economy",
+            "scope": "$state",
+            "delta": -2
+          }
+        ],
+        "newsTemplateId": "ev.pay_delay_protest.ignore",
+        "advisorReactions": {
+          "finance": "Unpaid workers spend nothing.",
+          "security": "Protests will grow."
+        }
+      }
+    ],
+    "chains": [
+      {
+        "eventId": "hospital_staff_strike",
+        "delayTicks": 8,
+        "ifChoice": "ignore"
+      }
+    ]
+  }
+]
