@@ -1,7 +1,6 @@
 import { create } from 'zustand';
-import { DEFAULT_CONFIG, newGame, setBudget, stepTick } from '../engine';
-import type { GameConfig, GameState } from '../engine';
-import { shouldAutoPause } from '../engine';
+import { DEFAULT_CONFIG, enactPolicy, newGame, setBudget, shouldAutoPause, stepTick } from '../engine';
+import type { Action, Budget, EnactOptions, EnactResult, GameConfig, GameState } from '../engine';
 
 export type Metric = 'mood' | 'security' | 'economy' | 'power' | 'health' | 'education' | 'infrastructure' | 'welfare';
 export const METRICS: Metric[] = ['mood', 'security', 'economy', 'power', 'health', 'education', 'infrastructure', 'welfare'];
@@ -9,6 +8,7 @@ export const METRICS: Metric[] = ['mood', 'security', 'economy', 'power', 'healt
 interface Store {
   game: GameState;
   rev: number;
+  actions: Action[];
   playing: boolean;
   speed: GameConfig['speed'];
   metric: Metric;
@@ -19,18 +19,20 @@ interface Store {
   setMetric: (m: Metric) => void;
   select: (id: string | null) => void;
   advance: () => void;
-  confirmBudget: () => void;
+  confirmBudget: (budget: Budget) => void;
+  enact: (policyId: string, opts?: EnactOptions) => EnactResult;
 }
 
 export const useGame = create<Store>((set, get) => ({
   game: newGame({ ...DEFAULT_CONFIG, seed: 'initial' }),
   rev: 0,
+  actions: [],
   playing: false,
   speed: DEFAULT_CONFIG.speed,
   metric: 'mood',
   selected: null,
   newGame: (config = DEFAULT_CONFIG) =>
-    set((s) => ({ game: newGame(config), rev: s.rev + 1, playing: false, speed: config.speed, selected: null })),
+    set((s) => ({ game: newGame(config), rev: s.rev + 1, actions: [], playing: false, speed: config.speed, selected: null })),
   setPlaying: (playing) => set((s) => ({ playing: playing && !shouldAutoPause(s.game) })),
   setSpeed: (speed) => set({ speed }),
   setMetric: (metric) => set({ metric }),
@@ -40,9 +42,19 @@ export const useGame = create<Store>((set, get) => ({
     stepTick(game);
     set((s) => ({ rev: s.rev + 1, playing: s.playing && !shouldAutoPause(game) }));
   },
-  confirmBudget: () => {
+  confirmBudget: (budget) => {
     const { game } = get();
-    setBudget(game, game.budget);
-    set((s) => ({ rev: s.rev + 1 }));
+    setBudget(game, budget);
+    set((s) => ({ rev: s.rev + 1, actions: [...s.actions, { tick: game.tick, type: 'setBudget', budget }] }));
+  },
+  enact: (policyId, opts = {}) => {
+    const { game } = get();
+    const tick = game.tick;
+    const result = enactPolicy(game, policyId, opts);
+    set((s) => ({
+      rev: s.rev + 1,
+      actions: [...s.actions, { tick, type: 'enactPolicy', policyId, sweetener: opts.sweetener, zone: opts.zone }],
+    }));
+    return result;
   },
 }));

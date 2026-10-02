@@ -29,6 +29,15 @@
 - **Project rules:** no inline code comments (user preference); rationale goes in this file. A README is kept current from day zero.
 - **Project licence** not chosen yet.
 
+## Phase 3 decisions
+- **shadcn/ui** (base-nova style, Base UI primitives) with a dark green and gold game theme. The CLI generated a utils file importing an unrelated `cn` npm package; replaced with the standard `clsx` + `tailwind-merge` helper.
+- **Effect timing:** every policy effect lands at enactment tick + `after` (default: the policy's `delayTicks`, plus a delay-risk extension for main effects). Side effects may set an earlier `after`, for example inflation spikes landing before a slow payoff. This refines the spec line that all effects land after the delay.
+- **Ongoing effects** (`kind: "ongoing"`) apply a per-tick change for N ticks once they land. Revenue and inflation effects hit national meters; the rest apply to states by scope (`all`, `zone:NE`, `trait:oil`, a state id, or `$zone` for the zone the player picks).
+- **Assembly votes are probabilistic:** pass if support + sweetener bonus + noise (sd 6) >= threshold. The UI shows the exact chance. Sweeteners cost 8 per point, capped at 30 points. A failed vote costs the sweetener, 6 support, and blocks a retry for 4 weeks. Brutal difficulty raises thresholds by 6 points.
+- **Policy numbers are first-pass** and need tuning with the Phase 7 bots. Policy text lives in JSON, not the strings files, so it is not translated yet.
+- **Budget** is chosen at quarter start in a dialog; "Keep last budget" is always available. Sector funding previews show the national coverage of need.
+- **Action log** (`actions` in the store) records budget and policy actions with their tick, ready for saving in Phase 6.
+
 ## Open (from spec section 16 and review)
 - Election rule: is the 25% threshold required in 24 of 36 states plus a separate FCT check, or 24 of 37 units? Verify against the constitution before shipping.
 - Define `needBaseline[state, sector]` (spec 6.3 uses it but never defines it).

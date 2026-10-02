@@ -83,3 +83,12 @@ export const DIFFICULTY: Record<Difficulty, DifficultyScale> = {
   realistic: { startingTreasury: 1000, decayMult: 1, approvalSensitivity: 1, assemblyResistance: 1, eventFrequency: 1 },
   brutal: { startingTreasury: 600, decayMult: 1.25, approvalSensitivity: 1.25, assemblyResistance: 1.3, eventFrequency: 1.4 },
 };
+
+export const ASSEMBLY = {
+  defaultThreshold: 50,
+  noise: 6,
+  costPerPoint: 8,
+  maxBonus: 30,
+  failPenalty: 6,
+  retryTicks: 4,
+};

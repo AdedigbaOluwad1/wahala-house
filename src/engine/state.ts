@@ -74,13 +74,40 @@ export interface National {
   crisisLoad: number;
 }
 
+export type StateTarget = StatKey | 'mood' | 'unrest' | 'corruption' | 'insurgencyRisk' | 'governorLoyalty';
+export type NationalMeter = 'treasury' | 'inflation' | 'nairaStrength' | 'approval' | 'stability' | 'assemblySupport' | 'opposition' | 'crisisLoad';
+
 export type Effect =
-  | { kind: 'stat'; target: StatKey | 'mood' | 'unrest' | 'corruption'; stateId: string | 'all'; delta: number }
-  | { kind: 'national'; meter: 'treasury' | 'inflation' | 'nairaStrength' | 'approval' | 'stability' | 'assemblySupport' | 'opposition' | 'crisisLoad'; delta: number };
+  | { kind: 'stat'; target: StateTarget; scope: string; delta: number }
+  | { kind: 'national'; meter: NationalMeter; delta: number }
+  | { kind: 'ongoing'; target: StateTarget | 'revenue' | 'inflation'; scope?: string; perTick: number; ticks: number };
 
 export interface ScheduledEffect {
   applyAtTick: number;
   effect: Effect;
+  policyId?: string;
+  phase?: 'main' | 'side';
+  note?: string;
+}
+
+export interface OngoingEffect {
+  target: StateTarget | 'revenue' | 'inflation';
+  scope: string;
+  perTick: number;
+  until: number;
+}
+
+export interface ActivePolicy {
+  policyId: string;
+  enactedTick: number;
+  endsTick?: number;
+}
+
+export interface LandedEffect {
+  tick: number;
+  policyId: string;
+  phase: 'main' | 'side';
+  note?: string;
 }
 
 export type EndStatus =
@@ -106,6 +133,10 @@ export interface GameState {
   programmePerTick: number;
   budgetWindowOpen: boolean;
   scheduled: ScheduledEffect[];
+  ongoing: OngoingEffect[];
+  active: ActivePolicy[];
+  cooldowns: Record<string, number>;
+  landed: LandedEffect[];
   counters: Counters;
   status: EndStatus;
 }
@@ -167,6 +198,10 @@ export function createGame(config: GameConfig = DEFAULT_CONFIG): GameState {
     programmePerTick: 0,
     budgetWindowOpen: false,
     scheduled: [],
+    ongoing: [],
+    active: [],
+    cooldowns: {},
+    landed: [],
     counters: { coup: 0, impeachment: 0, collapse: 0 },
     status: { kind: 'running' },
   };
