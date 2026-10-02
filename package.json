@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "e2e": "playwright test",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "sim": "tsx sim/cli.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
@@ -42,6 +43,7 @@
     "fake-indexeddb": "^6.2.5",
     "globals": "^17.13.0",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.0",
     "vite": "^8.3.2",
