@@ -4,7 +4,7 @@ A browser-based governance sandbox set in a Nigeria-scale country. You are the p
 
 The point is to make the complexity of governing felt. Every decision costs something somewhere else.
 
-> Status: early development. Phases 0-5 are done (scaffold, headless engine, map and HUD, budget and policies, events and news, game modes and endings). Saving and offline support are not built yet. See [Roadmap](#roadmap).
+> Status: early development. Phases 0-6 are done (scaffold, headless engine, map and HUD, budget and policies, events and news, game modes and endings, saving and offline play). Content and balance tuning are next. See [Roadmap](#roadmap).
 
 ## Principles
 
@@ -36,7 +36,8 @@ Then open the URL Vite prints. Press Start, confirm the first quarter's budget, 
 | `npm run lint` | ESLint, including the rule that keeps the engine free of UI imports |
 | `npm test` | Vitest engine tests |
 | `npx vitest run tests/content.test.ts` | Content lint for events, news and banned terms |
-| `npm run e2e` | Playwright smoke tests (desktop and 360 px phone); builds and serves the app itself |
+| `npm run e2e` | Playwright tests (desktop and 360 px phone) including offline, saving and axe accessibility scans; builds and serves the app itself |
+| `node scripts/make-icons.mjs` | Regenerates the PNG app icons from `public/icon.svg` |
 
 First-time e2e setup: `npx playwright install chromium`.
 
@@ -79,8 +80,15 @@ Removal can come by coup, impeachment or fiscal collapse. Term mode adds an elec
 | 3 | Budget dialog, 12 policies, Assembly votes | Done |
 | 4 | Events, news in two tones, advisors | Done |
 | 5 | Setup screen, modes, election, legacy report | Done |
-| 6 | Saving, offline, accessibility and performance pass | Next |
-| 7 | Content fill, Pidgin pass, balance tuning with bots | Planned |
+| 6 | Saving, offline, accessibility and performance pass | Done |
+| 7 | Content fill, Pidgin pass, balance tuning with bots | Next |
+
+## Saving and offline
+
+- The game autosaves at the start of every quarter and whenever you leave the tab, and resumes from the title screen with Continue.
+- Three manual save slots, plus export and import of save files as JSON, are in the in-game menu. Everything is stored in your browser's IndexedDB; nothing leaves your device.
+- Saves are versioned. A save from a newer version is refused with a clear message; older versions go through migrations.
+- After the first load the game works offline and can be installed as an app.
 
 ## UI
 
