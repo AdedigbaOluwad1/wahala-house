@@ -4,6 +4,7 @@ import type { Condition } from './conditions';
 import { applyEffect } from './effects';
 import { pushNews } from './news';
 import type { Rng } from './rng';
+import type { ActiveEvent } from './eventsState';
 import type { Effect, GameState, StateData } from './state';
 import { ADVISORS } from '../content/advisors';
 import { EVENTS } from '../content/events';
@@ -41,44 +42,8 @@ export interface GameEvent {
   chains?: { eventId: string; delayTicks: number; ifChoice?: string }[];
 }
 
-export interface ActiveEvent {
-  uid: number;
-  eventId: string;
-  stateId?: string;
-  tick: number;
-  severity: 1 | 2 | 3;
-  expiresTick?: number;
-}
-
-export interface ResolvedEvent {
-  uid: number;
-  eventId: string;
-  stateId?: string;
-  firedTick: number;
-  resolvedTick: number;
-  choiceId: string;
-  auto: boolean;
-  mapEffect?: Choice['mapEffect'];
-}
-
-export interface PendingChain {
-  eventId: string;
-  fireTick: number;
-  stateId?: string;
-}
-
-export interface EventsState {
-  active: ActiveEvent[];
-  cooldowns: Record<string, number>;
-  pendingChains: PendingChain[];
-  history: ResolvedEvent[];
-  streaks: Record<string, number>;
-  nextUid: number;
-}
-
-export function emptyEventsState(): EventsState {
-  return { active: [], cooldowns: {}, pendingChains: [], history: [], streaks: {}, nextUid: 1 };
-}
+export type { ActiveEvent, EventsState, PendingChain, ResolvedEvent } from './eventsState';
+export { emptyEventsState } from './eventsState';
 
 export function getEvent(id: string, events: GameEvent[] = EVENTS): GameEvent | undefined {
   return events.find((e) => e.id === id);

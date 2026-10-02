@@ -1,6 +1,7 @@
 import { NEWS } from './balance';
 import { conditionHolds } from './conditions';
 import type { Condition } from './conditions';
+import type { NewsItem } from './newsState';
 import type { Rng } from './rng';
 import type { GameState } from './state';
 import { AMBIENT_TEMPLATES, NEWS_TEMPLATES } from '../content/news';
@@ -12,25 +13,8 @@ export interface NewsTemplate {
   conditions?: Condition[];
 }
 
-export interface NewsItem {
-  uid: number;
-  tick: number;
-  templateId: string;
-  tokens: Record<string, string>;
-  variant: number;
-  severity?: 1 | 2 | 3;
-}
-
-export interface NewsState {
-  items: NewsItem[];
-  seq: number;
-  flags: Record<string, boolean>;
-  cooldowns: Record<string, number>;
-}
-
-export function emptyNewsState(): NewsState {
-  return { items: [], seq: 1, flags: {}, cooldowns: {} };
-}
+export type { NewsItem, NewsState } from './newsState';
+export { emptyNewsState } from './newsState';
 
 export function pushNews(g: GameState, templateId: string, tokens: Record<string, string> = {}, opts: { severity?: 1 | 2 | 3 } = {}): void {
   if (!NEWS_TEMPLATES[templateId]) return;
