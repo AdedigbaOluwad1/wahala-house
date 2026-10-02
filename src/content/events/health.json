@@ -24,7 +24,7 @@
         "value": 50
       }
     ],
-    "baseProbability": 0.003,
+    "baseProbability": 0.001,
     "cooldownTicks": 52,
     "severity": 3,
     "newsTemplateId": "ev.disease_outbreak",
@@ -257,7 +257,7 @@
         "value": 45
       }
     ],
-    "baseProbability": 0.004,
+    "baseProbability": 0.0007,
     "risk": "unrest",
     "cooldownTicks": 39,
     "severity": 2,
@@ -365,7 +365,7 @@
         "type": "national",
         "field": "nairaStrength",
         "op": "<",
-        "value": 40
+        "value": 45
       },
       {
         "type": "avg",

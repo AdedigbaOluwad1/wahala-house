@@ -125,7 +125,7 @@
         "value": 50
       }
     ],
-    "baseProbability": 0.004,
+    "baseProbability": 0.0012,
     "cooldownTicks": 39,
     "severity": 2,
     "newsTemplateId": "ev.transformer_outage",

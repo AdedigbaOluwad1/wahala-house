@@ -17,7 +17,7 @@
         "value": 40
       }
     ],
-    "baseProbability": 0.004,
+    "baseProbability": 0.002,
     "cooldownTicks": 52,
     "severity": 2,
     "newsTemplateId": "ev.governor_feud",
@@ -119,10 +119,10 @@
         "type": "national",
         "field": "assemblySupport",
         "op": "<",
-        "value": 45
+        "value": 50
       }
     ],
-    "baseProbability": 0.008,
+    "baseProbability": 0.015,
     "cooldownTicks": 52,
     "severity": 3,
     "newsTemplateId": "ev.assembly_standoff",
