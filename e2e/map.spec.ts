@@ -1,36 +1,44 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('button', { name: 'Start', exact: true }).click();
-  await page.getByRole('button', { name: 'Start your term' }).click();
+  await page.goto("/");
+  await page.getByRole("button", { name: "Start", exact: true }).click();
+  await page.getByRole("button", { name: "Start your term" }).click();
 });
 
-test('renders 37 clickable regions and selects one', async ({ page }) => {
-  const regions = page.locator('[data-region]');
+test("renders 37 clickable regions and selects one", async ({ page }) => {
+  const regions = page.locator("[data-region]");
   await expect(regions).toHaveCount(37);
-  await page.getByRole('button', { name: 'Confirm budget' }).click();
-  await page.locator('[data-region="kano"]').dispatchEvent('click');
-  await expect(page.getByRole('heading', { name: 'Kano' })).toBeVisible();
+  await page.getByRole("button", { name: "Confirm budget" }).click();
+  await page.locator('[data-region="kano"]').dispatchEvent("click");
+  await expect(page.getByRole("heading", { name: "Kano" })).toBeVisible();
 });
 
-test('metric switch recolours the map', async ({ page }) => {
-  await page.getByRole('button', { name: 'Confirm budget' }).click();
+test("metric switch recolours the map", async ({ page }) => {
+  await page.getByRole("button", { name: "Confirm budget" }).click();
   const region = page.locator('[data-region="borno"]');
-  const before = await region.getAttribute('fill');
-  await page.getByRole('group', { name: 'Map colours show' }).getByRole('button', { name: 'Security' }).click();
-  await expect.poll(() => region.getAttribute('fill')).not.toBe(before);
+  const before = await region.getAttribute("fill");
+  await page
+    .getByRole("group", { name: "Map colours show" })
+    .getByRole("button", { name: "Security" })
+    .click();
+  await expect.poll(() => region.getAttribute("fill")).not.toBe(before);
 });
 
-test('time advances after the quarter prompt', async ({ page }) => {
-  await page.getByRole('button', { name: 'Confirm budget' }).click();
-  await page.getByRole('group', { name: 'Game speed' }).getByRole('button', { name: 'Fast' }).click();
-  await page.getByRole('button', { name: 'Play' }).click();
+test("time advances after the quarter prompt", async ({ page }) => {
+  await page.getByRole("button", { name: "Confirm budget" }).click();
+  await page
+    .getByRole("group", { name: "Game speed" })
+    .getByRole("button", { name: "Fast" })
+    .click();
+  await page.getByRole("button", { name: "Play" }).click();
   await expect(page.getByText(/Week [2-9]/)).toBeVisible({ timeout: 10000 });
 });
 
-test('no horizontal scroll', async ({ page }) => {
-  await page.getByRole('button', { name: 'Confirm budget' }).click();
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+test("no horizontal scroll", async ({ page }) => {
+  await page.getByRole("button", { name: "Confirm budget" }).click();
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - window.innerWidth,
+  );
   expect(overflow).toBeLessThanOrEqual(0);
 });

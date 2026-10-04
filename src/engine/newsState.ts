@@ -17,4 +17,3 @@ export interface NewsState {
 export function emptyNewsState(): NewsState {
   return { items: [], seq: 1, flags: {}, cooldowns: {} };
 }
-

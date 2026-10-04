@@ -1,33 +1,66 @@
-import { create } from 'zustand';
-import { DEFAULT_CONFIG, enactPolicy, newGame, setBudget, shouldAutoPause, stepTick } from '../engine';
-import { resolveEvent, resolveTermEnd } from '../engine';
-import { buildSave } from '../persistence/saveFormat';
-import type { SaveData } from '../persistence/saveFormat';
-import { deleteSlot, saveToSlot } from '../persistence/db';
-import type { Slot } from '../persistence/db';
-import { useSettings } from './settingsStore';
-import type { Action, Budget, EnactOptions, EnactResult, GameConfig, ElectionResult, GameState, ResolveResult } from '../engine';
+import { create } from "zustand";
+import {
+  DEFAULT_CONFIG,
+  enactPolicy,
+  newGame,
+  setBudget,
+  shouldAutoPause,
+  stepTick,
+} from "../engine";
+import { resolveEvent, resolveTermEnd } from "../engine";
+import { buildSave } from "../persistence/saveFormat";
+import type { SaveData } from "../persistence/saveFormat";
+import { deleteSlot, saveToSlot } from "../persistence/db";
+import type { Slot } from "../persistence/db";
+import { useSettings } from "./settingsStore";
+import type {
+  Action,
+  Budget,
+  EnactOptions,
+  EnactResult,
+  GameConfig,
+  ElectionResult,
+  GameState,
+  ResolveResult,
+} from "../engine";
 
-export type Metric = 'mood' | 'security' | 'economy' | 'power' | 'health' | 'education' | 'infrastructure' | 'welfare';
-export const METRICS: Metric[] = ['mood', 'security', 'economy', 'power', 'health', 'education', 'infrastructure', 'welfare'];
+export type Metric =
+  | "mood"
+  | "security"
+  | "economy"
+  | "power"
+  | "health"
+  | "education"
+  | "infrastructure"
+  | "welfare";
+export const METRICS: Metric[] = [
+  "mood",
+  "security",
+  "economy",
+  "power",
+  "health",
+  "education",
+  "infrastructure",
+  "welfare",
+];
 
 interface Store {
   game: GameState;
   rev: number;
   actions: Action[];
   playing: boolean;
-  speed: GameConfig['speed'];
+  speed: GameConfig["speed"];
   metric: Metric;
   selected: string | null;
-  tone: 'dry' | 'wahala';
+  tone: "dry" | "wahala";
   openEventUid: number | null;
   election: ElectionResult | null;
   newGame: (config?: GameConfig) => void;
   setPlaying: (p: boolean) => void;
-  setSpeed: (s: GameConfig['speed']) => void;
+  setSpeed: (s: GameConfig["speed"]) => void;
   setMetric: (m: Metric) => void;
   select: (id: string | null) => void;
-  setTone: (t: 'dry' | 'wahala') => void;
+  setTone: (t: "dry" | "wahala") => void;
   openEvent: (uid: number | null) => void;
   resolve: (uid: number, choiceId: string) => ResolveResult;
   endTerm: () => ElectionResult | null;
@@ -41,19 +74,30 @@ interface Store {
 }
 
 export const useGame = create<Store>((set, get) => ({
-  game: newGame({ ...DEFAULT_CONFIG, seed: 'initial' }),
+  game: newGame({ ...DEFAULT_CONFIG, seed: "initial" }),
   rev: 0,
   actions: [],
   playing: false,
   speed: DEFAULT_CONFIG.speed,
-  metric: 'mood',
+  metric: "mood",
   selected: null,
   tone: DEFAULT_CONFIG.tone,
   openEventUid: null,
   election: null,
   newGame: (config = DEFAULT_CONFIG) =>
-    set((s) => ({ game: newGame(config), rev: s.rev + 1, actions: [], playing: false, speed: config.speed, selected: null, tone: config.tone, election: null, openEventUid: null })),
-  setPlaying: (playing) => set((s) => ({ playing: playing && !shouldAutoPause(s.game) })),
+    set((s) => ({
+      game: newGame(config),
+      rev: s.rev + 1,
+      actions: [],
+      playing: false,
+      speed: config.speed,
+      selected: null,
+      tone: config.tone,
+      election: null,
+      openEventUid: null,
+    })),
+  setPlaying: (playing) =>
+    set((s) => ({ playing: playing && !shouldAutoPause(s.game) })),
   setSpeed: (speed) => set({ speed }),
   setMetric: (metric) => set({ metric }),
   select: (selected) => set({ selected }),
@@ -61,7 +105,7 @@ export const useGame = create<Store>((set, get) => ({
   openEvent: (openEventUid) => set({ openEventUid }),
   endTerm: () => {
     const { game } = get();
-    if (game.status.kind !== 'term_end') return null;
+    if (game.status.kind !== "term_end") return null;
     const result = resolveTermEnd(game);
     set((s) => ({ rev: s.rev + 1, election: result, playing: false }));
     return result;
@@ -95,7 +139,7 @@ export const useGame = create<Store>((set, get) => ({
       set((s) => ({
         rev: s.rev + 1,
         openEventUid: s.openEventUid === uid ? null : s.openEventUid,
-        actions: [...s.actions, { tick, type: 'resolveEvent', uid, choiceId }],
+        actions: [...s.actions, { tick, type: "resolveEvent", uid, choiceId }],
       }));
     }
     return result;
@@ -103,14 +147,24 @@ export const useGame = create<Store>((set, get) => ({
   advance: () => {
     const { game } = get();
     stepTick(game);
-    set((s) => ({ rev: s.rev + 1, playing: s.playing && !shouldAutoPause(game) }));
-    if (game.status.kind === 'removed' || game.status.kind === 'finished') void deleteSlot('auto').catch(() => undefined);
-    else if (game.budgetWindowOpen && useSettings.getState().settings.autosave) void get().saveTo('auto').catch(() => undefined);
+    set((s) => ({
+      rev: s.rev + 1,
+      playing: s.playing && !shouldAutoPause(game),
+    }));
+    if (game.status.kind === "removed" || game.status.kind === "finished")
+      void deleteSlot("auto").catch(() => undefined);
+    else if (game.budgetWindowOpen && useSettings.getState().settings.autosave)
+      void get()
+        .saveTo("auto")
+        .catch(() => undefined);
   },
   confirmBudget: (budget) => {
     const { game } = get();
     setBudget(game, budget);
-    set((s) => ({ rev: s.rev + 1, actions: [...s.actions, { tick: game.tick, type: 'setBudget', budget }] }));
+    set((s) => ({
+      rev: s.rev + 1,
+      actions: [...s.actions, { tick: game.tick, type: "setBudget", budget }],
+    }));
   },
   enact: (policyId, opts = {}) => {
     const { game } = get();
@@ -118,7 +172,16 @@ export const useGame = create<Store>((set, get) => ({
     const result = enactPolicy(game, policyId, opts);
     set((s) => ({
       rev: s.rev + 1,
-      actions: [...s.actions, { tick, type: 'enactPolicy', policyId, sweetener: opts.sweetener, zone: opts.zone }],
+      actions: [
+        ...s.actions,
+        {
+          tick,
+          type: "enactPolicy",
+          policyId,
+          sweetener: opts.sweetener,
+          zone: opts.zone,
+        },
+      ],
     }));
     return result;
   },

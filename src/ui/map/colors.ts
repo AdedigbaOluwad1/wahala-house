@@ -1,5 +1,9 @@
 const STOPS: [number, number, number][] = [
-  [68, 1, 84], [59, 82, 139], [33, 145, 140], [94, 201, 98], [253, 231, 37],
+  [68, 1, 84],
+  [59, 82, 139],
+  [33, 145, 140],
+  [94, 201, 98],
+  [253, 231, 37],
 ];
 
 export function scaleColor(value: number): string {
@@ -11,4 +15,4 @@ export function scaleColor(value: number): string {
   return `rgb(${c[0]},${c[1]},${c[2]})`;
 }
 
-export const LEGEND_GRADIENT = `linear-gradient(to right, ${STOPS.map((s) => `rgb(${s})`).join(',')})`;
+export const LEGEND_GRADIENT = `linear-gradient(to right, ${STOPS.map((s) => `rgb(${s})`).join(",")})`;

@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { secondsPerTick } from '../engine';
-import { useGame } from '../store/gameStore';
+import { useEffect } from "react";
+import { secondsPerTick } from "../engine";
+import { useGame } from "../store/gameStore";
 
 export function useGameLoop() {
   const playing = useGame((s) => s.playing);

@@ -3,10 +3,7 @@
     "id": "governor_feud",
     "title": "Governor feud in {state}",
     "body": "{governor} of {state} is feuding publicly with federal officials over allocations. {advisor} says it could turn into a loyalty problem.",
-    "tags": [
-      "politics",
-      "governor_feud"
-    ],
+    "tags": ["politics", "governor_feud"],
     "scope": "state",
     "advisor": "politics",
     "conditions": [
@@ -108,10 +105,7 @@
     "id": "assembly_standoff",
     "title": "Assembly standoff",
     "body": "Lawmakers are stalling government business and demanding concessions. {advisor} says quiet deals are possible if you pay for them.",
-    "tags": [
-      "politics",
-      "assembly_standoff"
-    ],
+    "tags": ["politics", "assembly_standoff"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -210,10 +204,7 @@
     "id": "defection_scandal",
     "title": "Defections rock the ruling party",
     "body": "Several lawmakers have defected from the PPF to the UDA. {advisor} says more may follow unless you act.",
-    "tags": [
-      "politics",
-      "defection_scandal"
-    ],
+    "tags": ["politics", "defection_scandal"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -304,9 +295,7 @@
     "id": "audit_scandal",
     "title": "Audit scandal in {state}",
     "body": "A leaked audit shows missing funds in {state}. {governor} denies wrongdoing and {advisor} says the press will not let this go.",
-    "tags": [
-      "politics"
-    ],
+    "tags": ["politics"],
     "scope": "state",
     "advisor": "politics",
     "conditions": [
@@ -412,9 +401,7 @@
     "id": "opposition_surge",
     "title": "Opposition surge",
     "body": "Opposition rallies are drawing large crowds, and the UDA says the mid-term mood is theirs. {advisor} warns that lawmakers are watching the polls.",
-    "tags": [
-      "politics"
-    ],
+    "tags": ["politics"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -524,9 +511,7 @@
     "id": "budget_padding_row",
     "title": "Budget padding row",
     "body": "Lawmakers are accused of adding projects to the budget that nobody requested. {advisor} says some of them are for roads that already exist, in full.",
-    "tags": [
-      "politics"
-    ],
+    "tags": ["politics"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -622,9 +607,7 @@
     "id": "ghost_workers",
     "title": "Ghost workers found in {state}",
     "body": "A payroll check in {state} found hundreds of workers who do not seem to exist, and are somehow paid every month. {governor} says it is a data issue.",
-    "tags": [
-      "politics"
-    ],
+    "tags": ["politics"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -711,9 +694,7 @@
     "id": "primary_chaos",
     "title": "Party primaries descend into chaos",
     "body": "Primaries in the governing party have turned into competing congresses, court orders and a lot of rented chairs. {advisor} says the opposition is enjoying itself.",
-    "tags": [
-      "politics"
-    ],
+    "tags": ["politics"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -799,9 +780,7 @@
     "id": "whistleblower_report",
     "title": "Whistleblower report on a ministry",
     "body": "A civil servant has leaked documents showing contracts awarded at several times their value. {advisor} says the story will not go away on its own.",
-    "tags": [
-      "politics"
-    ],
+    "tags": ["politics"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [

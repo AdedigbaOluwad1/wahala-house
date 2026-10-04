@@ -21,7 +21,9 @@ How to write events and news for Wahala House. Content is data only: adding it n
   "tags": ["power", "grid_collapse"],
   "scope": "national",
   "advisor": "finance",
-  "conditions": [{ "type": "avg", "stat": "power", "op": "<", "value": 35, "forTicks": 6 }],
+  "conditions": [
+    { "type": "avg", "stat": "power", "op": "<", "value": 35, "forTicks": 6 }
+  ],
   "baseProbability": 0.01,
   "risk": "unrest",
   "cooldownTicks": 52,
@@ -32,19 +34,27 @@ How to write events and news for Wahala House. Content is data only: adding it n
       "id": "repair",
       "label": "Fund emergency repairs",
       "cost": 80,
-      "effects": [{ "kind": "stat", "target": "power", "scope": "all", "delta": 6 }],
+      "effects": [
+        { "kind": "stat", "target": "power", "scope": "all", "delta": 6 }
+      ],
       "newsTemplateId": "ev.grid_collapse.repair",
-      "advisorReactions": { "finance": "Expensive, but cheaper than a week of darkness." }
+      "advisorReactions": {
+        "finance": "Expensive, but cheaper than a week of darkness."
+      }
     },
     {
       "id": "ignore",
       "label": "Do nothing",
       "ignore": true,
-      "effects": [{ "kind": "stat", "target": "mood", "scope": "all", "delta": -4 }],
+      "effects": [
+        { "kind": "stat", "target": "mood", "scope": "all", "delta": -4 }
+      ],
       "newsTemplateId": "ev.grid_collapse.ignore"
     }
   ],
-  "chains": [{ "eventId": "market_fire", "delayTicks": 4, "ifChoice": "ignore" }]
+  "chains": [
+    { "eventId": "market_fire", "delayTicks": 4, "ifChoice": "ignore" }
+  ]
 }
 ```
 
@@ -86,7 +96,11 @@ Make the trade-offs real: the costly response should help more than doing nothin
 ## News templates (`src/content/news/*.json`, arrays)
 
 ```json
-{ "id": "ev.grid_collapse", "dry": ["The national grid has collapsed.", "..."], "wahala": ["Light don go again...", "..."] }
+{
+  "id": "ev.grid_collapse",
+  "dry": ["The national grid has collapsed.", "..."],
+  "wahala": ["Light don go again...", "..."]
+}
 ```
 
 - At least 2 variants for each tone. Tokens: `{state}`, `{governor}`, `{advisor}` (event templates), `{policy}`, `{note}` (system templates).

@@ -3,11 +3,7 @@
     "id": "insurgent_attack",
     "title": "Attack in {state}",
     "body": "An armed group has attacked communities in {state}. {governor} is asking for a federal response, and {advisor} wants an answer within the hour.",
-    "tags": [
-      "security",
-      "insurgent_attack",
-      "serious"
-    ],
+    "tags": ["security", "insurgent_attack", "serious"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -145,11 +141,7 @@
     "id": "banditry_wave",
     "title": "Armed gangs on the roads of {state}",
     "body": "Armed gangs are blocking roads and raiding villages in {state}. {governor} says traders are staying home and farmers are leaving their fields.",
-    "tags": [
-      "security",
-      "banditry",
-      "serious"
-    ],
+    "tags": ["security", "banditry", "serious"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -275,11 +267,7 @@
     "id": "kidnapping_incident",
     "title": "Abduction reported in {state}",
     "body": "A group of travellers has been abducted in {state}. Families are gathering and {advisor} says the next few hours matter.",
-    "tags": [
-      "security",
-      "kidnapping",
-      "serious"
-    ],
+    "tags": ["security", "kidnapping", "serious"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -386,11 +374,7 @@
     "id": "farmer_herder_clash",
     "title": "Land and grazing dispute in {state}",
     "body": "A dispute over farmland and grazing routes has turned violent in {state}. {governor} warns that the planting season is at risk.",
-    "tags": [
-      "security",
-      "farmer_herder",
-      "serious"
-    ],
+    "tags": ["security", "farmer_herder", "serious"],
     "scope": "state",
     "advisor": "politics",
     "conditions": [
@@ -514,10 +498,7 @@
     "id": "pipeline_sabotage",
     "title": "Pipeline damaged in {state}",
     "body": "A key oil pipeline in {state} has been damaged. The National Oil Corporation says output is falling by the day.",
-    "tags": [
-      "security",
-      "pipeline_sabotage"
-    ],
+    "tags": ["security", "pipeline_sabotage"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -636,9 +617,7 @@
     "id": "checkpoint_extortion",
     "title": "Checkpoint fees in {state}",
     "body": "Drivers in {state} say every checkpoint now has a price list, and no receipts. {advisor} says the complaints are reaching the media.",
-    "tags": [
-      "security"
-    ],
+    "tags": ["security"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -744,9 +723,7 @@
     "id": "vigilante_standoff",
     "title": "Vigilante group refuses to disband in {state}",
     "body": "A local vigilante group in {state} has been guarding roads that the police cannot reach, and now refuses to hand over its patrols. {governor} wants guidance.",
-    "tags": [
-      "security"
-    ],
+    "tags": ["security"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -851,9 +828,7 @@
     "id": "arms_seizure",
     "title": "Arms haul seized near the border of {state}",
     "body": "Customs officers and the army have intercepted a large cache of weapons headed across the border in {state}. {advisor} says it is a rare win and worth saying so.",
-    "tags": [
-      "security"
-    ],
+    "tags": ["security"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -910,10 +885,7 @@
     "id": "communal_clash_curfew",
     "title": "Communal clash in {state}",
     "body": "Fighting between neighbouring communities over land and grazing routes has broken out in {state}. Several people are dead and {governor} has asked for a federal decision on a curfew.",
-    "tags": [
-      "security",
-      "serious"
-    ],
+    "tags": ["security", "serious"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -1056,11 +1028,7 @@
     "id": "displaced_families_camp",
     "title": "Displaced families gather in {state}",
     "body": "Families who fled the recent violence are sheltering in schools and open ground in {state}. {advisor} warns that conditions will worsen without support.",
-    "tags": [
-      "security",
-      "serious",
-      "chain"
-    ],
+    "tags": ["security", "serious", "chain"],
     "scope": "state",
     "advisor": "health",
     "conditions": [

@@ -1,4 +1,4 @@
-import type { Difficulty, Sector } from './state';
+import type { Difficulty, Sector } from "./state";
 
 export const TICKS_PER_QUARTER = 13;
 export const TICKS_PER_YEAR = 52;
@@ -23,13 +23,13 @@ export const MAX_FUNDING_RATIO = 1.5;
 export const MAX_LEAKAGE = 0.5;
 
 export const CROSS_EFFECTS: ReadonlyArray<readonly [string, string, number]> = [
-  ['power', 'economy', 0.04],
-  ['infrastructure', 'economy', 0.04],
-  ['infrastructure', 'health', 0.015],
-  ['security', 'economy', 0.04],
-  ['security', 'health', 0.015],
-  ['health', 'economy', 0.03],
-  ['education', 'economy', 0.015],
+  ["power", "economy", 0.04],
+  ["infrastructure", "economy", 0.04],
+  ["infrastructure", "health", 0.015],
+  ["security", "economy", 0.04],
+  ["security", "health", 0.015],
+  ["health", "economy", 0.03],
+  ["education", "economy", 0.015],
 ];
 export const INFLATION_ECONOMY_DRAG = 0.02;
 
@@ -71,7 +71,12 @@ export const CRISIS_DECAY = 0.04;
 export const CRISIS_PER_SEVERITY = { 1: 0.5, 2: 2, 3: 7 } as const;
 
 export const COUP = { stability: 38, ticks: 12 };
-export const IMPEACHMENT = { approval: 30, assembly: 35, opposition: 60, ticks: 8 };
+export const IMPEACHMENT = {
+  approval: 30,
+  assembly: 35,
+  opposition: 60,
+  ticks: 8,
+};
 export const COLLAPSE = { unrest: 50, ticks: 4 };
 
 export interface DifficultyScale {
@@ -82,9 +87,27 @@ export interface DifficultyScale {
   eventFrequency: number;
 }
 export const DIFFICULTY: Record<Difficulty, DifficultyScale> = {
-  easy: { startingTreasury: 1500, decayMult: 0.93, approvalSensitivity: 0.85, assemblyResistance: 0.8, eventFrequency: 0.7 },
-  realistic: { startingTreasury: 1000, decayMult: 1, approvalSensitivity: 1, assemblyResistance: 1, eventFrequency: 1 },
-  brutal: { startingTreasury: 600, decayMult: 1.04, approvalSensitivity: 1.1, assemblyResistance: 1.3, eventFrequency: 1.4 },
+  easy: {
+    startingTreasury: 1500,
+    decayMult: 0.93,
+    approvalSensitivity: 0.85,
+    assemblyResistance: 0.8,
+    eventFrequency: 0.7,
+  },
+  realistic: {
+    startingTreasury: 1000,
+    decayMult: 1,
+    approvalSensitivity: 1,
+    assemblyResistance: 1,
+    eventFrequency: 1,
+  },
+  brutal: {
+    startingTreasury: 600,
+    decayMult: 1.04,
+    approvalSensitivity: 1.1,
+    assemblyResistance: 1.3,
+    eventFrequency: 1.4,
+  },
 };
 
 export const ASSEMBLY = {

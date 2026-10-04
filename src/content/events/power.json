@@ -3,10 +3,7 @@
     "id": "grid_collapse",
     "title": "National grid collapse",
     "body": "The national grid has collapsed again and large parts of the country are in the dark. {advisor} says the grid company is \"investigating the cause\".",
-    "tags": [
-      "power",
-      "grid_collapse"
-    ],
+    "tags": ["power", "grid_collapse"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -106,9 +103,7 @@
     "id": "transformer_outage",
     "title": "Prolonged outage in {state}",
     "body": "Transformers in {state} have failed and homes have been without power for days. {governor} is asking for replacements.",
-    "tags": [
-      "power"
-    ],
+    "tags": ["power"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -214,9 +209,7 @@
     "id": "gas_supply_cut",
     "title": "Gas supply to power plants cut",
     "body": "A dispute over unpaid gas bills has cut supply to several power plants. {advisor} says the grid will shrink before it improves.",
-    "tags": [
-      "power"
-    ],
+    "tags": ["power"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -307,9 +300,7 @@
     "id": "tower_vandalism",
     "title": "Transmission tower vandalised in {state}",
     "body": "Thieves have stripped parts of a transmission tower in {state}, cutting power to several towns. {advisor} says metal prices are the real culprit.",
-    "tags": [
-      "power"
-    ],
+    "tags": ["power"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -400,9 +391,7 @@
     "id": "mini_grid_offer",
     "title": "Solar mini-grid offer for {state}",
     "body": "A private developer offers to build solar mini-grids in {state} if the government guarantees a modest payment. {advisor} says the proposal reads better than most.",
-    "tags": [
-      "power"
-    ],
+    "tags": ["power"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [

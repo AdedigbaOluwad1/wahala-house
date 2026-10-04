@@ -3,10 +3,7 @@
     "id": "student_protests",
     "title": "Student protests in {state}",
     "body": "Students in {state} are protesting over fees and poor facilities. {governor} fears the protests may spread.",
-    "tags": [
-      "social",
-      "student_protest"
-    ],
+    "tags": ["social", "student_protest"],
     "scope": "state",
     "advisor": "politics",
     "conditions": [
@@ -119,10 +116,7 @@
     "id": "exam_leak",
     "title": "Examination leak",
     "body": "A national examination paper has leaked before the test. {advisor} says parents want accountability and the exam board wants time.",
-    "tags": [
-      "social",
-      "exam_leak"
-    ],
+    "tags": ["social", "exam_leak"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -220,9 +214,7 @@
     "id": "nationwide_protests",
     "title": "Nationwide protests",
     "body": "Protests are spreading across major cities over living conditions. {advisor} says the next few days will define the government.",
-    "tags": [
-      "social"
-    ],
+    "tags": ["social"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -336,9 +328,7 @@
     "id": "pay_delay_protest",
     "title": "Pay delay protest in {state}",
     "body": "Civil servants in {state} have not been paid for months and are protesting at the secretariat. {governor} blames federal transfers.",
-    "tags": [
-      "social"
-    ],
+    "tags": ["social"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -465,10 +455,7 @@
     "id": "lecturers_strike",
     "title": "University lecturers begin strike",
     "body": "University lecturers have downed tools over pay and funding for labs. {advisor} says campuses are quiet and the politics are loud.",
-    "tags": [
-      "social",
-      "strike"
-    ],
+    "tags": ["social", "strike"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -573,11 +560,7 @@
     "id": "student_march",
     "title": "Students march over the strike",
     "body": "Students have taken to the streets over the closed campuses. {advisor} says the crowd is large, loud and well organised.",
-    "tags": [
-      "social",
-      "student_protest",
-      "chain"
-    ],
+    "tags": ["social", "student_protest", "chain"],
     "scope": "national",
     "advisor": "security",
     "conditions": [
@@ -644,9 +627,7 @@
     "id": "youth_march",
     "title": "Youth unemployment march",
     "body": "Thousands of young people are marching to demand jobs. {advisor} says the march is peaceful and the placards are hard to argue with.",
-    "tags": [
-      "social"
-    ],
+    "tags": ["social"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -747,9 +728,7 @@
     "id": "chief_dispute",
     "title": "Traditional ruler dispute in {state}",
     "body": "Two groups of kingmakers in {state} have each named a different traditional ruler. {governor} has taken a side, and the other side has taken the matter to court.",
-    "tags": [
-      "social"
-    ],
+    "tags": ["social"],
     "scope": "state",
     "advisor": "politics",
     "conditions": [
@@ -839,9 +818,7 @@
     "id": "football_win",
     "title": "National team wins a major match",
     "body": "The national football team has won a major match, and the country has briefly forgotten everything else. {advisor} says the mood is up and the window is short.",
-    "tags": [
-      "social"
-    ],
+    "tags": ["social"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -887,10 +864,7 @@
     "id": "transport_union_strike",
     "title": "Road transport union strike",
     "body": "The road transport union has parked its vehicles over levies and bad roads. {advisor} says stranded travellers are already blaming you.",
-    "tags": [
-      "social",
-      "strike"
-    ],
+    "tags": ["social", "strike"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
