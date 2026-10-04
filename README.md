@@ -28,16 +28,16 @@ Then open the URL Vite prints. Press Start, confirm the first quarter's budget, 
 
 ## Scripts
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Dev server with hot reload |
-| `npm run build` | Typecheck and production build (with PWA service worker) |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint` | ESLint, including the rule that keeps the engine free of UI imports |
-| `npm test` | Vitest engine tests |
-| `npx vitest run tests/content.test.ts` | Content lint for events, news and banned terms |
-| `npm run e2e` | Playwright tests (desktop and 360 px phone) including offline, saving and axe accessibility scans; builds and serves the app itself |
-| `node scripts/make-icons.mjs` | Regenerates the PNG app icons from `public/icon.svg` |
+| Command                                | What it does                                                                                                                        |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`                          | Dev server with hot reload                                                                                                          |
+| `npm run build`                        | Typecheck and production build (with PWA service worker)                                                                            |
+| `npm run preview`                      | Serve the production build locally                                                                                                  |
+| `npm run lint`                         | ESLint, including the rule that keeps the engine free of UI imports                                                                 |
+| `npm test`                             | Vitest engine tests                                                                                                                 |
+| `npx vitest run tests/content.test.ts` | Content lint for events, news and banned terms                                                                                      |
+| `npm run e2e`                          | Playwright tests (desktop and 360 px phone) including offline, saving and axe accessibility scans; builds and serves the app itself |
+| `node scripts/make-icons.mjs`          | Regenerates the PNG app icons from `public/icon.svg`                                                                                |
 
 First-time e2e setup: `npx playwright install chromium`.
 
@@ -72,16 +72,16 @@ Removal can come by coup, impeachment or fiscal collapse. Term mode adds an elec
 
 ## Roadmap
 
-| Phase | Scope | Status |
-|---|---|---|
-| 0 | Scaffold, CI, PWA plugin | Done |
-| 1 | Headless engine core | Done |
-| 2 | Map and HUD | Done |
-| 3 | Budget dialog, 12 policies, Assembly votes | Done |
-| 4 | Events, news in two tones, advisors | Done |
-| 5 | Setup screen, modes, election, legacy report | Done |
-| 6 | Saving, offline, accessibility and performance pass | Done |
-| 7 | Content fill, Pidgin pass, balance tuning with bots | Next |
+| Phase | Scope                                               | Status |
+| ----- | --------------------------------------------------- | ------ |
+| 0     | Scaffold, CI, PWA plugin                            | Done   |
+| 1     | Headless engine core                                | Done   |
+| 2     | Map and HUD                                         | Done   |
+| 3     | Budget dialog, 12 policies, Assembly votes          | Done   |
+| 4     | Events, news in two tones, advisors                 | Done   |
+| 5     | Setup screen, modes, election, legacy report        | Done   |
+| 6     | Saving, offline, accessibility and performance pass | Done   |
+| 7     | Content fill, Pidgin pass, balance tuning with bots | Next   |
 
 ## Saving and offline
 

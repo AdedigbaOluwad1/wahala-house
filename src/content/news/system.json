@@ -1,14 +1,134 @@
 [
-  { "id": "policy_enacted", "dry": ["{policy} has been enacted.", "The government has signed {policy} into effect."], "wahala": ["{policy} don land. Make everybody hold their cup.", "President sign {policy}; Abuja say na for your own good."] },
-  { "id": "policy_vote_passed", "dry": ["The Assembly has approved {policy}.", "{policy} cleared the Assembly floor."], "wahala": ["Assembly pass {policy} after plenty speeches and one long lunch.", "{policy} survives the Assembly, with some constituency projects attached."] },
-  { "id": "policy_vote_failed", "dry": ["The Assembly has rejected {policy}.", "{policy} failed to secure enough votes."], "wahala": ["Assembly vote {policy} down; the constituency projects don vanish too.", "{policy} no pass. Lawmakers say they will 'consult their constituents', again."] },
-  { "id": "policy_landed", "dry": ["The effects of {policy} are now being felt.", "{policy} is now taking effect."], "wahala": ["{policy} don start to show for ground.", "After all the waiting, {policy} finally enter the building."] },
-  { "id": "policy_side_landed", "dry": ["{policy} is having side effects: {note}", "Side effects of {policy} have emerged: {note}"], "wahala": ["{policy} come with extra package: {note}", "Small print for {policy} don show: {note}"] },
-  { "id": "threshold.approval_low", "dry": ["Presidential approval falls below 40 percent.", "Approval ratings slip under 40 percent."], "wahala": ["Approval drop under 40 percent. Even the president's own aides dey 'reviewing their position'.", "Approval don fall below 40 percent; Villa say na 'poll fatigue'."] },
-  { "id": "threshold.approval_critical", "dry": ["Presidential approval falls below 25 percent.", "Approval hits a record low under 25 percent."], "wahala": ["Approval below 25 percent. The president now polls below traffic.", "Only one in four citizens approve; the other three dey busy complaining."] },
-  { "id": "threshold.treasury_low", "dry": ["Treasury reserves are running low.", "Federal reserves fall to a worrying level."], "wahala": ["Treasury dey beg for loan. Even the calculator don tire.", "Reserves low; finance ministry now dey count coins under the sofa."] },
-  { "id": "threshold.inflation_high", "dry": ["Inflation rises above 25 percent.", "Consumer prices are rising at more than 25 percent."], "wahala": ["Inflation cross 25 percent. Market women now quote prices in hopes and prayers.", "Prices dey climb faster than the Assembly can adjourn."] },
-  { "id": "threshold.stability_low", "dry": ["Stability indicators fall to dangerous levels.", "Analysts warn of growing instability."], "wahala": ["Stability don thin. Analysts dey whisper words like 'concerning'.", "Country steady wobble; everybody agree say na 'a delicate moment'."] },
-  { "id": "threshold.naira_weak", "dry": ["The naira weakens sharply against major currencies.", "The naira falls to a record low."], "wahala": ["Naira fall again; exchange boards now run out of digits.", "Naira weak well well; travellers start to pack suitcases with calculators."] },
-  { "id": "threshold.debt_high", "dry": ["Public debt approaches the legal ceiling.", "Debt levels near the borrowing limit."], "wahala": ["Debt dey near the ceiling; lenders now send 'friendly reminders'.", "Borrowing limit dey close; the treasury don run out of 'creative solutions'."] }
+  {
+    "id": "policy_enacted",
+    "dry": [
+      "{policy} has been enacted.",
+      "The government has signed {policy} into effect."
+    ],
+    "wahala": [
+      "{policy} don land. Make everybody hold their cup.",
+      "President sign {policy}; Abuja say na for your own good."
+    ]
+  },
+  {
+    "id": "policy_vote_passed",
+    "dry": [
+      "The Assembly has approved {policy}.",
+      "{policy} cleared the Assembly floor."
+    ],
+    "wahala": [
+      "Assembly pass {policy} after plenty speeches and one long lunch.",
+      "{policy} survives the Assembly, with some constituency projects attached."
+    ]
+  },
+  {
+    "id": "policy_vote_failed",
+    "dry": [
+      "The Assembly has rejected {policy}.",
+      "{policy} failed to secure enough votes."
+    ],
+    "wahala": [
+      "Assembly vote {policy} down; the constituency projects don vanish too.",
+      "{policy} no pass. Lawmakers say they will 'consult their constituents', again."
+    ]
+  },
+  {
+    "id": "policy_landed",
+    "dry": [
+      "The effects of {policy} are now being felt.",
+      "{policy} is now taking effect."
+    ],
+    "wahala": [
+      "{policy} don start to show for ground.",
+      "After all the waiting, {policy} finally enter the building."
+    ]
+  },
+  {
+    "id": "policy_side_landed",
+    "dry": [
+      "{policy} is having side effects: {note}",
+      "Side effects of {policy} have emerged: {note}"
+    ],
+    "wahala": [
+      "{policy} come with extra package: {note}",
+      "Small print for {policy} don show: {note}"
+    ]
+  },
+  {
+    "id": "threshold.approval_low",
+    "dry": [
+      "Presidential approval falls below 40 percent.",
+      "Approval ratings slip under 40 percent."
+    ],
+    "wahala": [
+      "Approval drop under 40 percent. Even the president's own aides dey 'reviewing their position'.",
+      "Approval don fall below 40 percent; Villa say na 'poll fatigue'."
+    ]
+  },
+  {
+    "id": "threshold.approval_critical",
+    "dry": [
+      "Presidential approval falls below 25 percent.",
+      "Approval hits a record low under 25 percent."
+    ],
+    "wahala": [
+      "Approval below 25 percent. The president now polls below traffic.",
+      "Only one in four citizens approve; the other three dey busy complaining."
+    ]
+  },
+  {
+    "id": "threshold.treasury_low",
+    "dry": [
+      "Treasury reserves are running low.",
+      "Federal reserves fall to a worrying level."
+    ],
+    "wahala": [
+      "Treasury dey beg for loan. Even the calculator don tire.",
+      "Reserves low; finance ministry now dey count coins under the sofa."
+    ]
+  },
+  {
+    "id": "threshold.inflation_high",
+    "dry": [
+      "Inflation rises above 25 percent.",
+      "Consumer prices are rising at more than 25 percent."
+    ],
+    "wahala": [
+      "Inflation cross 25 percent. Market women now quote prices in hopes and prayers.",
+      "Prices dey climb faster than the Assembly can adjourn."
+    ]
+  },
+  {
+    "id": "threshold.stability_low",
+    "dry": [
+      "Stability indicators fall to dangerous levels.",
+      "Analysts warn of growing instability."
+    ],
+    "wahala": [
+      "Stability don thin. Analysts dey whisper words like 'concerning'.",
+      "Country steady wobble; everybody agree say na 'a delicate moment'."
+    ]
+  },
+  {
+    "id": "threshold.naira_weak",
+    "dry": [
+      "The naira weakens sharply against major currencies.",
+      "The naira falls to a record low."
+    ],
+    "wahala": [
+      "Naira fall again; exchange boards now run out of digits.",
+      "Naira weak well well; travellers start to pack suitcases with calculators."
+    ]
+  },
+  {
+    "id": "threshold.debt_high",
+    "dry": [
+      "Public debt approaches the legal ceiling.",
+      "Debt levels near the borrowing limit."
+    ],
+    "wahala": [
+      "Debt dey near the ceiling; lenders now send 'friendly reminders'.",
+      "Borrowing limit dey close; the treasury don run out of 'creative solutions'."
+    ]
+  }
 ]

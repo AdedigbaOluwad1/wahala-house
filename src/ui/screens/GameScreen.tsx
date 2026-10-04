@@ -1,26 +1,38 @@
-import { useEffect, useRef, useState } from 'react';
-import { Menu, ScrollText } from 'lucide-react';
-import { toast } from 'sonner';
-import { getEvent, getPolicy, pendingDecision, eventTokens, fillTokens } from '../../engine';
-import { strings } from '../../content/strings/en';
-import { useGame } from '../../store/gameStore';
-import { MetricPicker } from '../hud/MetricPicker';
-import { TopBar } from '../hud/TopBar';
-import { MapView } from '../map/MapView';
-import type { MapMarker } from '../map/MapView';
-import { EventDialog } from '../modals/EventDialog';
-import { NewsTicker } from '../hud/NewsTicker';
-import { BudgetDialog } from '../modals/BudgetDialog';
-import { PolicyMenu } from '../modals/PolicyMenu';
-import { StatePanel } from '../panels/StatePanel';
-import { useGameLoop } from '../useGameLoop';
-import { ElectionDialog } from '../modals/ElectionDialog';
-import { SystemDialog } from '../modals/SystemDialog';
-import type { SystemView } from '../modals/SystemDialog';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { useEffect, useRef, useState } from "react";
+import { Menu, ScrollText } from "lucide-react";
+import { toast } from "sonner";
+import {
+  getEvent,
+  getPolicy,
+  pendingDecision,
+  eventTokens,
+  fillTokens,
+} from "../../engine";
+import { strings } from "../../content/strings/en";
+import { useGame } from "../../store/gameStore";
+import { MetricPicker } from "../hud/MetricPicker";
+import { TopBar } from "../hud/TopBar";
+import { MapView } from "../map/MapView";
+import type { MapMarker } from "../map/MapView";
+import { EventDialog } from "../modals/EventDialog";
+import { NewsTicker } from "../hud/NewsTicker";
+import { BudgetDialog } from "../modals/BudgetDialog";
+import { PolicyMenu } from "../modals/PolicyMenu";
+import { StatePanel } from "../panels/StatePanel";
+import { useGameLoop } from "../useGameLoop";
+import { ElectionDialog } from "../modals/ElectionDialog";
+import { SystemDialog } from "../modals/SystemDialog";
+import type { SystemView } from "../modals/SystemDialog";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
-export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinished: () => void }) {
+export function GameScreen({
+  onExit,
+  onFinished,
+}: {
+  onExit: () => void;
+  onFinished: () => void;
+}) {
   useGameLoop();
   useGame((s) => s.rev);
   const game = useGame((s) => s.game);
@@ -30,7 +42,7 @@ export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinis
   const confirmBudget = useGame((s) => s.confirmBudget);
   const [policiesOpen, setPoliciesOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menuView, setMenuView] = useState<SystemView>('menu');
+  const [menuView, setMenuView] = useState<SystemView>("menu");
   const setPlaying = useGame((s) => s.setPlaying);
   const loadSave = useGame((s) => s.loadSave);
   const currentSave = useGame((s) => s.currentSave);
@@ -49,7 +61,10 @@ export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinis
     seenLanded.current = game.landed.length;
     for (const l of fresh) {
       const name = getPolicy(l.policyId)?.name ?? l.policyId;
-      if (l.phase === 'side') toast.warning(l.note ?? strings.policies.toastSide(name), { description: l.note ? name : undefined });
+      if (l.phase === "side")
+        toast.warning(l.note ?? strings.policies.toastSide(name), {
+          description: l.note ? name : undefined,
+        });
       else toast.success(strings.policies.toastMain(name));
     }
   }, [game.landed.length, game.landed]);
@@ -60,31 +75,50 @@ export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinis
       seenEvents.current.add(a.uid);
       const ev = getEvent(a.eventId);
       if (!ev) continue;
-      toast.warning(strings.events.alert(fillTokens(ev.title, eventTokens(game, a))), {
-        action: { label: strings.events.respond, onClick: () => openEvent(a.uid) },
-      });
+      toast.warning(
+        strings.events.alert(fillTokens(ev.title, eventTokens(game, a))),
+        {
+          action: {
+            label: strings.events.respond,
+            onClick: () => openEvent(a.uid),
+          },
+        },
+      );
     }
   }, [game, game.events.active, openEvent]);
 
   useEffect(() => {
-    if (status.kind === 'term_end') endTerm();
+    if (status.kind === "term_end") endTerm();
   }, [status.kind, endTerm]);
 
   useEffect(() => {
-    if (!election && (status.kind === 'removed' || status.kind === 'finished')) onFinished();
+    if (!election && (status.kind === "removed" || status.kind === "finished"))
+      onFinished();
   }, [status.kind, election, onFinished]);
 
   const decision = pendingDecision(game);
   const shownUid = decision?.uid ?? openEventUid;
-  const shown = election ? undefined : game.events.active.find((a) => a.uid === shownUid);
+  const shown = election
+    ? undefined
+    : game.events.active.find((a) => a.uid === shownUid);
   const markers: MapMarker[] = game.events.active
     .filter((a) => a.stateId && a.severity >= 2)
     .map((a) => {
       const ev = getEvent(a.eventId);
       const tokens = eventTokens(game, a);
-      return { uid: a.uid, stateId: a.stateId!, severity: a.severity, label: strings.events.markerLabel(ev ? fillTokens(ev.title, tokens) : '', tokens.state) };
+      return {
+        uid: a.uid,
+        stateId: a.stateId!,
+        severity: a.severity,
+        label: strings.events.markerLabel(
+          ev ? fillTokens(ev.title, tokens) : "",
+          tokens.state,
+        ),
+      };
     });
-  const flashes = game.events.history.filter((h) => h.stateId && game.tick - h.resolvedTick <= 2).map((h) => h.stateId!);
+  const flashes = game.events.history
+    .filter((h) => h.stateId && game.tick - h.resolvedTick <= 2)
+    .map((h) => h.stateId!);
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden">
@@ -92,44 +126,89 @@ export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinis
       <div className="flex items-center justify-between gap-2 border-b border-white/10 bg-background">
         <MetricPicker />
         <div className="flex shrink-0 items-center gap-1 px-2">
-          <label htmlFor="jump" className="sr-only">{strings.jumpToState}</label>
+          <label htmlFor="jump" className="sr-only">
+            {strings.jumpToState}
+          </label>
           <select
             id="jump"
             className="h-10 max-w-32 rounded-lg border border-input bg-card px-2 text-sm"
-            value={selected ?? ''}
+            value={selected ?? ""}
             onChange={(e) => select(e.target.value || null)}
           >
             <option value="">{strings.jumpToState}</option>
-            {[...game.states].sort((a, b) => a.name.localeCompare(b.name)).map((s) => (
-              <option key={s.id} value={s.id}>{s.name}</option>
-            ))}
+            {[...game.states]
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.name}
+                </option>
+              ))}
           </select>
-          <Button variant="ghost" size="icon" onClick={() => { setPlaying(false); setMenuView('menu'); setMenuOpen(true); }} aria-label={strings.system.menu}><Menu /></Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => {
+              setPlaying(false);
+              setMenuView("menu");
+              setMenuOpen(true);
+            }}
+            aria-label={strings.system.menu}
+          >
+            <Menu />
+          </Button>
         </div>
       </div>
       <div className="relative flex min-h-0 flex-1 lg:grid lg:grid-cols-[1fr_20rem]">
         <div className="min-h-0 min-w-0 flex-1 bg-[oklch(0.17_0.04_165)]">
-          <MapView game={game} metric={metric} selected={selected} onSelect={select} markers={markers} flashes={flashes} onMarker={openEvent} />
+          <MapView
+            game={game}
+            metric={metric}
+            selected={selected}
+            onSelect={select}
+            markers={markers}
+            flashes={flashes}
+            onMarker={openEvent}
+          />
         </div>
         <aside
           className={`border-white/10 bg-card lg:static lg:block lg:max-h-none lg:overflow-y-auto lg:border-l ${
-            selected ? 'absolute inset-x-0 bottom-0 z-10 max-h-[60%] overflow-y-auto rounded-t-xl border-t shadow-2xl' : 'hidden'
+            selected
+              ? "absolute inset-x-0 bottom-0 z-10 max-h-[60%] overflow-y-auto rounded-t-xl border-t shadow-2xl"
+              : "hidden"
           }`}
           aria-label="State details"
           tabIndex={0}
         >
-          <StatePanel game={game} stateId={selected} onClose={() => select(null)} />
+          <StatePanel
+            game={game}
+            stateId={selected}
+            onClose={() => select(null)}
+          />
         </aside>
       </div>
       <NewsTicker game={game} />
       <footer className="flex items-center justify-center gap-2 border-t border-white/10 bg-background p-2">
-        <Button size="lg" className="w-full max-w-sm" onClick={() => setPoliciesOpen(true)}>
+        <Button
+          size="lg"
+          className="w-full max-w-sm"
+          onClick={() => setPoliciesOpen(true)}
+        >
           <ScrollText />
           {strings.policies.open}
-          {game.active.length > 0 && <Badge variant="secondary">{game.active.length}</Badge>}
+          {game.active.length > 0 && (
+            <Badge variant="secondary">{game.active.length}</Badge>
+          )}
         </Button>
       </footer>
-      {shown && <EventDialog key={shown.uid} game={game} active={shown} forced={shown.severity === 3} onDismiss={() => openEvent(null)} />}
+      {shown && (
+        <EventDialog
+          key={shown.uid}
+          game={game}
+          active={shown}
+          forced={shown.severity === 3}
+          onDismiss={() => openEvent(null)}
+        />
+      )}
       {election && (
         <ElectionDialog
           result={election}
@@ -146,10 +225,22 @@ export function GameScreen({ onExit, onFinished }: { onExit: () => void; onFinis
         onLoadData={loadSave}
         currentSave={currentSave}
         saveTo={saveTo}
-        onQuit={() => { setMenuOpen(false); onExit(); }}
+        onQuit={() => {
+          setMenuOpen(false);
+          onExit();
+        }}
       />
-      <PolicyMenu game={game} open={policiesOpen} onOpenChange={setPoliciesOpen} />
-      {game.budgetWindowOpen && !shown && !election && status.kind === 'running' && <BudgetDialog key={game.tick} game={game} onConfirm={confirmBudget} />}
+      <PolicyMenu
+        game={game}
+        open={policiesOpen}
+        onOpenChange={setPoliciesOpen}
+      />
+      {game.budgetWindowOpen &&
+        !shown &&
+        !election &&
+        status.kind === "running" && (
+          <BudgetDialog key={game.tick} game={game} onConfirm={confirmBudget} />
+        )}
     </div>
   );
 }

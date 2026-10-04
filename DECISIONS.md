@@ -1,10 +1,12 @@
 # Decisions and open items
 
 ## Decided
+
 - **Title:** Wahala House (chosen 2026-10-02). Domain/trademark availability not yet checked.
 - **Scaffold:** hand-written Vite + React + TS (strict) + Tailwind v4 + Vitest + vite-plugin-pwa. ESLint forbids React/DOM imports under `src/engine`.
 
 ## Phase 1 decisions
+
 - **State data is hand-entered** in `src/content/states.ts` (rough populations/areas), not read from `nigerian-geopolitical-zones`, so there is no runtime dependency or licence question yet. Replace or cross-check when licences are verified.
 - **Extra `welfare` stat** on every state (spec had 6 stats). It is the Social Welfare sector's target, so all 7 budget sectors map 1:1 to a stat. Mood weights: economy .25, security .25, health .15, power .10, infrastructure .10, education .05, welfare .10 (sum 1.0).
 - **`needBaseline`**: reference programme (36/tick) x default sector share x population share x trait multiplier (e.g. conflict zones need more security).
@@ -16,11 +18,13 @@
 - **Seed**: an empty seed falls back to `Date.now()` once at game creation, then the resolved seed is stored.
 
 ## Balance observations (seed "test", Realistic, survival)
+
 - Zero funding: an average state's mood falls to roughly 39 at 2 years and 32 at 3 years. The spec target was 25-35 over 1-2 years, so the decay is still a bit gentle. Recheck in Phase 7.
 - Default budget left untouched: no removal in 10 years, approval settles near 34, opposition near 80. Spending everything on welfare ends in a coup at about 5.7 years. Do-nothing removal timing is a Phase 7 tuning item.
 - Borno starts with mood around 15 and stays low; that matches the spec's intent but may be too punishing early.
 
 ## Phase 2 decisions
+
 - **Map package** `@svg-maps/nigeria` 2.0.0 is confirmed CC-BY-4.0 (LICENSE.md ships in the package). Ids match engine ids except `nassarawa`, remapped in `src/ui/map/mapAdapter.ts`. Local type shim in `src/svg-maps.d.ts`.
 - **Choropleth palette** is viridis-style (colour-blind safe), with a legend.
 - **State list select** next to the map is the keyboard and small-state alternative to tapping tiny regions; map regions are also focusable buttons.
@@ -30,6 +34,7 @@
 - **Project licence** not chosen yet.
 
 ## Phase 3 decisions
+
 - **shadcn/ui** (base-nova style, Base UI primitives) with a dark green and gold game theme. The CLI generated a utils file importing an unrelated `cn` npm package; replaced with the standard `clsx` + `tailwind-merge` helper.
 - **Effect timing:** every policy effect lands at enactment tick + `after` (default: the policy's `delayTicks`, plus a delay-risk extension for main effects). Side effects may set an earlier `after`, for example inflation spikes landing before a slow payoff. This refines the spec line that all effects land after the delay.
 - **Ongoing effects** (`kind: "ongoing"`) apply a per-tick change for N ticks once they land. Revenue and inflation effects hit national meters; the rest apply to states by scope (`all`, `zone:NE`, `trait:oil`, a state id, or `$zone` for the zone the player picks).
@@ -39,6 +44,7 @@
 - **Action log** (`actions` in the store) records budget and policy actions with their tick, ready for saving in Phase 6.
 
 ## Phase 4 decisions
+
 - **Events:** tick order is now clock, scheduled effects, ongoing, funding, stats, hidden, mood, national, event roll, news thresholds, ambient news, end checks. Up to 2 events fire per tick and 4 can be active. Only one severity 3 event can be pending, and it pauses the game. Severity 2 events auto-ignore after 8 weeks. Severity 1 events resolve immediately with the effects of their single ignore choice.
 - **Cooldowns** apply per event, and per event and state for state-scope events. Chained follow-ups respect their cooldown too, and are dropped if still cooling down.
 - **Chain-only events** use a `minTick` condition of 1,000,000 so they never fire on their own. A national event cannot chain to a state event (no state to target).
@@ -51,6 +57,7 @@
 - **E2E hook:** builds made with `VITE_E2E=1` expose `window.__wahala` (engine and store) so Playwright can trigger events deterministically. It is absent from normal builds.
 
 ## Phase 5 decisions
+
 - **Election rule as implemented:** a candidate wins the first round outright only with the most votes AND at least 25% in 24 of the 36 states (two-thirds, rounded up) AND at least 25% in the FCT, counted separately. Otherwise the top two go to a runoff decided by plurality, with a share of eliminated voters moving mostly to the non-incumbent finalist. This follows a strict reading of the spec; the constitutional wording and court interpretation still need checking (toggle `ELECTION.fctSeparate` in `balance.ts`).
 - **Vote model:** per-state strengths from mood, national approval, governor loyalty, stability and opposition strength, raised to a power and normalised, with a national swing of about 4 points and small per-state noise. Turnout is population times a mood-based factor. A do-nothing game loses, a balanced game with mood above about 50 wins, and the margin in between is noisy by design.
 - **Terms:** with terms allowed set to N, the election at the end of term N is skipped and the game ends as "term limit". With one allowed term there is no election. Winning an election starts a new term with a small honeymoon (stability, approval, Assembly support up, opposition down).
@@ -62,6 +69,7 @@
 - **UI flow:** title, setup, game, legacy. An election dialog takes priority over any event or budget dialog opened on the same tick.
 
 ## Phase 6 decisions
+
 - **Save format:** `{ format, version, savedAt, config, seed, state, actions, ui }` as JSON. `state` is the full engine state (it is plain JSON), so a restored game continues byte-for-byte like the original; tests assert this. The action log is stored too, so a save can be replayed. `SAVE_VERSION` is 1 and `migrate` has no steps yet; a future change must add one.
 - **Storage:** IndexedDB database `wahala-house` with `saves` (slots `auto`, `slot-1` to `slot-3`) and `settings`. No localStorage.
 - **Autosave** happens when a quarter's budget window opens and when the tab is hidden or the page is left. It is deleted when the game ends. The autosave slot cannot be deleted by hand.
@@ -72,6 +80,7 @@
 - **Known gaps:** no screen-reader walkthrough on real devices (VoiceOver or TalkBack) was done; only automated checks and keyboard tests. The ticker announces each new headline politely, which may be chatty.
 
 ## Phase 7 balance decisions
+
 - **Method:** `npm run sim -- <seeds> [difficulty]` plays five bots (idle, balanced, militarist, austerity, populist) on the headless engine. `sim/trace.ts <bot> <difficulty> <seed>` prints a yearly trace of one run. The `balanced` bot is a mediocre player on purpose, so a human should beat its numbers.
 - **Why stats barely responded to budgets:** the default budget funded sectors at about 75% of need, and decay roughly cancelled gain, so every budget ended near stat 49. Gain is now 0.4 and decay 0.365 per tick, and `REFERENCE_PROGRAMME_PER_TICK` is 32. A sector holds its value at a funding ratio of about 0.91; the default budget gives about 0.84, so doing nothing drifts down slowly, while weighting the budget towards the sectors that carry the most mood (economy, security, health) lifts them quickly and starves the rest. Neglected sectors can reach 0.
 - **Unrest** used to ratchet: it only fell once a state's mood passed 60. It now relaxes towards a floor of 10 whenever mood is at least 40, which lets a competent game recover.
@@ -84,6 +93,7 @@
 - **Still open:** populist and austerity bots fail faster than a human likely would; the election midpoint was left alone; policy numbers in `policies.json` are still first-pass.
 
 ## Open (from spec section 16 and review)
+
 - Election rule: is the 25% threshold required in 24 of 36 states plus a separate FCT check, or 24 of 37 units? Verify against the constitution before shipping.
 - Define `needBaseline[state, sector]` (spec 6.3 uses it but never defines it).
 - Survival-mode score formula.

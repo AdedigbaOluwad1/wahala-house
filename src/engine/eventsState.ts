@@ -1,4 +1,4 @@
-export type MapEffect = 'flash' | 'tint' | 'icon';
+export type MapEffect = "flash" | "tint" | "icon";
 
 export interface ActiveEvent {
   uid: number;
@@ -36,6 +36,12 @@ export interface EventsState {
 }
 
 export function emptyEventsState(): EventsState {
-  return { active: [], cooldowns: {}, pendingChains: [], history: [], streaks: {}, nextUid: 1 };
+  return {
+    active: [],
+    cooldowns: {},
+    pendingChains: [],
+    history: [],
+    streaks: {},
+    nextUid: 1,
+  };
 }
-

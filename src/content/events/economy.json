@@ -3,10 +3,7 @@
     "id": "price_shock",
     "title": "Prices jump across the country",
     "body": "Food and transport prices have jumped again. {advisor} warns that households are cutting meals and the opposition is calling a press conference.",
-    "tags": [
-      "economy",
-      "price_shock"
-    ],
+    "tags": ["economy", "price_shock"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -110,10 +107,7 @@
     "id": "union_strike_notice",
     "title": "Strike notice from the Workers' Congress",
     "body": "The Workers' Congress of Nigeria has issued a strike notice over rising prices. {advisor} says the notice is serious and the deadline is short.",
-    "tags": [
-      "economy",
-      "strike"
-    ],
+    "tags": ["economy", "strike"],
     "scope": "national",
     "advisor": "politics",
     "conditions": [
@@ -222,11 +216,7 @@
     "id": "strike_spreads",
     "title": "The strike spreads",
     "body": "The strike has spread to schools, ports and offices. {advisor} warns that the economy is slowing by the day.",
-    "tags": [
-      "economy",
-      "strike",
-      "chain"
-    ],
+    "tags": ["economy", "strike", "chain"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -338,10 +328,7 @@
     "id": "fx_crunch",
     "title": "Foreign exchange crunch",
     "body": "Dollars are scarce and the naira is under pressure. {advisor} says importers are queueing at banks and the Reserve Bank needs direction.",
-    "tags": [
-      "economy",
-      "fx_crunch"
-    ],
+    "tags": ["economy", "fx_crunch"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -430,10 +417,7 @@
     "id": "market_fire",
     "title": "Market fire in {state}",
     "body": "A fire has swept through a major market in {state}. Traders have lost stock and {governor} is asking for support.",
-    "tags": [
-      "economy",
-      "market_fire"
-    ],
+    "tags": ["economy", "market_fire"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -537,9 +521,7 @@
     "id": "cash_scarcity",
     "title": "Cash scarcity at the banks",
     "body": "Queues are forming at ATMs and bank branches nationwide. {advisor} says the Reserve Bank has been printing slower than the country has been spending.",
-    "tags": [
-      "economy"
-    ],
+    "tags": ["economy"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -644,9 +626,7 @@
     "id": "oil_price_windfall",
     "title": "Oil price jumps",
     "body": "Crude prices have surged on world markets. {advisor} says the Treasury has about three weeks before somebody suggests spending it all.",
-    "tags": [
-      "economy"
-    ],
+    "tags": ["economy"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -741,9 +721,7 @@
     "id": "oil_price_slump",
     "title": "Oil price slump",
     "body": "A sudden fall in crude prices has cut projected oil revenue. {advisor} wants a plan before the next budget window.",
-    "tags": [
-      "economy"
-    ],
+    "tags": ["economy"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -836,9 +814,7 @@
     "id": "port_congestion",
     "title": "Port congestion in {state}",
     "body": "Containers are piling up at the port in {state}. Importers say clearance takes weeks, and officials say the paperwork is the real cargo.",
-    "tags": [
-      "economy"
-    ],
+    "tags": ["economy"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -928,9 +904,7 @@
     "id": "traders_levy_row",
     "title": "Traders protest new levy in {state}",
     "body": "Market traders in {state} have shut their stalls over a new levy. {governor} says the levy funds the markets. Traders say the markets have not noticed.",
-    "tags": [
-      "economy"
-    ],
+    "tags": ["economy"],
     "scope": "state",
     "advisor": "politics",
     "conditions": [
@@ -1030,9 +1004,7 @@
     "id": "investor_visit",
     "title": "Foreign investors tour the country",
     "body": "A delegation of investors is visiting. {advisor} says first impressions count, and that the delegation will be driven past only the good roads.",
-    "tags": [
-      "economy"
-    ],
+    "tags": ["economy"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -1115,9 +1087,7 @@
     "id": "debt_downgrade",
     "title": "Credit rating downgrade",
     "body": "A rating agency has cut the country's outlook, citing the debt load. {advisor} says lenders will now ask for more interest and more reassurance.",
-    "tags": [
-      "economy"
-    ],
+    "tags": ["economy"],
     "scope": "national",
     "advisor": "finance",
     "conditions": [
@@ -1199,10 +1169,7 @@
     "id": "harvest_glut",
     "title": "Bumper harvest in {state}",
     "body": "Farmers in {state} have a record harvest and nowhere to sell it. {advisor} says it is a good problem until the produce rots.",
-    "tags": [
-      "economy",
-      "seasonal"
-    ],
+    "tags": ["economy", "seasonal"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -1212,9 +1179,7 @@
       },
       {
         "type": "quarter",
-        "quarters": [
-          4
-        ]
+        "quarters": [4]
       }
     ],
     "baseProbability": 0.0012,

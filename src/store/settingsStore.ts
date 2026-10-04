@@ -1,6 +1,10 @@
-import { create } from 'zustand';
-import { DEFAULT_SETTINGS, loadSettings, saveSettings } from '../persistence/db';
-import type { Settings } from '../persistence/db';
+import { create } from "zustand";
+import {
+  DEFAULT_SETTINGS,
+  loadSettings,
+  saveSettings,
+} from "../persistence/db";
+import type { Settings } from "../persistence/db";
 
 interface SettingsStore {
   settings: Settings;
@@ -10,10 +14,10 @@ interface SettingsStore {
   replace: (settings: Settings) => void;
 }
 
-export function applyMotionPreference(pref: Settings['reduceMotion']): void {
+export function applyMotionPreference(pref: Settings["reduceMotion"]): void {
   const root = document.documentElement;
-  root.classList.toggle('reduce-motion', pref === 'on');
-  root.classList.toggle('allow-motion', pref === 'off');
+  root.classList.toggle("reduce-motion", pref === "on");
+  root.classList.toggle("allow-motion", pref === "off");
 }
 
 export const useSettings = create<SettingsStore>((set, get) => ({

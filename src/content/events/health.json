@@ -3,11 +3,7 @@
     "id": "disease_outbreak",
     "title": "Disease outbreak in {state}",
     "body": "Health workers in {state} report a fast-spreading outbreak. Clinics are short of supplies and {advisor} wants a decision today.",
-    "tags": [
-      "health",
-      "outbreak",
-      "serious"
-    ],
+    "tags": ["health", "outbreak", "serious"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -124,12 +120,7 @@
     "id": "cholera_outbreak",
     "title": "Cholera outbreak in {state}",
     "body": "Cholera is spreading through flood-affected communities in {state}. {governor} reports crowded camps and no clean water.",
-    "tags": [
-      "health",
-      "outbreak",
-      "serious",
-      "chain"
-    ],
+    "tags": ["health", "outbreak", "serious", "chain"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -237,10 +228,7 @@
     "id": "hospital_staff_strike",
     "title": "Hospital staff strike in {state}",
     "body": "Doctors and nurses in {state} have downed tools over unpaid allowances. Wards are closing and {governor} is looking for a way out.",
-    "tags": [
-      "health",
-      "hospital_strike"
-    ],
+    "tags": ["health", "hospital_strike"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -354,10 +342,7 @@
     "id": "medicine_shortage",
     "title": "Medicine shortage",
     "body": "Pharmacies and hospitals report shortages of essential medicines as import costs climb. {advisor} says the weak naira is the root cause.",
-    "tags": [
-      "health",
-      "economy"
-    ],
+    "tags": ["health", "economy"],
     "scope": "national",
     "advisor": "health",
     "conditions": [
@@ -451,11 +436,7 @@
     "id": "measles_cases",
     "title": "Measles cases rise in {state}",
     "body": "Clinics in {state} are reporting a rise in measles cases among children. {advisor} says vaccination coverage in the area has slipped.",
-    "tags": [
-      "health",
-      "outbreak",
-      "serious"
-    ],
+    "tags": ["health", "outbreak", "serious"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -544,9 +525,7 @@
     "id": "doctors_emigration",
     "title": "Doctors leaving for overseas jobs",
     "body": "Hospitals report that more doctors are taking jobs abroad. {advisor} says some wards now rely on one tired consultant and a lot of optimism.",
-    "tags": [
-      "health"
-    ],
+    "tags": ["health"],
     "scope": "national",
     "advisor": "health",
     "conditions": [
@@ -638,9 +617,7 @@
     "id": "fake_drugs_bust",
     "title": "Counterfeit drugs seized in {state}",
     "body": "Inspectors have raided a warehouse full of counterfeit medicines in {state}. {advisor} says it is good work, and also that the stock was selling very well.",
-    "tags": [
-      "health"
-    ],
+    "tags": ["health"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -686,10 +663,7 @@
     "id": "maternal_ward_closed",
     "title": "Maternity ward closes in {state}",
     "body": "The main maternity ward in {state} has closed for lack of staff and supplies. {governor} says it will reopen soon. Nobody has said which soon.",
-    "tags": [
-      "health",
-      "serious"
-    ],
+    "tags": ["health", "serious"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -784,20 +758,13 @@
     "id": "heatwave_warning",
     "title": "Heatwave warning in {state}",
     "body": "Temperatures in {state} are forecast to stay dangerously high for days. {advisor} says clinics should expect heat exhaustion cases.",
-    "tags": [
-      "health",
-      "seasonal",
-      "serious"
-    ],
+    "tags": ["health", "seasonal", "serious"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
       {
         "type": "quarter",
-        "quarters": [
-          1,
-          2
-        ]
+        "quarters": [1, 2]
       },
       {
         "type": "stat",

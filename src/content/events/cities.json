@@ -3,11 +3,7 @@
     "id": "lagos_gridlock",
     "title": "Gridlock paralyses Lagos",
     "body": "A burst pipe, a broken-down truck and an unannounced motorcade have combined to freeze {state}. {advisor} says the city lost a full working day.",
-    "tags": [
-      "social",
-      "lagos",
-      "south_west"
-    ],
+    "tags": ["social", "lagos", "south_west"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -105,13 +101,7 @@
     "id": "lagos_canal_flood",
     "title": "Canal floods in Lagos",
     "body": "Blocked drainage channels have overflowed in {state}, flooding streets and homes. Emergency teams are working and {governor} is asking for support.",
-    "tags": [
-      "disaster",
-      "flood",
-      "serious",
-      "lagos",
-      "south_west"
-    ],
+    "tags": ["disaster", "flood", "serious", "lagos", "south_west"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -121,10 +111,7 @@
       },
       {
         "type": "quarter",
-        "quarters": [
-          2,
-          3
-        ]
+        "quarters": [2, 3]
       }
     ],
     "baseProbability": 0.006,
@@ -207,11 +194,7 @@
     "id": "kano_textile_revival",
     "title": "Textile revival proposal in Kano",
     "body": "Local manufacturers in {state} have a plan to restart idle textile mills if power and credit can be arranged. {advisor} says the plan has real numbers in it, which is unusual.",
-    "tags": [
-      "economy",
-      "kano",
-      "north_west"
-    ],
+    "tags": ["economy", "kano", "north_west"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -303,11 +286,7 @@
     "id": "kano_water_shortage",
     "title": "Water shortage in Kano",
     "body": "Taps in several districts of {state} have run dry, and water sellers have discovered a new price. {governor} says repairs are underway.",
-    "tags": [
-      "health",
-      "kano",
-      "north_west"
-    ],
+    "tags": ["health", "kano", "north_west"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -402,12 +381,7 @@
     "id": "rivers_oil_spill",
     "title": "Oil spill in Rivers",
     "body": "A pipeline leak has fouled creeks and fishing grounds in {state}. Residents say the spill has been running for days, and the operator says it is investigating.",
-    "tags": [
-      "disaster",
-      "serious",
-      "rivers",
-      "south_south"
-    ],
+    "tags": ["disaster", "serious", "rivers", "south_south"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -533,13 +507,7 @@
     "id": "fishing_communities_protest",
     "title": "Fishing communities protest in {state}",
     "body": "Fishing communities affected by the spill have blocked a jetty in {state}. {advisor} says oil exports are now affected.",
-    "tags": [
-      "social",
-      "serious",
-      "chain",
-      "rivers",
-      "south_south"
-    ],
+    "tags": ["social", "serious", "chain", "rivers", "south_south"],
     "scope": "state",
     "advisor": "politics",
     "conditions": [
@@ -610,12 +578,7 @@
     "id": "rivers_port_strike",
     "title": "Port workers strike in Rivers",
     "body": "Dock workers at the main port in {state} have stopped work over delayed pay. Ships are waiting, and {advisor} says the waiting is billed by the hour.",
-    "tags": [
-      "economy",
-      "strike",
-      "rivers",
-      "south_south"
-    ],
+    "tags": ["economy", "strike", "rivers", "south_south"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -698,12 +661,7 @@
     "id": "borno_resettlement",
     "title": "Families return home to Borno",
     "body": "Thousands of families are being resettled in communities in {state} after years away. {advisor} says the homes are ready, and the schools and clinics are not.",
-    "tags": [
-      "security",
-      "serious",
-      "borno",
-      "north_east"
-    ],
+    "tags": ["security", "serious", "borno", "north_east"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -807,12 +765,7 @@
     "id": "borno_farm_access",
     "title": "Farmland access reopens in Borno",
     "body": "Farmers in {state} are asking to return to land that has been unsafe for years. {advisor} says the harvest could matter, and so could the escorts.",
-    "tags": [
-      "security",
-      "economy",
-      "borno",
-      "north_east"
-    ],
+    "tags": ["security", "economy", "borno", "north_east"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -822,10 +775,7 @@
       },
       {
         "type": "quarter",
-        "quarters": [
-          2,
-          3
-        ]
+        "quarters": [2, 3]
       }
     ],
     "baseProbability": 0.005,
@@ -908,10 +858,7 @@
     "id": "fct_civil_servants_protest",
     "title": "Civil servants protest in the capital",
     "body": "Federal workers in {state} are marching over delayed allowances. The streets around the ministries are full and {advisor} says the filing cabinets are at risk.",
-    "tags": [
-      "social",
-      "fct"
-    ],
+    "tags": ["social", "fct"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -1002,10 +949,7 @@
     "id": "fct_estate_demolition",
     "title": "Demolition row in the capital",
     "body": "Bulldozers have arrived at estates built on land with disputed papers in {state}. Residents say the papers were approved by the same office that is now demolishing them.",
-    "tags": [
-      "politics",
-      "fct"
-    ],
+    "tags": ["politics", "fct"],
     "scope": "state",
     "advisor": "politics",
     "conditions": [

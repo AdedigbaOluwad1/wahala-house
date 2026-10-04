@@ -3,11 +3,7 @@
     "id": "flood_warning",
     "title": "Flood warning for {state}",
     "body": "Heavy rains are forecast and the rivers in {state} are rising. {governor} asks whether the federal government will act before the water arrives or after.",
-    "tags": [
-      "disaster",
-      "flood",
-      "seasonal"
-    ],
+    "tags": ["disaster", "flood", "seasonal"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -17,10 +13,7 @@
       },
       {
         "type": "quarter",
-        "quarters": [
-          3,
-          4
-        ]
+        "quarters": [3, 4]
       }
     ],
     "baseProbability": 0.004,
@@ -119,12 +112,7 @@
     "id": "flood_aftermath",
     "title": "Flood displacement in {state}",
     "body": "Floodwater has displaced families in {state}. Camps are filling quickly and {governor} is asking for shelter and supplies.",
-    "tags": [
-      "disaster",
-      "flood",
-      "serious",
-      "chain"
-    ],
+    "tags": ["disaster", "flood", "serious", "chain"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -241,11 +229,7 @@
     "id": "building_collapse",
     "title": "Building collapse in {state}",
     "body": "A building has collapsed in {state}, and rescue teams are searching the rubble. {advisor} says the safety inspectors never signed off.",
-    "tags": [
-      "disaster",
-      "building_collapse",
-      "serious"
-    ],
+    "tags": ["disaster", "building_collapse", "serious"],
     "scope": "state",
     "advisor": "health",
     "conditions": [
@@ -354,11 +338,7 @@
     "id": "road_washout",
     "title": "Roads washed out in {state}",
     "body": "Heavy rain has washed out key roads in {state}. {governor} says markets are cut off and farmers cannot get produce out.",
-    "tags": [
-      "disaster",
-      "flood",
-      "seasonal"
-    ],
+    "tags": ["disaster", "flood", "seasonal"],
     "scope": "state",
     "advisor": "finance",
     "conditions": [
@@ -368,9 +348,7 @@
       },
       {
         "type": "quarter",
-        "quarters": [
-          3
-        ]
+        "quarters": [3]
       },
       {
         "type": "stat",
@@ -464,10 +442,7 @@
     "id": "erosion_threat",
     "title": "Gully erosion threatens homes in {state}",
     "body": "Heavy rain has opened a gully that is eating towards homes and a main road in {state}. {advisor} says the next downpour decides how bad it gets.",
-    "tags": [
-      "disaster",
-      "south_east"
-    ],
+    "tags": ["disaster", "south_east"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
@@ -483,10 +458,7 @@
       },
       {
         "type": "quarter",
-        "quarters": [
-          2,
-          3
-        ]
+        "quarters": [2, 3]
       }
     ],
     "baseProbability": 0.00328,
@@ -578,19 +550,13 @@
     "id": "dry_season_fire",
     "title": "Bush fires in {state}",
     "body": "Dry-season fires are spreading across farmland in {state}, and wind is carrying them toward villages. {governor} has asked for help.",
-    "tags": [
-      "disaster",
-      "seasonal",
-      "serious"
-    ],
+    "tags": ["disaster", "seasonal", "serious"],
     "scope": "state",
     "advisor": "security",
     "conditions": [
       {
         "type": "quarter",
-        "quarters": [
-          1
-        ]
+        "quarters": [1]
       },
       {
         "type": "trait",
@@ -683,11 +649,7 @@
     "id": "bridge_collapse",
     "title": "Bridge collapse in {state}",
     "body": "A bridge that officials last inspected years ago has collapsed in {state}, cutting a main route. Rescue teams are on site and {governor} is asking for support.",
-    "tags": [
-      "disaster",
-      "building_collapse",
-      "serious"
-    ],
+    "tags": ["disaster", "building_collapse", "serious"],
     "scope": "state",
     "advisor": "security",
     "conditions": [

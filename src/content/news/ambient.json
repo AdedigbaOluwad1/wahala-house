@@ -179,10 +179,7 @@
     "conditions": [
       {
         "type": "quarter",
-        "quarters": [
-          4,
-          1
-        ]
+        "quarters": [4, 1]
       }
     ]
   },
