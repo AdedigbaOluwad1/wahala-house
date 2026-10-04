@@ -1,3 +1,4 @@
+import { Buffer } from "node:buffer";
 import { createRequire } from "node:module";
 import { readFileSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright-core";
@@ -38,7 +39,7 @@ const browser = await chromium.launch();
 
 const og = await browser.newPage({ viewport: { width: 1200, height: 630 } });
 await og.setContent(card);
-await og.evaluate(() => document.fonts.ready);
+await og.waitForFunction("document.fonts.status === 'loaded'");
 writeFileSync("public/og.png", await og.screenshot());
 
 const icoSizes = [16, 32, 48];
