@@ -269,15 +269,13 @@ function SettingsView() {
             return;
           }
           await deleteEverything();
-          useSettings
-            .getState()
-            .replace({
-              ...settings,
-              autosave: true,
-              reduceMotion: "system",
-              tone: "wahala",
-              speed: "normal",
-            });
+          useSettings.getState().replace({
+            ...settings,
+            autosave: true,
+            reduceMotion: "system",
+            tone: "wahala",
+            speed: "normal",
+          });
           setConfirm(false);
           toast.success(S.cleared);
         }}

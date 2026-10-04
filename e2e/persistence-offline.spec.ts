@@ -105,13 +105,11 @@ test("manual save slots and save files round-trip", async ({ page }) => {
   });
   expect(await snapshot(page)).not.toBe(before);
 
-  await page
-    .getByLabel("Import save file")
-    .setInputFiles({
-      name: "save.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(text),
-    });
+  await page.getByLabel("Import save file").setInputFiles({
+    name: "save.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(text),
+  });
   await expect(page.getByText("Save file imported.")).toBeVisible();
   expect(await snapshot(page)).toBe(before);
 });
@@ -119,13 +117,11 @@ test("manual save slots and save files round-trip", async ({ page }) => {
 test("a bad save file is rejected with a clear message", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "Load", exact: true }).click();
-  await page
-    .getByLabel("Import save file")
-    .setInputFiles({
-      name: "bad.json",
-      mimeType: "application/json",
-      buffer: Buffer.from('{"hello":1}'),
-    });
+  await page.getByLabel("Import save file").setInputFiles({
+    name: "bad.json",
+    mimeType: "application/json",
+    buffer: Buffer.from('{"hello":1}'),
+  });
   await expect(
     page.getByText("That file is not a Wahala House save."),
   ).toBeVisible();
